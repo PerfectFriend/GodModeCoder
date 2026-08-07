@@ -1,0 +1,200 @@
+# Basic MilkDrop Preset Template
+
+*Minimal starter for writing custom HLSL shaders. Save as `.milk` file.*
+
+```hlsl
+// ============================================================
+// BASIC MILKDROP PRESET TEMPLATE
+// ============================================================
+// Edit this file, save as something.milk, load in MilkDrop
+// Press 'M' in MilkDrop → 'Load Preset' → select this file
+// Changes hot-reload on save (in most players)
+// ============================================================
+
+// --- PER-FRAME EQUATIONS (run once per frame) ---
+per_frame_init= // runs once at preset load
+per_frame_1=    // main per-frame logic
+per_frame_2=    // additional logic
+per_frame_3=
+per_frame_4=
+per_frame_5=
+
+// --- PER-VERTEX EQUATIONS (run per vertex, for warp mesh) ---
+per_vertex_init= // runs once per vertex at load
+per_vertex_1=    // main per-vertex warp
+per_vertex_2=
+per_vertex_3=
+per_vertex_4=
+per_vertex_5=
+
+// --- PIXEL SHADER (HLSL) - THE VISUAL MEAT ---
+// This runs per-pixel. Return float4 color (RGBA).
+// Available uniforms:
+//   float time;           // seconds since start
+//   float bass, mid, treble;  // 0..1 audio levels
+//   float bass_att, mid_att, treble_att;  // attack values
+//   bool beat;            // true on beat frame
+//   float2 uv;            // 0..1 texture coordinates
+//   float2 texsize;       // texture resolution
+//   sampler2D tex0..3;    // texture samplers (tex0 = main)
+//   float4 color;         // current pixel color (feedback)
+//   float progress;       // 0..1 preset blend progress (for .milk2)
+
+shader_body = "
+// ---- YOUR SHADER CODE HERE ----
+// Example: simple radial pulse on beat
+float2 center = float2(0.5, 0.5);
+float dist = length(uv - center);
+float pulse = sin(dist * 50.0 - time * 5.0) * 0.5 + 0.5;
+float beat_flash = beat ? 1.0 : 0.0;
+float3 col = float3(pulse, pulse * 0.5, pulse * 0.2) + beat_flash * 0.3;
+// Sample previous frame for feedback
+float3 prev = tex2D(tex0, uv).rgb;
+col = lerp(prev * 0.95, col, 0.3);  // decay + new content
+return float4(col, 1.0);
+";
+
+// --- COMPOSITE SHADER (optional, for .milk2 double-preset) ---
+// Only used in MilkDrop 3 / projectM with .milk2 files
+composite_shader_body = "
+// Blend two presets based on 'progress' (0..1)
+float3 a = shader_body_for_preset_a;  // pseudo-code
+float3 b = shader_body_for_preset_b;
+return float4(lerp(a, b, progress), 1.0);
+";
+
+// --- PRESET METADATA ---
+fRating=3.0                    // 0..5 rating (shown in menu)
+fGammaAdj=1.0                  // gamma correction
+fDecay=0.95                    // feedback decay (0..1)
+fVideoEchoZoom=1.0             // video echo zoom
+fVideoEchoAlpha=0.0            // video echo alpha
+nVideoEchoOrientation=0        // 0=none, 1=left, 2=right, 3=up, 4=down
+nWaveMode=0                    // 0=off, 1=waveform, 2=spectrum, 3=both
+bAdditiveWaves=0               // additive wave blending
+bWaveDots=0                    // waveform as dots
+bWaveThick=1                   // thick waveform
+bModWaveAlphaByVolume=1        // wave alpha by volume
+bMaximizeWaveColor=1           // maximize wave color
+bTexWrap=1                     // texture wrap
+bDarkenCenter=0                // darken center
+bRedBlueStereo=0               // red/blue stereo
+bBrighten=0                    // brighten
+bDarken=0                      // darken
+bSolarize=0                    // solarize
+bInvert=0                      // invert
+fWaveAlpha=0.5                 // wave alpha
+fWaveScale=1.0                 // wave scale
+fWaveSmoothing=0.5             // wave smoothing
+fWaveParam=0.0                 // wave parameter
+fModWaveAlphaStart=0.5         // wave alpha start
+fModWaveAlphaEnd=1.0           // wave alpha end
+fWarpAnimSpeed=1.0             // warp animation speed
+fWarpScale=1.0                 // warp scale
+fZoomExponent=1.0              // zoom exponent
+fShader=0.0                    // shader index (0=custom)
+
+// --- TEXTURES (optional) ---
+// tex0..3 can be loaded from image files:
+// texture1=my_texture.jpg
+// texture2=another.png
+// texture3=third.bmp
+// texture4=fourth.tga
+
+// ============================================================
+// KEY VARIABLES REFERENCE
+// ============================================================
+// Audio:
+//   bass, mid, treble          // 0..1 instantaneous levels
+//   bass_att, mid_att, treble_att  // attack (fast rise, slow fall)
+//   beat                       // true for one frame on beat
+//   isbeat                     // 1.0 on beat, 0.0 otherwise
+//   volume                     // overall volume 0..1
+//
+// Time:
+//   time                       // seconds since preset start
+//   frame                      // frame counter
+//   fps                        // current FPS
+//
+// Geometry:
+//   uv                         // 0..1 pixel coordinates (center = 0.5, 0.5)
+//   texsize                    // texture resolution (width, height)
+//   aspect                     // aspect ratio (width/height)
+//   rad                        // radius from center (length(uv-0.5))
+//   ang                        // angle from center (atan2)
+//
+// Textures:
+//   tex0                       // main feedback texture (previous frame)
+//   tex1..3                    // additional loaded textures
+//   tex0_bilinear              // bilinear sampling hint
+//
+// Math helpers (intrinsic):
+//   sin, cos, tan, asin, acos, atan, atan2
+//   pow, sqrt, exp, log, log2, log10
+//   abs, sign, floor, ceil, frac, fmod
+//   min, max, clamp, saturate, lerp, step, smoothstep
+//   length, distance, dot, cross, normalize, reflect, refract
+//   sin_cos (returns float2), radians, degrees
+//
+// Noise (projectM/MilkDrop3):
+//   noise(float2)              // 2D noise
+//   noise(float3)              // 3D noise
+//   noise(float4)              // 4D noise
+// ============================================================
+```
+
+---
+
+## How to Use
+
+1. **Copy** this file → `my_preset.milk`
+2. **Edit** the `shader_body` section (between the quotes)
+3. **Load** in MilkDrop: `M` → `Load Preset` → select file
+4. **Iterate** — save file, MilkDrop hot-reloads automatically
+5. **Save final** in MilkDrop: `S` → saves as `.milk` with current state
+
+---
+
+## Minimal Working Example (Pulse on Beat)
+
+```hlsl
+shader_body = "
+float2 c = float2(0.5, 0.5);
+float d = length(uv - c);
+float ring = sin(d * 80.0 - time * 10.0) * 0.5 + 0.5;
+float3 col = float3(ring, ring * 0.7, ring * 0.3);
+float3 prev = tex2D(tex0, uv).rgb;
+col = lerp(prev * 0.92, col, 0.4);
+if (beat) col += 0.4;
+return float4(col, 1.0);
+";
+```
+
+---
+
+## Per-Frame Example (Audio-Reactive Variables)
+
+```hlsl
+// Smooth bass/mid/treble for less jitter
+per_frame_1= bass_smooth = bass_smooth * 0.9 + bass * 0.1;
+per_frame_2= mid_smooth = mid_smooth * 0.9 + mid * 0.1;
+per_frame_3= treb_smooth = treb_smooth * 0.9 + treble * 0.1;
+
+// Beat-triggered variable
+per_frame_4= beat_flash = beat ? 1.0 : beat_flash * 0.85;
+
+// Use in shader_body:
+//   bass_smooth, mid_smooth, treb_smooth, beat_flash
+```
+
+---
+
+## Tips
+
+- **Start simple** — one effect, get it working, then layer
+- **Use `prev` (tex0)** for feedback trails — essential for "MilkDrop look"
+- **Clamp values** — `saturate(x)` keeps 0..1, prevents NaN explosions
+- **Beat detection** — `beat` is one-frame pulse; use decay variable for sustain
+- **Performance** — avoid complex loops in pixel shader; precompute in per_frame
+- **Debug** — output `float3(uv.x, uv.y, 0)` to see coordinates
+- **Save often** — `S` in MilkDrop saves complete preset state

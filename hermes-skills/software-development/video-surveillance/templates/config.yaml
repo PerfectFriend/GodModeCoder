@@ -1,0 +1,55 @@
+# Конфигурация системы видеонаблюдения (см. templates/surveillance.py)
+# Камеры: RTSP-потоки. Зоны: нормализованные координаты (0-1) относительно кадра.
+
+camera:
+  streams:
+    - name: "cam-1"
+      url: "rtsp://user:pass@192.168.0.101:554/stream1"   # ЗАМЕНИТЬ на реальный
+      enabled: false                                      # вкл после настройки
+      zones:
+        - name: "кабельная-трасса-север"
+          polygon: [[0.1, 0.3], [0.9, 0.3], [0.9, 0.8], [0.1, 0.8]]
+        - name: "кабельная-трасса-юг"
+          polygon: [[0.0, 0.8], [1.0, 0.8], [1.0, 1.0], [0.0, 1.0]]
+    - name: "cam-2"
+      url: "rtsp://192.168.0.102:554/stream1"
+      enabled: false
+      zones:
+        - name: "ввод-кабеля"
+          polygon: [[0.2, 0.2], [0.8, 0.2], [0.8, 0.6], [0.2, 0.6]]
+
+detection:
+  model: "yolo11n.pt"            # COCO: person и др.
+  model_custom: "cable-cutter.pt" # дообученная на клещи/инструмент (null = не использовать)
+  conf_threshold: 0.45
+  iou_threshold: 0.45
+  frame_interval: 3              # анализировать каждый N-й кадр
+  imgsz: 640
+
+# Классы, появление которых в зоне = тревога
+alert_classes:
+  - "person"          # человек в охраняемой зоне — первичный сигнал
+  - "cable_cutter"    # клещи/кусачки (кастомный класс после дообучения)
+
+alert:
+  cooldown_seconds: 300          # мин. интервал между тревогами на камеру
+  require_frames: 2              # подтверждение на N последовательных кадрах
+  send_snapshot: true
+  send_video: true
+  video_seconds: 30
+  telegram_channel: null         # @channel или chat_id (null = личка владельца бота)
+  message_template: |
+    🚨 ТРЕВОГА: {event}
+    Камера: {camera}
+    Зона: {zone}
+    Объект: {label} (уверенность {conf:.0%})
+    Время: {time}
+
+stream:
+  enabled: true
+  duration_seconds: 60
+  bitrate: "800k"
+
+log:
+  dir: "logs"
+  keep_days: 30

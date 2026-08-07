@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register / Restore — Saint Mary Liberty Island</title>
+<style>
+  :root {
+    --bg:#0a0a1a; --bg2:#0d0d22; --panel:#14142e; --card:#1a1a34;
+    --border:#2a2a50; --gold:#ffd700; --green:#4ade80; --red:#f87171;
+    --blue:#60a5fa; --text:#e0e0ee; --muted:#8a8aa5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:radial-gradient(1200px 800px at 80% -10%, #1a1a3e 0%, var(--bg) 55%);
+    color:var(--text); display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:20px;
+  }
+  .reg-form {
+    width:100%; max-width:500px; background:var(--panel);
+    border:1px solid var(--border); border-radius:14px; padding:28px;
+  }
+  .reg-form .crest {
+    width:48px; height:48px; border-radius:50%; margin:0 auto 16px;
+    background:conic-gradient(from 0deg,#ffd700,#b8860b,#ffd700,#8b6914,#ffd700);
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; box-shadow:0 0 20px rgba(255,215,0,.4);
+  }
+  .reg-form h1 { color:var(--gold); text-align:center; margin-bottom:4px; font-size:22px; }
+  .reg-form .sub { color:var(--muted); text-align:center; margin-bottom:20px; font-size:13px; }
+  .reg-form .msg { padding:10px 12px; border-radius:8px; margin-bottom:12px; font-size:12px; display:none; }
+  .reg-form .msg.err { display:block; background:#2b0d12; color:var(--red); border:1px solid #4a1520; }
+  .reg-form .msg.ok { display:block; background:#0d2b1a; color:var(--green); border:1px solid #1a4a2a; }
+  .reg-form label { display:block; color:var(--muted); font-size:12px; margin:14px 0 6px; }
+  .reg-form input, .reg-form textarea { width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-size:13px; margin-bottom:0; }
+  .reg-form textarea { min-height:80px; resize:vertical; font-family:monospace; }
+  .reg-form button { width:100%; margin-top:20px; padding:12px; font-size:14px;
+    background:linear-gradient(90deg,#b8860b,#ffd700); color:#0a0a1a; border:none;
+    border-radius:8px; font-weight:700; cursor:pointer; }
+  .reg-form button:hover { filter:brightness(1.1); }
+  .reg-form .hint { margin-top:16px; text-align:center; font-size:12px; color:var(--muted); }
+  .reg-form .hint a { color:var(--blue); text-decoration:none; }
+  .reg-form .hint a:hover { text-decoration:underline; }
+  .reg-form .tabs { display:flex; gap:4px; margin-bottom:16px; }
+  .reg-form .tab { flex:1; padding:10px; border-radius:8px 8px 0 0; background:var(--bg2); border:1px solid var(--border); border-bottom:none; text-align:center; font-size:13px; cursor:pointer; color:var(--muted); }
+  .reg-form .tab.active { background:var(--panel); color:var(--gold); border-color:var(--gold); }
+  .reg-form .panel { display:none; }
+  .reg-form .panel.active { display:block; animation:fadeIn 0.2s; }
+  @keyframes fadeIn { from {opacity:0;transform:translateY(4px);} to {opacity:1;transform:translateY(0);} }
+  .mnemonic-words { display:flex; flex-wrap:wrap; gap:4px; margin:8px 0; }
+  .mnemonic-words span { background:var(--bg2); border:1px solid var(--border); padding:4px 8px; border-radius:4px; font-family:monospace; font-size:11px; }
+  .mnemonic-words span.generated { background:#1a3a1a; border-color:#1a4a2a; color:var(--green); }
+</style>
+</head>
+<body>
+<div class="reg-form">
+  <div class="crest">⚜️</div>
+  <h1>Saint Mary</h1>
+  <p class="sub">Liberty Island — Username Registration & Recovery</p>
+  <div class="msg err" id="msg"></div>
+  <div class="msg ok" id="msgOk"></div>
+  
+  <div class="tabs">
+    <div class="tab active" data-tab="register">Register with Invite</div>
+    <div class="tab" data-tab="restore">Restore from Seed</div>
+  </div>
+  
+  <!-- Register Panel -->
+  <div class="panel active" id="panel-register">
+    <form id="form-register">
+      <label>Invite Token</label>
+      <input type="text" id="invite" placeholder="UNIVERSAL-UNLIMITED" required autocomplete="off" value="UNIVERSAL-UNLIMITED">
+      
+      <label>Username (not email)</label>
+      <input type="text" id="username" placeholder="your_username" required autocomplete="username" pattern="[a-zA-Z0-9_-]{3,32}" title="3-32 chars: letters, numbers, underscore, dash">
+      
+      <label>Password (min 8 chars)</label>
+      <input type="password" id="password" placeholder="Enter password" required autocomplete="new-password" minlength="8">
+      
+      <label>Confirm Password</label>
+      <input type="password" id="confirm" placeholder="Confirm password" required autocomplete="new-password" minlength="8">
+      
+      <label>Seed Phrase (optional - leave empty to generate new)</label>
+      <textarea id="mnemonic" placeholder="Enter existing 12/24-word BIP39 seed phrase to restore wallet... or leave empty to generate new"></textarea>
+      <small style="color:var(--muted);font-size:11px;">If provided, this mnemonic will be validated and linked to your account for recovery.</small>
+      
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+  
+  <!-- Restore Panel -->
+  <div class="panel" id="panel-restore">
+    <form id="form-restore">
+      <label>Username</label>
+      <input type="text" id="restore-username" placeholder="your_username" required autocomplete="username">
+      
+      <label>Seed Phrase (12 or 24 words)</label>
+      <textarea id="restore-mnemonic" placeholder="Enter your 12 or 24-word BIP39 seed phrase" required autocomplete="off"></textarea>
+      
+      <label>New Password (min 8 chars)</label>
+      <input type="password" id="restore-password" placeholder="Enter new password" required autocomplete="new-password" minlength="8">
+      
+      <label>Confirm New Password</label>
+      <input type="password" id="restore-confirm" placeholder="Confirm new password" required autocomplete="new-password" minlength="8">
+      
+      <button type="submit">Restore Account</button>
+    </form>
+  </div>
+  
+  <p class="hint">Already have an account? <a href="/login.html">Sign in</a></p>
+</div>
+<script>
+'use strict';
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&','<':'<','>':'>','"':'"'}[c]); }); }
+
+function showMsg(msg, isError) {
+  var e = document.getElementById(isError ? 'msg' : 'msgOk');
+  var o = document.getElementById(isError ? 'msgOk' : 'msg');
+  e.textContent = msg; e.style.display = 'block';
+  o.style.display = 'none';
+}
+
+function clearMsg() {
+  document.getElementById('msg').style.display = 'none';
+  document.getElementById('msgOk').style.display = 'none';
+}
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    this.classList.add('active');
+    document.getElementById('panel-' + this.dataset.tab).classList.add('active');
+    clearMsg();
+  });
+});
+
+// Register form
+document.getElementById('form-register').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  clearMsg();
+  
+  var invite = document.getElementById('invite').value.trim();
+  var username = document.getElementById('username').value.trim();
+  var pwd = document.getElementById('password').value;
+  var cpwd = document.getElementById('confirm').value;
+  var mnemonic = document.getElementById('mnemonic').value.trim();
+  
+  if (!invite || !username || !pwd) { showMsg('All fields required', true); return; }
+  if (!/^[a-zA-Z0-9_-]{3,32}$/.test(username)) { showMsg('Username: 3-32 chars, letters/numbers/_- only', true); return; }
+  if (pwd.length < 8) { showMsg('Password min 8 chars', true); return; }
+  if (pwd !== cpwd) { showMsg('Passwords do not match', true); return; }
+  if (mnemonic && mnemonic.split(/\s+/).length !== 12 && mnemonic.split(/\s+/).length !== 24) {
+    showMsg('Mnemonic must be 12 or 24 words', true); return;
+  }
+  
+  try {
+    var body = {username: username, password: pwd, invite: invite};
+    if (mnemonic) body.mnemonic = mnemonic;
+    
+    var res = await fetch('/api/auth/register-with-invite', {
+      method: 'POST', credentials: 'include',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    var data = await res.json().catch(function(){return {};});
+    
+    if (res.ok && data.status === 'created') {
+      var msg = 'Account created! ';
+      if (data.mnemonic) {
+        msg += 'Your seed phrase: ' + data.mnemonic + ' — SAVE IT SECURELY!';
+      }
+      showMsg(msg, false);
+      // Show mnemonic prominently if generated
+      if (data.mnemonic && !mnemonic) {
+        var words = data.mnemonic.split(' ');
+        var html = '<div class="mnemonic-words">';
+        words.forEach(function(w, i) { html += '<span class="generated">' + (i+1) + '. ' + esc(w) + '</span>'; });
+        html += '</div><p style="color:var(--red);font-size:12px;margin-top:8px;"><strong>⚠️ COPY AND STORE THIS SEED PHRASE SECURELY. IT CANNOT BE RECOVERED.</strong></p>';
+        document.getElementById('msgOk').innerHTML = html;
+      }
+      setTimeout(function(){ window.location.href = '/'; }, 3000);
+    } else {
+      showMsg(data.error || ('Error: ' + res.status), true);
+    }
+  } catch(err) { showMsg(err.message, true); }
+});
+
+// Restore form
+document.getElementById('form-restore').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  clearMsg();
+  
+  var username = document.getElementById('restore-username').value.trim();
+  var mnemonic = document.getElementById('restore-mnemonic').value.trim();
+  var pwd = document.getElementById('restore-password').value;
+  var cpwd = document.getElementById('restore-confirm').value;
+  
+  if (!username || !mnemonic || !pwd) { showMsg('All fields required', true); return; }
+  var wordCount = mnemonic.split(/\s+/).length;
+  if (wordCount !== 12 && wordCount !== 24) { showMsg('Mnemonic must be 12 or 24 words', true); return; }
+  if (pwd.length < 8) { showMsg('Password min 8 chars', true); return; }
+  if (pwd !== cpwd) { showMsg('Passwords do not match', true); return; }
+  
+  try {
+    var res = await fetch('/api/auth/restore', {
+      method: 'POST', credentials: 'include',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username: username, mnemonic: mnemonic, password: pwd})
+    });
+    var data = await res.json().catch(function(){return {};});
+    
+    if (res.ok && data.status === 'restored') {
+      showMsg('Account restored and logged in! Redirecting...', false);
+      setTimeout(function(){ window.location.href = '/'; }, 1500);
+    } else {
+      showMsg(data.error || ('Error: ' + res.status), true);
+    }
+  } catch(err) { showMsg(err.message, true); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Шаблон реестра графа (graph.yaml) — копируй в configs/graph.yaml проекта
+
+# Правила: узлы, рёбра, состояния. Мёртвое — в archive/, рождения — в chronicle.md
+
+nodes:
+  - id: oracle
+    type: HUMAN
+    role: "Мастер Инквизитор — видение, критерии fitness, одобрения HIGH"
+    state: "telegram"
+
+  - id: gardener
+    type: AGENT
+    role: "Hermes Agent — пульс, отбор, мутации, экстинкции"
+    genome: "http://127.0.0.1:8080/api/health"
+    state: "active"
+
+  # ── узлы проекта: скопируй блок и заполни ──
+  - id: my_node
+    type: PIPELINE          # AGENT | SKILL | PIPELINE | GATEWAY | MEMORY | WATCHDOG
+    role: "Что делает узел"
+    genome: "path/to/script.py"   # http://... | :порт | имя.py/.exe | skill:имя | путь к файлу
+    feeds: [other_node]           # кого кормит данными
+    controls: []
+    state: "active"
+
+edges:
+  - {from: oracle, to: gardener, type: VISION}
+  - {from: gardener, to: my_node, type: CONTROLS}
+  - {from: my_node, to: other_node, type: FEEDS}
+
+fitness:
+  my_node: "критерий здоровья (лог не растёт ошибками; порт отвечает; файл существует)"

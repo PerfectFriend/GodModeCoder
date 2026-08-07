@@ -1,0 +1,43 @@
+[MusicBee3Settings]
+# MilkDrop Visualization Settings
+Visualisation_MilkDrop_PresetFolder={PRESET_FOLDER}
+Visualisation_MilkDrop_TextureFolder={TEXTURE_FOLDER}
+Visualisation_MilkDrop_AutoChangePresets=True
+Visualisation_MilkDrop_AutoChangeInterval=30
+Visualisation_MilkDrop_TransitionDuration=5
+Visualisation_MilkDrop_ShowFPS=False
+Visualisation_MilkDrop_ShowPresetName=True
+Visualisation_MilkDrop_BeatDetection=True
+Visualisation_MilkDrop_HardwareAcceleration=True
+
+# Library Settings
+Library_AutoScanFolders={MUSIC_FOLDER}
+Library_MonitorFolders={MUSIC_FOLDER}
+
+# Playback Settings
+Player_OutputDevice=Default
+Player_DSP_EnableEqualizer=True
+Player_DSP_EqualizerPreset=Flat
+Player_DSP_Crossfeed=False
+Player_Volume=100
+
+# Interface Settings
+Interface_Language=ru-RU
+Interface_Skin=MusicBee3.xmlc
+Interface_CompactMode=False
+
+# Startup Settings
+Startup_CheckForUpdates=True
+Startup_ShowSplashScreen=False
+
+# === VARIABLE SUBSTITUTION GUIDE ===
+# {PRESET_FOLDER}     → Absolute path to merged presets folder (e.g., C:\Users\Name\MusicBeeUltimate\MilkDropPresets\All)
+# {TEXTURE_FOLDER}    → Absolute path to texture pack folder (e.g., C:\Users\Name\MusicBeeUltimate\MilkDropTextures)
+# {MUSIC_FOLDER}      → Absolute path to music library (e.g., C:\Users\Name\Music)
+#
+# Usage in PowerShell:
+#   $template = Get-Content "templates/MusicBee3Settings.ini.template" -Raw
+#   $template = $template -replace '{PRESET_FOLDER}', $presetPath
+#   $template = $template -replace '{TEXTURE_FOLDER}', $texturePath
+#   $template = $template -replace '{MUSIC_FOLDER}', $musicPath
+#   $template | Out-File -Encoding UTF8 "$env:APPDATA\MusicBee\MusicBee3Settings.ini"

@@ -1,0 +1,41 @@
+# acestep-api.service
+# Systemd service for ACE-Step API server on WSL2
+# Install: sudo cp acestep-api.service /etc/systemd/system/
+# Enable: sudo systemctl enable acestep-api
+# Start: sudo systemctl start acestep-api
+# Logs: journalctl -u acestep-api -f
+
+[Unit]
+Description=ACE-Step 1.5 Music Generation API Server
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=tomas
+Group=tomas
+WorkingDirectory=/mnt/c/Users/tomas/ace-step/extracted
+Environment=ACE_STEP_DIR=/mnt/c/Users/tomas/ace-step/extracted
+Environment=ACESTEP_DEVICE=auto
+Environment=ACESTEP_LM_BACKEND=vllm
+Environment=ACESTEP_INIT_LLM=true
+Environment=ACESTEP_CONFIG_PATH=acestep-v15-turbo
+Environment=ACESTEP_LM_MODEL_PATH=acestep-5Hz-lm-1.7B
+Environment=HSA_OVERRIDE_GFX_VERSION=11.0.1
+Environment=MIOPEN_FIND_MODE=FAST
+Environment=PYTORCH_HIP_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_mb:128
+Environment=VLLM_WORKER_MULTIPROC_METHOD=spawn
+Environment=PATH=/mnt/c/Users/tomas/ace-step/extracted/.venv-rocm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/mnt/c/Users/tomas/ace-step/extracted/.venv-rocm/bin/python -m acestep.api_server --port 8001 --host 0.0.0.0
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=acestep-api
+
+# Resource limits for 16GB VRAM system
+LimitMEMLOCK=infinity
+LimitSTACK=infinity
+
+[Install]
+WantedBy=multi-user.target
