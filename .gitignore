@@ -92,4 +92,4 @@ Desktop.ini
 .bundled_manifest
 .curator_state
 .usage.json
-.usage.json.lock
+.usage.json.lockhermes-config/auth.json
