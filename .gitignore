@@ -1,0 +1,95 @@
+# GodModeCoder .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Obsidian
+.obsidian/workspace.json
+.obsidian/graph.json
+.obsidian/core-plugins.json
+.obsidian/appearance.json
+
+# Test outputs
+.test-outputs/
+.coverage/
+htmlcov/
+.pytest_cache/
+
+# ComfyUI
+ComfyUI/models/
+ComfyUI/output/
+ComfyUI/user/
+
+# Ollama
+ollama/
+
+# Large files
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.gguf
+
+# IDE/Editor specific
+.cursor/
+.project
+.classpath
+.settings/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Hermes
+.bundled_manifest
+.curator_state
+.usage.json
+.usage.json.lock

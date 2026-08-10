@@ -1,0 +1,114 @@
+# Graph Evolution — реестр живого графа
+# Версия: 3.0
+# Правила: узлы, рёбра, состояния. Мёртвое — в archive/, рождения — в chronicle.md
+
+nodes:
+  - id: oracle
+    type: HUMAN
+    role: "Мастер Инквизитор — видение, критерии fitness, одобрения HIGH"
+    state: "telegram"
+
+  - id: gardener
+    type: AGENT
+    role: "Hermes Agent — пульс, отбор, мутации, экстинкции"
+    genome: "http://127.0.0.1:8080/api/health"
+    state: "active"
+
+  - id: dj
+    type: AGENT
+    role: "Ротация музыки, стрим :8090"
+    genome: "ai-radio/scripts/dj.py"
+    feeds: [radio_cache]
+    state: "active"
+
+  - id: song_protocol
+    type: SKILL
+    role: "Контент → структура песни → лирики → ACE-Step → кэш"
+    genome: "skill:ace-step-song-protocol"
+    feeds: [music_pipeline]
+    state: "active"
+
+  - id: music_pipeline
+    type: PIPELINE
+    role: "Генерация музыки через ACE-Step (CPU)"
+    genome: "ai-radio/scripts/gen_music.py"
+    feeds: [radio_cache]
+    state: "active"
+
+  - id: voice
+    type: PIPELINE
+    role: "Голос: Qwen3-TTS GPU / Voicebox — новости, джинглы, DJ-интро"
+    genome: "ai-radio/scripts/gen_voice_content.py"
+    feeds: [radio_cache]
+    state: "active"
+
+  - id: radio_cache
+    type: MEMORY
+    role: "Библиотека: cache/music/<style>/, новости, реклама, джинглы"
+    state: "active"
+
+  - id: watchdog
+    type: WATCHDOG
+    role: "Пульс графа: health-чек узлов, статусы ЖИВ/БОЛЕН/МЁРТВ"
+    genome: "scripts/pulse.py"
+    controls: [dj, music_pipeline, voice, song_protocol]
+    state: "active"
+  - id: chronicle
+    type: MEMORY
+    role: "Летопись: рождения, мутации, экстинкции, открытия"
+    state: "chronicle.md"
+
+  - id: archive
+    type: MEMORY
+    role: "Могильник: полные геномы вымерших узлов + причина"
+    state: "archive/"
+
+  - id: paranoidx
+    type: PIPELINE
+    role: "ФЛАГМАН: ParanoidX + IsleProject — Sovereign Go-сервер, экономика Saint Mary Liberty Island (283+ API: wallet/treasury/chat/radio), SimpleX+Tor"
+    genome: "ParanoidX-backup/codebase + Docker (smp-server, coturn, v2ray, tor, xftp)"
+    state: "production (px-node-C41-C60)"
+
+  - id: isle_client
+    type: AGENT
+    role: "Клиенты The-Isle / Royal-Isle: Flutter-приложения экономики (encrypt AES, pointycastle)"
+    genome: "ParanoidX-backup/flutter"
+    state: "active"
+
+  - id: superguard
+    type: PIPELINE
+    role: "КОММЕРЧЕСКИЙ: AISuperGuard — AI-охрана периметра/кабеля (YOLO вор-электрик → Telegram + ESP32 прожектор/сирена), подписки 50€/мес/камера"
+    genome: "video-surveillance + GitHub PerfectFriend/AISuperGuard (license server приватный)"
+    state: "production (N100+SG1210MP, 8 камер)"
+
+edges:
+  - {from: oracle, to: paranoidx, type: VISION}
+  - {from: oracle, to: superguard, type: VISION}
+  - {from: oracle, to: gardener, type: VISION}
+  - {from: oracle, to: gardener, type: APPROVAL}
+  - {from: gardener, to: paranoidx, type: CONTROLS}
+  - {from: gardener, to: superguard, type: CONTROLS}
+  - {from: gardener, to: isle_client, type: EVALUATES}
+  - {from: gardener, to: dj, type: CONTROLS}
+  - {from: gardener, to: song_protocol, type: EVALUATES}
+  - {from: paranoidx, to: isle_client, type: CALLS}
+  - {from: superguard, to: watchdog, type: FEEDS}
+  - {from: song_protocol, to: music_pipeline, type: CALLS}
+  - {from: music_pipeline, to: radio_cache, type: FEEDS}
+  - {from: voice, to: radio_cache, type: FEEDS}
+  - {from: dj, to: radio_cache, type: CALLS}
+  - {from: watchdog, to: dj, type: CONTROLS}
+  - {from: watchdog, to: voice, type: CONTROLS}
+  - {from: watchdog, to: music_pipeline, type: CONTROLS}
+  - {from: gardener, to: chronicle, type: FEEDS}
+  - {from: gardener, to: archive, type: FEEDS}
+
+fitness:
+  paranoidx: "5 Docker-контейнеров живы (smp-server, coturn, v2ray, tor, xftp); API 200; TLS не протух"
+  isle_client: "Flutter-сборки идут; encrypt AES работает; клиенты подключаются"
+  superguard: "камера RTSP жива; детекция вор-электрик срабатывает; Telegram-алерт уходит; подписка активна"
+  dj: "стрим 200 на :8090; ошибок ffmpeg нет; ротация не пуста"
+  music_pipeline: "треки генерируются; длительность 180-300с; формат wav"
+  voice: "аудио генерируется; язык ru; ошибок TTS нет"
+  song_protocol: "скилл используется; очередь контента не растёт"
+  watchdog: "тишина = здоровье; срабатывания не ложные"
