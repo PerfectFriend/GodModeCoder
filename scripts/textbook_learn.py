@@ -12,7 +12,7 @@ TEXTBOOK = VAULT / "Учебник.md"
 CHRONICLE = VAULT / "Evolution" / "chronicle.md"
 HERMES_PYTHON = Path(r"C:\Users\tomas\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe")
 
-# Приоритеты тем (чем выше, тем чаще выбирается)
+# Приоритеты тем (чем выше, тем чаще выбирается) — ключ = категория как в Учебнике
 PRIORITIES = {
     "Graph Engineering": 10,
     "Obsidian Advanced": 9,
@@ -24,9 +24,33 @@ PRIORITIES = {
     "Hermes Agent Internals": 8,
 }
 
+# Маппинг категорий Учебника -> PRIORITIES ключи
+CATEGORY_MAP = {
+    "Graph Engineering & Evolution": "Graph Engineering",
+    "Obsidian Advanced": "Obsidian Advanced",
+    "MCP & Agent Integration": "MCP & Agent Integration",
+    "AI/ML on AMD Radeon 780M": "AI/ML on AMD Radeon 780M",
+    "Video Surveillance & YOLO": "Video Surveillance & YOLO",
+    "ParanoidX / Sovereign Systems": "ParanoidX / Sovereign Systems",
+    "Windows/MSYS Mastery": "Windows/MSYS Mastery",
+    "Hermes Agent Internals": "Hermes Agent Internals",
+}
+
 def parse_textbook():
     """Парсит Учебник.md и возвращает список тем со статусами."""
     content = TEXTBOOK.read_text(encoding='utf-8')
+    
+    # Сначала находим все секции (категории) и их заголовки
+    # Формат: ## Category Name (priority: N)
+    section_pattern = r'##\s+([^\(]+)\s*\(priority:\s*\d+\)'
+    sections = []
+    for match in re.finditer(section_pattern, content):
+        section_name = match.group(1).strip()
+        sections.append({
+            'name': section_name,
+            'priority_key': CATEGORY_MAP.get(section_name, section_name),
+            'start': match.end()
+        })
     
     # Находим все чекбоксы: - [ ] или - [x]
     pattern = r'-\s*\[([ x])\]\s*\[([^\]]+)\]\(([^)]+)\)\s*[—-]\s*([🟢🟡🔴])'
@@ -37,11 +61,18 @@ def parse_textbook():
         is_learned = (status_char == 'x' or status_emoji == '🟢')
         in_progress = status_emoji == '🟡'
         
-        # Определяем категорию по файлу
+        # Определяем категорию по заголовку секции перед темой
+        # Находим ближайшую секцию ПЕРЕД темой
+        topic_pos = content.find(f'[{title}]')
         category = "Unknown"
-        for cat in PRIORITIES:
-            if cat.lower().replace(' ', '').replace('/', '').replace('&', '') in filepath.lower().replace(' ', '').replace('/', '').replace('&', '').replace('%20', ''):
-                category = cat
+        priority = 1
+        
+        # Ищем секцию, которая стоит перед темой
+        for sec in sections:
+            if sec['start'] < topic_pos:
+                category = sec['name']
+                priority = PRIORITIES.get(sec['priority_key'], 1)
+            else:
                 break
         
         topics.append({
@@ -51,7 +82,7 @@ def parse_textbook():
             'in_progress': in_progress,
             'status_emoji': status_emoji,
             'category': category,
-            'priority': PRIORITIES.get(category, 1)
+            'priority': priority
         })
     
     return topics

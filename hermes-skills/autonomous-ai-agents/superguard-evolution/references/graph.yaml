@@ -1,0 +1,54 @@
+nodes:
+  - id: alarm_engine
+    type: PIPELINE
+    role: core
+    genome: "panic_mode.py"
+    feeds: [telegram_channel, actuator_tuya]
+    fitness: "detection_accuracy > 0.95, false_positive < 0.05, latency < 2s"
+    state: ALIVE
+    version: "1.0"
+
+  - id: telegram_channel
+    type: GATEWAY
+    role: communication
+    genome: "channels/telegram.py"
+    feeds: [evolution_oracle]
+    calls: [alarm_engine]
+    fitness: "delivery_rate > 0.99, latency < 1s"
+    state: ALIVE
+    version: "1.0"
+
+  - id: actuator_tuya
+    type: SKILL
+    role: actuator
+    genome: "actuators/tuya.py"
+    feeds: [alarm_engine]
+    fitness: "switch_success > 0.999, latency < 500ms"
+    state: ALIVE
+    version: "1.0"
+
+  - id: evolution_oracle
+    type: AGENT
+    role: oracle
+    genome: "prompts/oracle.md"
+    evaluates: [alarm_engine, telegram_channel, actuator_tuya]
+    fitness: "mutation_quality > 0.8, no_regressions"
+    state: ALIVE
+    version: "1.0"
+
+edges:
+  - from: alarm_engine
+    to: telegram_channel
+    type: FEEDS
+  - from: alarm_engine
+    to: actuator_tuya
+    type: FEEDS
+  - from: telegram_channel
+    to: evolution_oracle
+    type: CALLS
+  - from: evolution_oracle
+    to: alarm_engine
+    type: EVALUATES
+  - from: evolution_oracle
+    to: alarm_engine
+    type: MUTATES

@@ -1,0 +1,578 @@
+# AI Radio Preset Configurations
+
+This file contains ready-to-use TOML configurations for different radio content types.
+Copy and modify for your specific needs.
+
+---
+
+## 📁 Preset Categories
+
+### 1. Jingles (Station IDs, 5-15 seconds)
+```toml
+# preset_jingle_morning.toml
+task_type = "text2music"
+caption = "short radio jingle, bright morning energy, brass fanfare, upbeat major key, catchy 3-note motif, station identification, professional broadcast quality, 5 seconds"
+instrumental = true
+duration = 5
+bpm = 140
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+seed = -1
+shift = 3.0
+infer_method = "ode"
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.85
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_jingle_night.toml
+task_type = "text2music"
+caption = "late night radio jingle, dreamy atmospheric, soft synth pads, gentle chime melody, intimate whisper-quiet, starry night vibe, 8 seconds"
+instrumental = true
+duration = 8
+bpm = 80
+keyscale = "F Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+infer_method = "ode"
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.75  # slightly more conservative for night
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_jingle_breaking.toml
+task_type = "text2music"
+caption = "breaking news jingle, urgent dramatic, orchestral stab, tension-building, brass and timpani, authoritative, immediate attention-grabber, 4 seconds"
+instrumental = true
+duration = 4
+bpm = 120
+keyscale = "D Minor"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7  # more focused for urgent
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 2. Beds / Background Music (Under Voiceover, 30-60 seconds, loopable)
+
+```toml
+# preset_bed_news.toml
+task_type = "text2music"
+caption = "radio news bed, neutral underscore, subtle pulsating texture, minimal melody, steady unobtrusive rhythm, professional broadcast bed, loopable, 45 seconds"
+instrumental = true
+duration = 45
+bpm = 100
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+infer_method = "ode"
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7  # conservative = less variation
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_bed_talk.toml
+task_type = "text2music"
+caption = "talk show bed, warm intimate, soft acoustic guitar fingerpicking, light percussion, conversational pace, friendly supportive atmosphere, loopable, 60 seconds"
+instrumental = true
+duration = 60
+bpm = 90
+keyscale = "G Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.8
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_bed_music.toml
+task_type = "text2music"
+caption = "music show bed, groovy electronic, subtle four-on-floor, filtered synth bass, atmospheric pads, club-ready but unobtrusive, loopable, 45 seconds"
+instrumental = true
+duration = 45
+bpm = 124
+keyscale = "A Minor"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.85
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_bed_late_night.toml
+task_type = "text2music"
+caption = "late night ambient bed, dreamy chillout, slow evolving pads, sparse piano motifs, minimal percussion, intimate star-gazing atmosphere, loopable, 90 seconds"
+instrumental = true
+duration = 90
+bpm = 65
+keyscale = "Eb Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.75
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 3. Full Music Tracks (2-4 minutes, structured)
+
+```toml
+# preset_track_rock.toml
+task_type = "text2music"
+caption = "full radio rock track, energetic classic rock, driving drums, electric guitar riffs, powerful bass, catchy chorus hook, structured verse-chorus-bridge, professional production, radio edit, 3 minutes"
+instrumental = true
+duration = 180
+bpm = 136
+keyscale = "E Minor"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+infer_method = "ode"
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.85
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_track_pop.toml
+task_type = "text2music"
+caption = "radio pop hit, upbeat contemporary pop, polished production, synthesizer hooks, four-on-floor beat, infectious chorus, verse-pre-chorus-chorus structure, radio-friendly, 2:30 minutes"
+instrumental = true
+duration = 150
+bpm = 122
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.85
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_track_electronic.toml
+task_type = "text2music"
+caption = "electronic dance music track, progressive house, driving bassline, euphoric breakdown, hands-in-the-air climax, DJ-friendly intro/outro, festival energy, 4 minutes"
+instrumental = true
+duration = 240
+bpm = 126
+keyscale = "F# Minor"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.9  # more creative for EDM
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_track_ambient.toml
+task_type = "text2music"
+caption = "ambient soundscape, slow evolving textures, ethereal pads, subtle field recordings, meditative, no drums, beatless, deep listening, 5 minutes"
+instrumental = true
+duration = 300
+bpm = 50  # very slow
+keyscale = "D Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 2.5  # slightly less shift for texture
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.8
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_track_jazz.toml
+task_type = "text2music"
+caption = "smooth jazz radio track, relaxed cool jazz, walking bass, brushed drums, piano comping, saxophone lead, intimate club atmosphere, sophisticated, 3 minutes"
+instrumental = true
+duration = 180
+bpm = 100
+keyscale = "Bb Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.8
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+```toml
+# preset_track_chiptune.toml
+task_type = "text2music"
+caption = "chiptune retro gaming, 8-bit nostalgia, square wave leads, arpeggiated bass, fast tempo, playful energetic, authentic NES/Sega sound, 2 minutes"
+instrumental = true
+duration = 120
+bpm = 160
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.9
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+```
+
+---
+
+### 4. Ads / Promos (15-30 seconds, punchy)
+
+```toml
+# preset_ad_energetic.toml
+task_type = "text2music"
+caption = "radio commercial bed, high energy, punchy rhythmic, driving percussion, confident brass stabs, urgent call-to-action feel, 20 seconds"
+instrumental = true
+duration = 20
+bpm = 140
+keyscale = "G Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.75
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_ad_relaxed.toml
+task_type = "text2music"
+caption = "radio ad bed, warm friendly, soft acoustic, gentle pace, trustworthy sincere tone, local business feel, 30 seconds"
+instrumental = true
+duration = 30
+bpm = 85
+keyscale = "D Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 5. News Intros/Outros (5-10 seconds, category-specific)
+
+```toml
+# preset_news_intro_main.toml
+task_type = "text2music"
+caption = "main news intro, authoritative orchestral, brass fanfare, timpani roll, serious important tone, broadcast standard, 6 seconds"
+instrumental = true
+duration = 6
+bpm = 110
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.65
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_news_intro_sports.toml
+task_type = "text2music"
+caption = "sports news intro, energetic dynamic, brass and percussion, victorious triumphant, stadium atmosphere, 5 seconds"
+instrumental = true
+duration = 5
+bpm = 130
+keyscale = "D Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.75
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_news_intro_weather.toml
+task_type = "text2music"
+caption = "weather forecast intro, calm breezy, light mallets, airy pads, gentle informative, 4 seconds"
+instrumental = true
+duration = 4
+bpm = 90
+keyscale = "F Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_news_intro_tech.toml
+task_type = "text2music"
+caption = "tech news intro, futuristic electronic, glitchy synth, digital atmosphere, innovative forward-looking, 5 seconds"
+instrumental = true
+duration = 5
+bpm = 120
+keyscale = "E Minor"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.8
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 6. Transition / Sweepers (2-4 seconds)
+
+```toml
+# preset_sweeper_up.toml
+task_type = "text2music"
+caption = "radio sweeper up, rising energy, pitch-up sweep, white noise riser, impact hit, transition to high energy, 3 seconds"
+instrumental = true
+duration = 3
+bpm = 128
+keyscale = ""
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_sweeper_down.toml
+task_type = "text2music"
+caption = "radio sweeper down, falling energy, pitch-down sweep, sub drop, transition to calm, 3 seconds"
+instrumental = true
+duration = 3
+bpm = 80
+keyscale = ""
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 7. Special: Cover / Repaint Templates
+
+```toml
+# preset_cover_style_transfer.toml
+task_type = "cover"
+src_audio = ""  # FILL IN: path to source track
+caption = "jazz piano trio version, intimate lounge, brushed drums, walking bass, solo piano, sophisticated"
+audio_cover_strength = 0.3  # loose style transfer
+instrumental = true
+duration = -1  # match source
+shift = 3.0
+infer_method = "ode"
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.8
+use_cot_metas = true
+use_cot_caption = true
+```
+
+```toml
+# preset_repaint_fix_bridge.toml
+task_type = "repaint"
+src_audio = ""  # FILL IN: path to track with bad bridge
+repainting_start = 120.0  # bridge start
+repainting_end = 150.0    # bridge end
+caption = "smooth emotional bridge, building tension, piano and strings, resolve to chorus"
+instrumental = true
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.75
+use_cot_metas = true
+use_cot_caption = true
+```
+
+---
+
+### 8. Special: LoRA-Activated (after training your brand LoRA)
+
+```toml
+# preset_lora_brand.toml
+task_type = "text2music"
+caption = "master_fm_style, radio jingle, upbeat, brass, energetic, station ID, 5 seconds"
+instrumental = true
+duration = 5
+bpm = 140
+keyscale = "C Major"
+timesignature = "4"
+vocal_language = "unknown"
+inference_steps = 8
+shift = 3.0
+config_path = "acestep-v15-turbo"
+audio_format = "wav"
+thinking = true
+lm_temperature = 0.7  # lower temp = more consistent with LoRA
+use_cot_metas = true
+use_cot_caption = true
+use_cot_language = true
+# LoRA loaded separately via Python API or UI
+```
+
+---
+
+## 🚀 Usage in gen_music.py
+
+```python
+# Load preset
+def load_preset(preset_name: str) -> str:
+    preset_path = f"C:\\Users\\tomas\\ai-radio\\scripts\\presets\\{preset_name}.toml"
+    with open(preset_path, "r", encoding="utf-8") as f:
+        return f.read()
+
+# Generate with preset + dynamic values
+def generate_from_preset(preset_name: str, out_dir: str, **overrides):
+    toml_str = load_preset(preset_name)
+    
+    # Apply overrides (duration, bpm, seed, etc.)
+    for key, value in overrides.items():
+        toml_str = re.sub(f'^{key} = .*$', f'{key} = {value}', toml_str, flags=re.MULTILINE)
+    
+    # Save temp config
+    tag = str(int(time.time()))
+    cfg_path = os.path.join(RADIO_ROOT, "scripts", f"gen_{preset_name}_{tag}.toml")
+    with open(cfg_path, "w", encoding="utf-8") as f:
+        f.write(toml_str)
+    
+    # Run generation...
+```
+
+---
+
+## 📋 Parameter Cheatsheet by Content Type
+
+| Content Type | Duration | BPM | Shift | Temp | Key | Structure |
+|--------------|----------|-----|-------|------|-----|-----------|
+| Jingle | 4-15s | 120-140 | 3.0 | 0.7-0.8 | Major | Minimal |
+| Bed (News) | 30-60s | 90-110 | 3.0 | 0.7 | Major | Loopable |
+| Bed (Talk) | 45-90s | 80-100 | 3.0 | 0.75 | Major | Loopable |
+| Bed (Late) | 60-120s | 60-80 | 3.0 | 0.75 | Major/Minor | Loopable |
+| Track (Pop) | 120-180s | 110-130 | 3.0 | 0.85 | Major | V-C-B-C |
+| Track (Rock) | 180-240s | 120-140 | 3.0 | 0.85 | Minor | V-C-B-C |
+| Track (EDM) | 180-300s | 124-128 | 3.0 | 0.9 | Minor | Intro-Build-Drop |
+| Track (Ambient) | 240-600s | 40-70 | 2.5 | 0.8 | Any | Free-form |
+| Track (Jazz) | 120-240s | 80-120 | 3.0 | 0.8 | Major/Minor | AABA |
+| Ad | 15-30s | 100-140 | 3.0 | 0.7-0.75 | Major | Punchy |
+| News Intro | 4-8s | 90-130 | 3.0 | 0.65-0.75 | Major | Stinger |
+| Sweeper | 2-4s | 80-140 | 3.0 | 0.7 | Any | Transition |
+
+---
+
+*Add new presets to `scripts/presets/` and reference them in `config.yaml` under `radio.sources.presets`*

@@ -12,8 +12,8 @@ import json
 import frontmatter
 
 VAULT = Path(r"C:\Vault")
-GRIMOIRE_SCRIPTS = Path(r"C:\Users\tomas\the-grimoire\ru\scripts")
-GRIMOIRE_CONFIG = Path(r"C:\Users\tomas\the-grimoire\ru\configs\graph.yaml")
+GRIMOIRE_SCRIPTS = Path(r"C:\Users\yusya\GodModeCoder\scripts")
+GRIMOIRE_CONFIG = Path(r"C:\Users\yusya\GodModeCoder\configs\graph.yaml")
 
 class Colors:
     GREEN = '\033[92m'
@@ -242,7 +242,7 @@ def test_git_clean():
 
 def test_skills_exist():
     """Test 10: Required skills are loaded/available"""
-    skills_dir = Path(r"C:\Users\tomas\AppData\Local\hermes\skills")
+    skills_dir = Path(r"C:\Users\yusya\AppData\Local\hermes\skills")
     required = [
         "software-development/super-coder",
         "note-taking/obsidian",

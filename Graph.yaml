@@ -1,0 +1,100 @@
+# GodModeCoder Graph Genome — DNA of the Living Code Organism
+# Generation: 1 | Birth: 2026-08-07 | Oracle: PerfectFriend (Rabbit White AF)
+#
+# Every node has a genome (health endpoint = phenotype) and a fitness
+# criterion (survival gate). Dead nodes are archived, not deleted.
+
+nodes:
+  - id: oracle
+    type: HUMAN
+    genome: "PerfectFriend — vision, fitness criteria, direction"
+    fitness: "oracle engages with generations"
+    state: "active"
+    edges:
+      - DIRECTS → gardener
+
+  - id: gardener
+    type: AGENT
+    genome: "Hermes Agent — pulse/mutate/review/test/commit"
+    fitness: "evolution_cycle completes with fitness gate passed"
+    state: "active"
+    edges:
+      - CONTROLS → watchdog
+      - MUTATES → code
+      - FEEDS → chronicle
+
+  - id: watchdog
+    type: WATCHDOG
+    genome: "pulse.py — health check of all nodes"
+    fitness: "pulse.py --quiet returns 0"
+    state: "active"
+    edges:
+      - ALERTS → oracle
+      - ALERTS → gardener
+
+  - id: code
+    type: GENOME
+    genome: "the repository itself — every commit = one generation"
+    fitness: "tests pass, security clean, docs complete"
+    state: "active"
+    edges:
+      - STORED_IN → vault
+
+  - id: vault
+    type: MEMORY
+    genome: "Obsidian Vault + Git history = genetic memory"
+    fitness: "chronicle records birth/mutation/death"
+    state: "active"
+    edges:
+      - STORES → chronicle
+      - STORES → archive
+
+  - id: chronicle
+    type: MEMORY
+    genome: "Chronicle.md — epigenetic history of the organism"
+    fitness: "every generation appends an entry"
+    state: "active"
+    edges: []
+
+  - id: archive
+    type: MEMORY
+    genome: "Graveyard — extinct code with full genome + cause of death"
+    fitness: "extinction protocol archives before removal"
+    state: "active"
+    edges: []
+
+  - id: ollama_workers
+    type: RESOURCE
+    genome: "qwen3:8b (fast) / qwen3:14b (heavy) / gemma4:12b (specialized)"
+    fitness: "available when GPU/CPU resources permit"
+    state: "dormant"
+    edges:
+      - SERVE → gardener
+
+  - id: paranoidx
+    type: PIPELINE
+    genome: "FLAGSHIP — ParanoidX + Isle (privacy transport)"
+    fitness: "build + tests pass"
+    state: "dormant"
+    edges:
+      - FEEDS → vault
+
+  - id: superguard
+    type: PIPELINE
+    genome: "COMMERCIAL — AI surveillance (YOLO11n + Tuya + Telegram)"
+    fitness: "install + detection pipeline works"
+    state: "dormant"
+    edges:
+      - FEEDS → vault
+
+fitness_function:
+  survival: "tests pass"
+  efficiency: "performance below threshold"
+  immunity: "security scan clean"
+  reproduction: "documentation complete"
+
+evolution_policy:
+  generations: "every commit = one generation"
+  mutation: "refactor + tests + docs per cycle"
+  selection: "fitness gates — failed mutation rolls back"
+  death: "3 failed pulses → extinction protocol (archive genome, chronicle, notify oracle)"
