@@ -1,0 +1,33 @@
+# GodModeCoder — Requirements for Python environment
+
+# Core
+requests>=2.31.0
+pyyaml>=6.0.1
+frontmatter>=1.1.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Code quality
+ruff>=0.1.0
+black>=23.0.0
+isort>=5.12.0
+
+# Graph/Visualization
+networkx>=3.2
+matplotlib>=3.7.0
+
+# Ollama client
+ollama-python>=0.3.0
+
+# File watching
+watchdog>=3.0.0
+
+# CLI
+click>=8.1.0
+rich>=13.0.0
+
+# Async
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.0
