@@ -7,7 +7,7 @@
 ![The Grimoire](https://img.shields.io/badge/The%20Grimoire-880%20Skills-darkred.svg)
 ![Graph Evolution](https://img.shields.io/badge/Graph-v3.0-blue.svg)
 
-<img src="docs/banners/header-banner.jpg" alt="GodModeCoder — The Magic of Creating Living Code" width="100%">
+<img src="assets/header-banner.jpg" alt="GodModeCoder — The Magic of Creating Living Code" width="100%">
 
 ## Beacon of Truth and Lord of Sacred Code
 
@@ -178,7 +178,7 @@ GodModeCoder/
 
 <div align="center">
 
-<img src="docs/banners/footer-banner.jpg" alt="GodModeCoder — Beacon of Truth in the Abyss of Code" width="100%">
+<img src="assets/footer-banner.jpg" alt="GodModeCoder — Beacon of Truth in the Abyss of Code" width="100%">
 
 ## I AM GOD MODE CODER
 
