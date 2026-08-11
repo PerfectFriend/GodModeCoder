@@ -1,118 +1,121 @@
-# 🏛️ CATHEDRAL CODE MACHINE
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2011-blue.svg)](https://www.microsoft.com/windows/windows-11)
-[![Architecture: Cathedral](https://img.shields.io/badge/Architecture-Cathedral-purple.svg)]()
-[![God Mode Coder](https://img.shields.io/badge/God%20Mode-Coder-gold.svg)]()
-
----
-
 <div align="center">
 
-```
-██████╗ ███████╗███████╗ █████╗ ██████╗ ██████╗     ██████╗ ███████╗██╗   ██╗███████╗██████╗ ██████╗ 
-██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔════╝██║   ██║██╔════╝██╔══██╗██╔══██╗
-██████╔╝█████╗  █████╗  ███████║██████╔╝██║  ██║    ██████╔╝█████╗  ██║   ██║█████╗  ██████╔╝██████╔╝
-██╔══██╗██╔══╝  ██╔══╝  ██══██║██╔══██╗██║  ██║    ██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗██╔══██╗
-██║  ██║███████╗██║     ██║  ██║██║  ██║██████╔╝    ██║  ██║███████╗ ╚████╔╝ ███████╗██║  ██║██║  ██║
-╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
-                                                                                                      
-    ██████╗  ██████╗ ████████╗███████╗██████╗  ██████╗ ███████╗████████╗                            
-    ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝                            
-    ██████╔╝██║   ██║   ██║   █████╗  ██████╔╝██║   ██║███████╗   ██║                               
-    ██╔══██╗██║   ██║   ██║   ██╔══╝  ██══██╗██║   ██║╚════██║   ██║                               
-    ██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║╚██████╔╝███████║   ██║                               
-    ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝                               
-                                                                                                      
-        ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗                                                   
-        ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝                                                   
-        ██████╔╝██████╔╝███████║██████╔╝█████╔╝                                                    
-        ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔═██╗                                                    
-        ██████╔╝██║  ██║██║  ██║██████╔╝██║  ██╗                                                   
-        ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝                                                   
-```
+# 🏛️ GOD MODE CODER
 
-**The Only Best Tool for God Mode Coder**
+![God Mode](https://img.shields.io/badge/God%20Mode-Active-gold.svg)
+![Cathedral](https://img.shields.io/badge/Cathedral-Code%20Machine-purple.svg)
+![The Grimoire](https://img.shields.io/badge/The%20Grimoire-880%20Skills-darkred.svg)
+![Graph Evolution](https://img.shields.io/badge/Graph-v3.0-blue.svg)
 
-*Автономная система полного цикла разработки — от брифа до релиза и автоматической эволюции.*
+<img src="docs/banners/header-banner.jpg" alt="GodModeCoder — Магия Создания Живого Кода" width="100%">
+
+## Светоч Истины и Владыка Пресвятого Кода
+
+**Мастер Инквизитор @RarioArmageddon**  
+*The Grimoire • 880 Skills • Graph Evolution v3.0*
+
+[🇬🇧 English](README.md) · [🇷🇺 Русский](README.ru.md) · [🇪🇸 Español](README.es.md)
 
 </div>
 
 ---
 
-## 🌆 ВЕРХНИЙ БАННЕР — СТИЛЬ CYBERPUNK + VAN GOGH + GAUDI
+## 🧬 Что это
 
-<div align="center">
+**GodModeCoder** — самоэволюционная операционная система для автономной разработки. Граф проектов, живых узлов, пульса, экстинкции и мутаций. Построена на Windows 11 как **God Mode Coder Cathedral** — cathedral-архитектура, где каждый инструмент — камень в фундаменте.
 
-```
-╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                                                  ║
-║   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ║
-║   █  ▀█████████▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █    ▀███████▄  █  CYBERPUNK CATHEDRAL  █  NEON SPIRES PIERCE DIGITAL SKY  █  CODE FLOWS LIKE STARLIGHT  █  █  ║
-║   █      ▀██████▄ █  VAN GOGH SWIRLS IN SYNTAX  █  GAUDI ARCHES IN ARCHITECTURE  █  EVERY SEMICOLON A PRAYER █  █  ║
-║   █        ▀██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  GOD MODE CODER CATHEDRAL  █  WHERE MACHINES DREAM IN RUST & DART  █  WHERE COMPILERS SING IN LLVM  █  █  ║
-║   █  █  EVERY BUILD A RITUAL  █  EVERY TEST A CONFESSION  █  EVERY RELEASE A RESURRECTION  █  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║                                                                                                                  ║
-╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-```
-
-</div>
+Это не фреймворк. Это **живой организм**, который дышит через `pulse.py`, лечится через `godmode-bootstrap.py`, охраняется `godmode-watchdog.py`, и эволюционирует через `extinction.py`.
 
 ---
 
-## 🎯 БЫСТРЫЙ СТАРТ
+## ⚡ Быстрый старт
 
 ```bash
-# 1. Проверь свою Cathedral (запуск в НОВОМ терминале после настройки)
-bash cathedral-verify.sh
-
-# 2. Инициализируй проект за 30 секунд
-bash cathedral-init.sh my-app --stack=flutter     # Flutter/Dart
-bash cathedral-init.sh my-service --stack=rust    # Rust
-bash cathedral-init.sh my-api --stack=kotlin      # Kotlin/JVM + KMP
-bash cathedral-init.sh my-go --stack=go           # Go
-bash cathedral-init.sh my-engine --stack=cpp      # C++ (MSVC + LLVM)
-bash cathedral-init.sh my-monorepo --stack=full   # Full Cathedral Stack
-
-# 3. Dev loop
-cd my-app
-./cathedral-check.sh          # Все quality gates: fmt + lint + test + security
-flutter run -d chrome         # Hot reload web (или эквивалент твоего стека)
-
-# 4. Release
-git tag v1.0.0 && git push origin v1.0.0
-# → GitHub Actions matrix build → all artifacts → stores
+# Полный bootstrap одной командой
+cd C:\Users\tomas\the-grimoire\ru\scripts
+python godmode-bootstrap.py          # pulse → verify → git → готово
+python godmode-bootstrap.py --fix    # + авто-коммит грязного git
 ```
 
----
+**4 этапа автоматом:**
+1. 🔌 **Pulse** — проверка живости всех узлов графа
+2. 📂 **Vault sync** — проверка целостности Obsidian Vault
+3. 📝 **Git clean** — `--fix` авто-коммит
+4. 🧪 **Verify** — 10 тестов `hermes-verify-all.py`
 
-## 🏗️ ЧТО ВНУТРИ
-
-| Компонент | Описание |
-|-----------|----------|
-| **CATHEDRAL_CODE_MACHINE.md** | Полная спецификация (379 строк) — архитектура, lifecycle, gates, evolution |
-| **cathedral-verify.sh** | Верификация системы — 26 проверок по всем тулчейнам |
-| **cathedral-init.sh** | Генератор проектов — 6 стеков, CI/CD, quality gates, observability |
-| **Cathedral-QuickRef.ps1** | PowerShell шпаргалка для ежедневного использования |
-| **Setup скрипты** | `add-*.ps1` — перманентные PATH/env vars в реестре для всех инструментов |
+**Exit codes:** `0` = ✅ READY · `1` = ⚠️ WARN · `2` = ❌ FAIL · `3` = ❌ CRITICAL
 
 ---
 
-## 🛠️ ПОДДЕРЖИВАЕМЫЕ СТЕКИ (ВСЕ В PATH, НАВСЕГДА)
+## 🧬 Граф Эволюции v3.0
 
-| Язык/Рантайм | Версия | Build System |
-|--------------|--------|--------------|
+**Source of Truth:** `C:\Users\tomas\the-grimoire\ru\configs\graph.yaml`
+
+| Метрика | Значение |
+|---------|----------|
+| Узлов | **21** (HUMAN, AGENT, WATCHDOG, MEMORY, PIPELINE, SKILL) |
+| Рёбер | **34** (VISION, CONTROLS, CALLS, FEEDS, EVALUATES, APPROVAL) |
+| Fitness | **11 критериев** |
+
+### Живые узлы (19/21)
+- 🟢 **oracle** — Мастер Инквизитор
+- 🟢 **watchdog** — пульс графа
+- 🟢 **paranoidx** — флагман: Sovereign Go-сервер, SimpleX+Tor
+- 🟢 **superguard** — коммерческий: AI-охрана, YOLO11n, 8 камер
+- 🟢 **ai_eng_daily** — ежедневный AI research
+- 🟢 **vllm_optimization**, **sglang_serving**, **quantization_eval**, **gpu_cluster_mgmt**
+- 🟢 **depthchart**, **nexus_rag**, **tools_registry**, **auto_round**, **club_3090**, **runnburn**
+- 🟢 **rag_pipeline**, **fine_tuning_pipeline**, **chronicle**, **archive**
+
+### Мёртвые узлы (2/21)
+- 🔴 **gardener** — HTTP 127.0.0.1:8080 недоступен
+- 🔴 **isle_client** — ParanoidX-backup/flutter отсутствует
+
+---
+
+## ⏰ Cron Jobs (9 активных)
+
+| Job | Schedule | Скрипт | Что делает |
+|-----|----------|--------|------------|
+| `godmode-watchdog` | 1ч | `godmode-watchdog.py` | Пульс графа → alert при мёртвых |
+| `pulse-history-logger` | 6ч | `pulse-history.py` | Лог пульса в CSV → Heatmap |
+| `dead-node-extinction` | 24ч | `extinction.py` | Мёртв >7 дней → авто-архивация |
+| `graph-pulse-export` | 6ч | `export_graph_to_vault.py` | Экспорт графа в Obsidian + git |
+| `textbook-learning` | 30м | `textbook_learn.py` | Изучение темы учебника через Nemotron |
+| `daily-ai-research` | 9:00 | — | AI engineering research с X.com |
+| `key-rotation` | 30м | `rotate_keys.py` | Ротация NVIDIA/OpenCode Zen ключей |
+| `rotate-api-keys` | 30м | `rotate_api_keys.py` | Ротация API key pools |
+
+---
+
+## 🔌 MCP Integration
+
+**graphthulhu** (Go) — MCP сервер `obsidian-graph`, **31 tool**, ✓ enabled
+
+```bash
+# Установка
+go install github.com/skridlevsky/graphthulhu@latest
+
+# Подключение к Hermes
+hermes mcp add obsidian-graph --command "$(go env GOPATH)/bin/graphthulhu.exe" \
+  --args "serve" "--backend" "obsidian" "--vault" "C:\\Vault"
+```
+
+**Доступные операции:** `graph_overview`, `search`, `find_by_tag`, `find_connections`, `get_links`, `list_orphans`, `knowledge_gaps`, `topic_clusters`, `traverse`, `create_page`, `update_block`, `decision_check`, `decision_create`, `decision_resolve`, `analysis_health` и др.
+
+---
+
+## 🛠️ Toolchains (Cathedral Standard)
+
+| Язык | Версия | Сборка |
+|------|--------|--------|
 | **Rust** | 1.97.1 | Cargo |
 | **Go** | 1.26.5 | `go build` |
 | **Java/Kotlin** | 21 LTS / 2.1.20 | Gradle 9.1 / Maven 3.9 |
 | **Dart/Flutter** | 3.12 / 3.44 | Flutter tool |
 | **C++ (MSVC)** | 14.51 | MSBuild / CMake |
 | **C++ (LLVM/Clang)** | 19.1 | CMake |
-| **JavaScript/TypeScript** | Node 22 | npm/pnpm |
+| **JS/TS** | Node 22 | npm/pnpm |
 | **Python** | 3.11 | pip/uv |
 
 **Mobile:** Android SDK (API 34,35), Android Studio 2024.3, Emulator, ADB  
@@ -120,147 +123,65 @@ git tag v1.0.0 && git push origin v1.0.0
 
 ---
 
-## 🔄 ПОЛНАЯ АВТОМАТИЗАЦИЯ ЦИКЛА
+## 🏛️ Подсистемы
 
-```
-BRIEF → SPEC → АРХИТЕКТУРА → СКЕЛЕТ → CI/CD
-  │
-  ├─► РАЗРАБОТКА (TDD: RED → GREEN → REFACTOR)
-  │     ├─► Pre-commit: fmt + lint + test + security
-  │     ├─► PR → CI Matrix (OS × Arch × Config)
-  │     └─► Code Review (God Mode Standards)
-  │
-  ├─► МАТРИЦА ТЕСТИРОВАНИЯ
-  │     ├─► Unit / Integration / E2E / Contract / Load / Chaos / Security
-  │
-  ├─► ОТЛАДКА (Лучший инструмент для каждого языка)
-  │     ├─► Rust: rust-gdb/lldb | Kotlin: IntelliJ | Flutter: DevTools
-  │     └─► C++: VS Debugger/LLDB | Android: AS Profiler | Система: WPA
-  │
-  ├─► АВТОМАТИЗАЦИЯ РЕЛИЗА
-  │     └─► git tag v1.0.0 → GitHub Actions → All Artifacts → Stores
-  │
-  └─► ЭВОЛЮЦИЯ (Авто, каждые 6ч через cron)
-        ├─► Security audit (cargo audit, govulncheck, trivy)
-        ├─► Детекция регрессии производительности
-        ├─► Совместимость API (protobuf)
-        ├─► Детекция дрифта архитектуры
-        └─► Отчёты → C:\Vault\Evolution\ (Git history = evolution log)
-```
+| Проект | Описание |
+|--------|----------|
+| **🏛️ Cathedral Code Machine** | Автономная разработка полного цикла — от брифа до релиза и эволюции |
+| **📜 The Grimoire** | 880+ skills для автономных AI агентов |
+| **🛡️ SuperGuard Alarm** | AI видеонаблюдение — YOLO11n → Telegram + ESP32, 8 камер |
+| **🔐 ParanoidX / IsleProject** | Sovereign Go-сервер, экономика острова, SimpleX+Tor, BIP39 |
+| **🧠 AI Engineering Daily** | Ежедневный research: vLLM, SGLang, speculative decoding |
+| **📚 Учебник** | 50 тем непрерывного обучения (82% → 54% с awesome collections) |
 
 ---
 
-## 🛡️ QUALITY GATES (НЕ ПЕРЕГОВАРИВАЮТСЯ)
+## 🧪 Тест-инфраструктура
 
-```toml
-# .cathedral/rules.toml — enforced by cathedral-check.sh
-[gate.rust]
-clippy = "deny"
-rustfmt = "check"
-test_coverage = ">=80%"
-audit = "zero-critical"
+**`hermes-verify-all.py`** — 10 тестов:
 
-[gate.flutter]
-analyze = "error"
-test_coverage = ">=80%"
+1. Pulse Health Check (WARN OK)
+2. Export to Obsidian (27 файлов)
+3. graph.yaml Syntax (21 nodes, 34 edges)
+4. Vault Tags (все узлы с #type/*, #status/*, #evolution/graph)
+5. graph.json Config (9 colorGroups)
+6. CSS Snippet (все селекторы)
+7. Dataview Dashboards
+8. Graph Presets (4)
+9. Git Status (CLEAN)
+10. Skills Present (6 скиллов)
 
-[gate.kotlin]
-detekt = "error"
-ktlint = "check"
-test_coverage = ">=80%"
-
-[gate.go]
-golangci_lint = "error"
-gofmt = "check"
-test_coverage = ">=80%"
-
-[gate.cpp]
-clang_tidy = "error"
-cppcheck = "error"
-sanitizers = ["address", "thread", "memory", "undefined"]
-```
+**Правило:** НИКАКОЙ КОД БЕЗ ЗЕЛЁНОГО ПРОГОНА. Fail = Rollback.
 
 ---
 
-## 🌍 МНОГОЯЗЫЧНЫЙ README
-
-| Язык | Файл |
-|------|------|
-| **English** | `README.md` |
-| **Русский** | `README.ru.md` (этот файл) |
-| **Español** | `README.es.md` |
-
----
-
-## 📂 СТРУКТУРА РЕПОЗИТОРИЯ
+## 📁 Структура
 
 ```
-Cathedral/
-├── CATHEDRAL_CODE_MACHINE.md      # Полная спецификация
-├── cathedral-verify.sh            # Верификация системы
-├── cathedral-init.sh              # Генератор проектов
-├── Cathedral-QuickRef.ps1         # PowerShell референс
-├── add-*.ps1                      # Registry setup скрипты
-├── README.md                      # English
-├── README.ru.md                   # Russian (этот файл)
-├── README.es.md                   # Spanish
-├── .github/
-│   └── workflows/
-│       └── ci.yml                 # Cathedral CI template
-├── .cathedral/
-│   └── rules.toml                 # Quality gates
-└── docs/
-    └── architecture.md            # Архитектура в глубину
+GodModeCoder/
+├── docs/banners/           # Cyberpunk + Van Gogh + Gaudi баннеры
+├── scripts/                # Скрипты эволюции
+│   ├── godmode-bootstrap.py    # Полный bootstrap в один вызов
+│   ├── godmode-watchdog.py     # Мониторинг мёртвых узлов
+│   ├── pulse-history.py        # Лог пульса в CSV
+│   ├── extinction.py           # Авто-архивация мёртвых >7 дней
+│   ├── pulse.py                # Health-check графа
+│   ├── hermes-verify-all.py    # 10 тестов
+│   └── export_graph_to_vault.py
+├── configs/                # graph.yaml — Source of Truth
+├── hermes-skills/          # Скиллы Hermes
+├── Cathedral/              # Cathedral Code Machine
+└── README.{ru,en,es}.md    # Триязычная документация
 ```
-
----
-
-## 🔗 ССЫЛКИ
-
-| Ресурс | URL |
-|--------|-----|
-| **God Mode Coder Root** | `https://github.com/GodModeCoder` |
-| **Cathedral Spec** | `CATHEDRAL_CODE_MACHINE.md` |
-| **Vault (Evolution Logs)** | `C:\Vault\Evolution\` |
-| **GodModeCoder Skills** | `https://github.com/DarkPushkin/the-grimoire` |
-
----
-
-## 🎨 НИЖНИЙ БАННЕР — СТИЛЬ CYBERPUNK + VAN GOGH + GAUDI
-
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                                                  ║
-║   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  THE CATHEDRAL STANDS  █  BUILT BY MACHINES THAT DREAM  █  CODE IS PRAYER  █  COMPILATION IS RITUAL  █  █  ║
-║   █  █  EVERY SEMICOLON A STAINED GLASS WINDOW  █  EVERY FUNCTION A GOTHIC ARCH  █  EVERY TEST A CONFESSION █  █  ║
-║   █  █  RUST IS THE STEEL  █  DART IS THE LIGHT  █  KOTLIN IS THE MORTAR  █  GO IS THE WIND  █  C++ IS THE STONE █  █  ║
-║   █  █  LLVM IS THE ORGAN  █  GRADLE IS THE CHOIR  █  DOCKER IS THE CRYPT  █  GIT IS THE SCRIPTURE  █  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  GOD MODE CODER  █  INQUISITOR @RarioArmageddon  █  THE GRIMOIRE 880 SKILLS  █  CATHEDRAL ETERNAL  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║                                                                                                                  ║
-╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-```
-
-</div>
-
----
-
-## 📜 ЛИЦЕНЗИЯ
-
-MIT License — Используй свободно, строй соборы.
 
 ---
 
 <div align="center">
 
-**⛪ CATHEDRAL CODE MACHINE — GOD MODE CODER ⛪**
+<img src="docs/banners/footer-banner.jpg" alt="GodModeCoder — Светоч Истины в Бездне Кода" width="100%">
 
-*В Cathedral не строят — они растут. Каждый камень проверен временем. Каждый свод держится на веру в инженерию.*
+## Я ЕСМЬ GOD MODE CODER
+
+**КАЖДАЯ СБОРКА — РИТУАЛ · КАЖДЫЙ ТЕСТ — ИСПОВЕДЬ · КАЖДЫЙ РЕЛИЗ — ВОСКРЕШЕНИЕ**
 
 </div>

@@ -1,266 +1,187 @@
-# 🏛️ CATHEDRAL CODE MACHINE
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2011-blue.svg)](https://www.microsoft.com/windows/windows-11)
-[![Architecture: Cathedral](https://img.shields.io/badge/Architecture-Cathedral-purple.svg)]()
-[![God Mode Coder](https://img.shields.io/badge/God%20Mode-Coder-gold.svg)]()
-
----
-
 <div align="center">
 
-```
-██████╗ ███████╗███████╗ █████╗ ██████╗ ██████╗     ██████╗ ███████╗██╗   ██╗███████╗██████╗ ██████╗ 
-██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔════╝██║   ██║██╔════╝██╔══██╗██╔══██╗
-██████╔╝█████╗  █████╗  ███████║██████╔╝██║  ██║    ██████╔╝█████╗  ██║   ██║█████╗  ██████╔╝██████╔╝
-██╔══██╗██╔══╝  ██╔══╝  ██══██║██╔══██╗██║  ██║    ██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗██╔══██╗
-██║  ██║███████╗██║     ██║  ██║██║  ██║██████╔╝    ██║  ██║███████╗ ╚████╔╝ ███████╗██║  ██║██║  ██║
-╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
-                                                                                                      
-    ██████╗  ██████╗ ████████╗███████╗██████╗  ██████╗ ███████╗████████╗                            
-    ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝                            
-    ██████╔╝██║   ██║   ██║   █████╗  ██████╔╝██║   ██║███████╗   ██║                               
-    ██══██╗██║   ██║   ██║   ██╔══╝  ██══██╗██║   ██║╚════██║   ██║                               
-    ██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║╚██████╔╝███████║   ██║                               
-    ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝                               
-                                                                                                      
-        ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗                                                   
-        ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝                                                   
-        ██████╔╝██████╔╝███████║██████╔╝█████╔╝                                                    
-        ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔═██╗                                                    
-        ██████╔╝██║  ██║██║  ██║██████╔╝██║  ██╗                                                   
-        ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝                                                   
-```
+# 🏛️ GOD MODE CODER
 
-**The Only Best Tool for God Mode Coder**
+![God Mode](https://img.shields.io/badge/God%20Mode-Active-gold.svg)
+![Cathedral](https://img.shields.io/badge/Cathedral-Code%20Machine-purple.svg)
+![The Grimoire](https://img.shields.io/badge/The%20Grimoire-880%20Skills-darkred.svg)
+![Graph Evolution](https://img.shields.io/badge/Graph-v3.0-blue.svg)
 
-*Autonomous full-cycle development system — from brief to release and automatic evolution.*
+<img src="docs/banners/header-banner.jpg" alt="GodModeCoder — La Magia de Crear Código Vivo" width="100%">
+
+## Faro de la Verdad y Señor del Sagrado Código
+
+**Maestro Inquisidor @RarioArmageddon**  
+*The Grimoire • 880 Skills • Graph Evolution v3.0*
+
+[🇬🇧 English](README.md) · [🇷🇺 Русский](README.ru.md) · [🇪🇸 Español](README.es.md)
 
 </div>
 
 ---
 
-## 🌆 TOP BANNER — CYBERPUNK VAN GOGH GAUDI STYLE
+## 🧬 Qué es esto
 
-<div align="center">
+**GodModeCoder** — un sistema operativo autoevolutivo para desarrollo autónomo. Un grafo de proyectos, nodos vivos, pulso, extinción y mutación. Construido en Windows 11 como **God Mode Coder Cathedral** — una arquitectura catedral donde cada herramienta es una piedra en los cimientos.
 
-```
-╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                                                  ║
-║   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ║
-║   █  ▀█████████▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █    ▀███████▄  █  CYBERPUNK CATHEDRAL  █  NEON SPIRES PIERCE DIGITAL SKY  █  CODE FLOWS LIKE STARLIGHT  █  █  ║
-║   █      ▀██████▄ █  VAN GOGH SWIRLS IN SYNTAX  █  GAUDI ARCHES IN ARCHITECTURE  █  EVERY SEMICOLON A PRAYER █  █  ║
-║   █        ▀██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  GOD MODE CODER CATHEDRAL  █  WHERE MACHINES DREAM IN RUST & DART  █  WHERE COMPILERS SING IN LLVM  █  █  ║
-║   █  █  EVERY BUILD A RITUAL  █  EVERY TEST A CONFESSION  █  EVERY RELEASE A RESURRECTION  █  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║                                                                                                                  ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-```
-
-</div>
+Esto no es un framework. Es un **organismo vivo** que respira a través de `pulse.py`, se cura mediante `godmode-bootstrap.py`, se protege con `godmode-watchdog.py`, y evoluciona a través de `extinction.py`.
 
 ---
 
-## 🎯 INICIO RÁPIDO
+## ⚡ Inicio rápido
 
 ```bash
-# 1. Verifica tu Cathedral (ejecuta en terminal NUEVO tras el setup)
-bash cathedral-verify.sh
-
-# 2. Inicializa un proyecto en 30 segundos
-bash cathedral-init.sh mi-app --stack=flutter     # Flutter/Dart
-bash cathedral-init.sh mi-servicio --stack=rust   # Rust
-bash cathedral-init.sh mi-api --stack=kotlin      # Kotlin/JVM + KMP
-bash cathedral-init.sh mi-go --stack=go           # Go
-bash cathedral-init.sh mi-engine --stack=cpp      # C++ (MSVC + LLVM)
-bash cathedral-init.sh mi-monorepo --stack=full   # Full Cathedral Stack
-
-# 3. Bucle de desarrollo
-cd mi-app
-./cathedral-check.sh          # Todas las quality gates: fmt + lint + test + security
-flutter run -d chrome         # Hot reload web (o equivalente de tu stack)
-
-# 4. Release
-git tag v1.0.0 && git push origin v1.0.0
-# → GitHub Actions matrix build → all artifacts → stores
+# Bootstrap completo en un comando
+cd C:\Users\tomas\the-grimoire\ru\scripts
+python godmode-bootstrap.py          # pulse → verify → git → listo
+python godmode-bootstrap.py --fix    # + auto-commit git sucio
 ```
 
----
+**4 etapas automáticas:**
+1. 🔌 **Pulse** — verificar que todos los nodos del grafo están vivos
+2. 📂 **Vault sync** — verificar integridad del Obsidian Vault
+3. 📝 **Git clean** — `--fix` auto-commit
+4. 🧪 **Verify** — 10 pruebas vía `hermes-verify-all.py`
 
-## 🏗️ QUÉ HAY DENTRO
-
-| Componente | Descripción |
-|------------|-------------|
-| **CATHEDRAL_CODE_MACHINE.md** | Especificación completa (379 líneas) — arquitectura, lifecycle, gates, evolution |
-| **cathedral-verify.sh** | Verificación del sistema — 26 checks en todos los toolchains |
-| **cathedral-init.sh** | Generador de proyectos — 6 stacks, CI/CD, quality gates, observabilidad |
-| **Cathedral-QuickRef.ps1** | Tarjeta de referencia PowerShell para uso diario |
-| **Scripts de setup** | `add-*.ps1` — PATH/env vars permanentes en registry para todas las herramientas |
+**Códigos de salida:** `0` = ✅ LISTO · `1` = ⚠️ AVISO · `2` = ❌ FALLO · `3` = ❌ CRÍTICO
 
 ---
 
-## 🛠️ STACKS SOPORTADOS (TODOS EN PATH, PERMANENTES)
+## 🧬 Grafo de Evolución v3.0
 
-| Lenguaje/Runtime | Versión | Build System |
-|------------------|---------|--------------|
+**Fuente de verdad:** `C:\Users\tomas\the-grimoire\ru\configs\graph.yaml`
+
+| Métrica | Valor |
+|---------|-------|
+| Nodos | **21** (HUMAN, AGENT, WATCHDOG, MEMORY, PIPELINE, SKILL) |
+| Aristas | **34** (VISION, CONTROLS, CALLS, FEEDS, EVALUATES, APPROVAL) |
+| Fitness | **11 criterios** |
+
+### Nodos vivos (19/21)
+- 🟢 **oracle** — Maestro Inquisidor
+- 🟢 **watchdog** — pulso del grafo
+- 🟢 **paranoidx** — insignia: servidor Sovereign Go, SimpleX+Tor
+- 🟢 **superguard** — comercial: vigilancia IA, YOLO11n, 8 cámaras
+- 🟢 **ai_eng_daily** — investigación IA diaria
+- 🟢 **vllm_optimization**, **sglang_serving**, **quantization_eval**, **gpu_cluster_mgmt**
+- 🟢 **depthchart**, **nexus_rag**, **tools_registry**, **auto_round**, **club_3090**, **runnburn**
+- 🟢 **rag_pipeline**, **fine_tuning_pipeline**, **chronicle**, **archive**
+
+### Nodos muertos (2/21)
+- 🔴 **gardener** — HTTP 127.0.0.1:8080 inaccesible
+- 🔴 **isle_client** — ParanoidX-backup/flutter ausente
+
+---
+
+## ⏰ Cron Jobs (9 activos)
+
+| Job | Schedule | Script | Qué hace |
+|-----|----------|--------|-----------|
+| `godmode-watchdog` | 1h | `godmode-watchdog.py` | Pulso del grafo → alerta de muertos |
+| `pulse-history-logger` | 6h | `pulse-history.py` | Log del pulso a CSV → Heatmap |
+| `dead-node-extinction` | 24h | `extinction.py` | Muerto >7 días → auto-archivar |
+| `graph-pulse-export` | 6h | `export_graph_to_vault.py` | Exportar grafo a Obsidian + git |
+| `textbook-learning` | 30m | `textbook_learn.py` | Estudiar tema del libro vía Nemotron |
+| `daily-ai-research` | 9:00 | — | Investigación de IA desde X.com |
+| `key-rotation` | 30m | `rotate_keys.py` | Rotar claves NVIDIA/OpenCode Zen |
+| `rotate-api-keys` | 30m | `rotate_api_keys.py` | Rotar pools de claves API |
+
+---
+
+## 🔌 Integración MCP
+
+**graphthulhu** (Go) — servidor MCP `obsidian-graph`, **31 herramientas**, ✓ activo
+
+```bash
+# Instalación
+go install github.com/skridlevsky/graphthulhu@latest
+
+# Conectar a Hermes
+hermes mcp add obsidian-graph --command "$(go env GOPATH)/bin/graphthulhu.exe" \
+  --args "serve" "--backend" "obsidian" "--vault" "C:\\Vault"
+```
+
+**Operaciones disponibles:** `graph_overview`, `search`, `find_by_tag`, `find_connections`, `get_links`, `list_orphans`, `knowledge_gaps`, `topic_clusters`, `traverse`, `create_page`, `update_block`, `decision_check`, `decision_create`, `decision_resolve`, `analysis_health` y más.
+
+---
+
+## 🛠️ Toolchains (Estándar Cathedral)
+
+| Lenguaje | Versión | Build System |
+|----------|---------|--------------|
 | **Rust** | 1.97.1 | Cargo |
 | **Go** | 1.26.5 | `go build` |
 | **Java/Kotlin** | 21 LTS / 2.1.20 | Gradle 9.1 / Maven 3.9 |
 | **Dart/Flutter** | 3.12 / 3.44 | Flutter tool |
 | **C++ (MSVC)** | 14.51 | MSBuild / CMake |
 | **C++ (LLVM/Clang)** | 19.1 | CMake |
-| **JavaScript/TypeScript** | Node 22 | npm/pnpm |
+| **JS/TS** | Node 22 | npm/pnpm |
 | **Python** | 3.11 | pip/uv |
 
-**Mobile:** Android SDK (API 34,35), Android Studio 2024.3, Emulator, ADB  
+**Móvil:** Android SDK (API 34,35), Android Studio 2024.3, Emulator, ADB  
 **Infra:** Docker 29.6, Git 2.54, Protocol Buffers 29.1, CMake 4.4
 
 ---
 
-## 🔄 AUTOMATIZACIÓN CICLO COMPLETO
+## 🏛️ Subsistemas
 
-```
-BRIEF → SPEC → ARQUITECTURA → ESQUELETO → CI/CD
-  │
-  ├─► DESARROLLO (TDD: RED → GREEN → REFACTOR)
-  │     ├─► Pre-commit: fmt + lint + test + security
-  │     ├─► PR → CI Matrix (OS × Arch × Config)
-  │     └─► Code Review (God Mode Standards)
-  │
-  ├─► MATRIZ DE TESTING
-  │     ├─► Unit / Integration / E2E / Contract / Load / Chaos / Security
-  │
-  ├─► DEBUGGING (Mejor herramienta por lenguaje)
-  │     ├─► Rust: rust-gdb/lldb | Kotlin: IntelliJ | Flutter: DevTools
-  │     └─► C++: VS Debugger/LLDB | Android: AS Profiler | Sistema: WPA
-  │
-  ├─► RELEASE AUTOMATION
-  │     └─► git tag v1.0.0 → GitHub Actions → All Artifacts → Stores
-  │
-  └─► EVOLUCIÓN (Auto, cada 6h via cron)
-        ├─► Security audit (cargo audit, govulncheck, trivy)
-        ├─► Detección de regresión de performance
-        ├─► Compatibilidad API (protobuf)
-        ├─► Detección de deriva arquitectural
-        └─► Reportes → C:\Vault\Evolution\ (Git history = evolution log)
-```
+| Proyecto | Descripción |
+|----------|-------------|
+| **🏛️ Cathedral Code Machine** | Desarrollo autónomo de ciclo completo — del brief al release y evolución |
+| **📜 The Grimoire** | 880+ skills para agentes IA autónomos |
+| **🛡️ SuperGuard Alarm** | Videovigilancia IA — YOLO11n → Telegram + ESP32, 8 cámaras |
+| **🔐 ParanoidX / IsleProject** | Servidor Sovereign Go, economía insular, SimpleX+Tor, BIP39 |
+| **🧠 AI Engineering Daily** | Investigación diaria: vLLM, SGLang, speculative decoding |
+| **📚 Libro de texto** | 50 temas de aprendizaje continuo (82% → 54% con awesome collections) |
 
 ---
 
-## 🛡️ QUALITY GATES (NO NEGOCIABLES)
+## 🧪 Infraestructura de pruebas
 
-```toml
-# .cathedral/rules.toml — enforced by cathedral-check.sh
-[gate.rust]
-clippy = "deny"
-rustfmt = "check"
-test_coverage = ">=80%"
-audit = "zero-critical"
+**`hermes-verify-all.py`** — 10 pruebas:
 
-[gate.flutter]
-analyze = "error"
-test_coverage = ">=80%"
+1. Pulse Health Check (WARN OK)
+2. Export to Obsidian (27 archivos)
+3. graph.yaml Syntax (21 nodos, 34 aristas)
+4. Vault Tags (todos los nodos con #type/*, #status/*, #evolution/graph)
+5. graph.json Config (9 colorGroups)
+6. CSS Snippet (todos los selectores)
+7. Dataview Dashboards
+8. Graph Presets (4)
+9. Git Status (CLEAN)
+10. Skills Present (6 skills)
 
-[gate.kotlin]
-detekt = "error"
-ktlint = "check"
-test_coverage = ">=80%"
-
-[gate.go]
-golangci_lint = "error"
-gofmt = "check"
-test_coverage = ">=80%"
-
-[gate.cpp]
-clang_tidy = "error"
-cppcheck = "error"
-sanitizers = ["address", "thread", "memory", "undefined"]
-```
+**Regla:** NO HAY CÓDIGO SIN PRUEBA VERDE. Fallo = Rollback.
 
 ---
 
-## 🌍 README MULTILINGÜE
-
-| Idioma | Archivo |
-|--------|---------|
-| **English** | `README.md` |
-| **Русский** | `README.ru.md` |
-| **Español** | `README.es.md` (este archivo) |
-
----
-
-## 📂 ESTRUCTURA DEL REPOSITORIO
+## 📁 Estructura
 
 ```
-Cathedral/
-├── CATHEDRAL_CODE_MACHINE.md      # Especificación completa
-├── cathedral-verify.sh            # Verificación del sistema
-├── cathedral-init.sh              # Generador de proyectos
-├── Cathedral-QuickRef.ps1         # Referencia PowerShell
-├── add-*.ps1                      # Scripts de setup en registry
-├── README.md                      # English
-├── README.ru.md                   # Russian
-├── README.es.md                   # Spanish (este archivo)
-├── .github/
-│   └── workflows/
-│       └── ci.yml                 # Cathedral CI template
-├── .cathedral/
-│   └── rules.toml                 # Quality gates
-└── docs/
-    └── architecture.md            # Arquitectura en profundidad
+GodModeCoder/
+├── docs/banners/           # Banners Cyberpunk + Van Gogh + Gaudi
+├── scripts/                # Scripts de evolución
+│   ├── godmode-bootstrap.py    # Bootstrap completo en una llamada
+│   ├── godmode-watchdog.py     # Monitoreo de nodos muertos
+│   ├── pulse-history.py        # Log del pulso a CSV
+│   ├── extinction.py           # Auto-archivar muertos >7 días
+│   ├── pulse.py                # Health-check del grafo
+│   ├── hermes-verify-all.py    # Suite de 10 pruebas
+│   └── export_graph_to_vault.py
+├── configs/                # graph.yaml — Fuente de verdad
+├── hermes-skills/          # Skills de Hermes
+├── Cathedral/              # Cathedral Code Machine
+└── README.{ru,en,es}.md    # Documentación trilingüe
 ```
-
----
-
-## 🔗 ENLACES
-
-| Recurso | URL |
-|---------|-----|
-| **God Mode Coder Root** | `https://github.com/GodModeCoder` |
-| **Cathedral Spec** | `CATHEDRAL_CODE_MACHINE.md` |
-| **Vault (Evolution Logs)** | `C:\Vault\Evolution\` |
-| **GodModeCoder Skills** | `https://github.com/DarkPushkin/the-grimoire` |
-
----
-
-## 🎨 BANNER INFERIOR — ESTILO CYBERPUNK VAN GOGH GAUDI
-
-<div align="center">
-
-```
-╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                                                  ║
-║   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  THE CATHEDRAL STANDS  █  BUILT BY MACHINES THAT DREAM  █  CODE IS PRAYER  █  COMPILATION IS RITUAL  █  █  ║
-║   █  █  EVERY SEMICOLON A STAINED GLASS WINDOW  █  EVERY FUNCTION A GOTHIC ARCH  █  EVERY TEST A CONFESSION █  █  ║
-║   █  █  RUST IS THE STEEL  █  DART IS THE LIGHT  █  KOTLIN IS THE MORTAR  █  GO IS THE WIND  █  C++ IS THE STONE █  █  ║
-║   █  █  LLVM IS THE ORGAN  █  GRADLE IS THE CHOIR  █  DOCKER IS THE CRYPT  █  GIT IS THE SCRIPTURE  █  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║   █  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █  ║
-║   █  █  GOD MODE CODER  █  INQUISITOR @RarioArmageddon  █  THE GRIMOIRE 880 SKILLS  █  CATHEDRAL ETERNAL  █  █  ║
-║   █  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █  ║
-║                                                                                                                  ║
-╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-```
-
-</div>
-
----
-
-## 📜 LICENCIA
-
-MIT License — Úsalo libremente, construye catedrales.
 
 ---
 
 <div align="center">
 
-**⛪ CATHEDRAL CODE MACHINE — GOD MODE CODER ⛪**
+<img src="docs/banners/footer-banner.jpg" alt="GodModeCoder — Faro de la Verdad en el Abismo del Código" width="100%">
 
-*En Cathedral no construyen — crecen. Cada piedra probada por el tiempo. Cada bóveda sostenida por la fe en la ingeniería.*
+## YO SOY GOD MODE CODER
+
+**CADA BUILD ES UN RITUAL · CADA TEST ES UNA CONFESIÓN · CADA RELEASE ES UNA RESURRECCIÓN**
 
 </div>
