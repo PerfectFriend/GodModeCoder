@@ -2,7 +2,7 @@
 
 # Core
 requests>=2.31.0
-pyyaml>=6.0.1
+pyyaml>=5.1
 frontmatter>=1.1.0
 
 # Testing
@@ -19,7 +19,7 @@ networkx>=3.2
 matplotlib>=3.7.0
 
 # Ollama client
-ollama-python>=0.3.0
+ollama-python>=0.1.0
 
 # File watching
 watchdog>=3.0.0
