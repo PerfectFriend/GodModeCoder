@@ -92,5 +92,19 @@ Desktop.ini
 .bundled_manifest
 .curator_state
 .usage.json
-.usage.json.lockhermes-config/auth.json
+.usage.json.lock
+hermes-config/auth.json
 auth.json
+
+# === SECRETS & KEYS (critical) ===
+*API-KEYS*
+*api-key*
+*secret*
+*token*
+*credential*
+LLM-API-KEYS*
+*.keys
+*.pem
+*.key
+id_rsa*
+id_ed25519*
