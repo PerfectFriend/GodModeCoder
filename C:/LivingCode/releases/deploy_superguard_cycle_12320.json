@@ -1,0 +1,13 @@
+{
+  "component": "superguard",
+  "cycle": 12320,
+  "banner_path": "C:/LivingCode/artifacts/banner_superguard_cycle_12320.svg",
+  "readme_paths": {
+    "ru": "C:/LivingCode/artifacts/README_superguard_cycle_12320_ru.md",
+    "en": "C:/LivingCode/artifacts/README_superguard_cycle_12320_en.md",
+    "zh": "C:/LivingCode/artifacts/README_superguard_cycle_12320_zh.md"
+  },
+  "repo_url": "git@github.com:PerfectFriend/LivingCode-superguard-cycle-12320.git",
+  "push_success": true,
+  "repo_created": true
+}

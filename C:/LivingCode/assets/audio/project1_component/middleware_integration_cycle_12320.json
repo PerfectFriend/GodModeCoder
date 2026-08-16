@@ -1,0 +1,81 @@
+{
+  "component": "project1_component",
+  "cycle": 12320,
+  "middleware": [
+    "fmod",
+    "wwise"
+  ],
+  "fmod": {
+    "banks": [
+      "Master.bank",
+      "Music_project1_component.bank",
+      "SFX_project1_component.bank"
+    ],
+    "events": [
+      {
+        "name": "music/project1_component/base",
+        "parameters": [
+          "Intensity"
+        ]
+      },
+      {
+        "name": "music/project1_component/exploration",
+        "parameters": [
+          "Intensity"
+        ]
+      },
+      {
+        "name": "music/project1_component/tension",
+        "parameters": [
+          "Intensity"
+        ]
+      },
+      {
+        "name": "music/project1_component/danger",
+        "parameters": [
+          "Intensity"
+        ]
+      },
+      {
+        "name": "music/project1_component/victory",
+        "parameters": [
+          "Intensity"
+        ]
+      }
+    ],
+    "parameters": {
+      "Intensity": {
+        "min": 0,
+        "max": 4,
+        "description": "0=Base, 1=Exploration, 2=Tension, 3=Danger, 4=Victory"
+      }
+    }
+  },
+  "wwise": {
+    "soundbanks": [
+      "Init.bnk",
+      "Music_project1_component.bnk",
+      "SFX_project1_component.bnk"
+    ],
+    "switches": {
+      "MusicState": [
+        "Base",
+        "Exploration",
+        "Tension",
+        "Danger",
+        "Victory"
+      ]
+    },
+    "rtpcs": {
+      "MusicIntensity": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    "events": [
+      "Play_Music_project1_component",
+      "Stop_Music_project1_component",
+      "Set_Music_State_project1_component"
+    ]
+  }
+}

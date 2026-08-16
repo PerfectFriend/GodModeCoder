@@ -1,0 +1,2 @@
+# PNG placeholder - convert from SVG: banner_cybertarot_cycle_12318.svg
+# rsvg-convert -w 1200 -h 400 banner_cybertarot_cycle_12318.svg -o banner_cybertarot_cycle_12318.png
