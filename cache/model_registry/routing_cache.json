@@ -313,5 +313,20 @@
       "ubuntu-server:nemotron-3-ultra-550b-A55b"
     ],
     "timestamp": "2026-08-16T10:22:36.268067+00:00"
+  },
+  "prompt:5949049171843461260": {
+    "task": "evolution",
+    "project": 2,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T12:06:26.790739+00:00"
   }
 }
