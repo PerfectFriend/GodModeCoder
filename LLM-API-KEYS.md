@@ -1,0 +1,35 @@
+AQ.Ab8RN6IyyHY1LSXuY2SsyZwmXV5IRSVaAaSEJ0W5zpVUKEA_ow google ai studio  
+
+groq api key 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  
+
+nvidia api keys  
+  
+ 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  
+ 
+ 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  
+ 
+ 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  
+ 
+ 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  
+ 
+ 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  
+ 
+ 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  
+
+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
+
+opencode api keys  
+  
+sk-xiyYKk5Rm6bHxOZZ8vW8EcOr7YGIdxysL69lLWOqLOMGacH9XwsMaNAgskYFj2y1  
+sk-x9IuVeEvZCDlyix0hfXouJ3XbIzDBkEarktgpjbbvl7W3zB7EN1YO72BSiYHNlx2  
+sk-NET8EgIVxXPSVQe1XLZ8xAIbnsm1huCEH8XHxZCSdZ1Emujz6oEB7HVDki9EkEKx  
+sk-B86AQmOHvBc2yx09tQkEBdQoNmqsSa9oxyZ7LOHLlX4Xkc4QlhhjaVPZAP8UAgRc 
+sk-fKfBe27NXpFLpp8c76mRvHi2ZBxEVJTvXAbWAUNmf4n7FIJoOuai7ndGSmrVsI9w  
+sk-4jhOLEZbqo6zGxdphgJbDpEgMZrA4eZ4L9FJBSsmig0mjVy1szFUkRXfdFhJK8On  
+sk-1cfJz1TFg3EulIqXfAaJEixemEiXrHVeTPhs1qZGEoEusXsuSOfw0LyeIN6hYHL9  
+sk-lGcBOMoFNz8eL7IvhrtW0hC1Y2XJ0k1RynZ7MwmlrTHB8YHJR1kNNXsDiEs4HBfZ  
+sk-fKfBe27NXpFLpp8c76mRvHi2ZBxEVJTvXAbWAUNmf4n7FIJoOuai7ndGSmrVsI9w  
+sk-ZJsE4oVSrhMrqicvK4gIQiNcG2Rv9nBrrEocopaNunTGJrS7s00lKwnUAofu6ALx  
+sk-6bOFfjuesEeUlKIT2SmLUtEhoEXkMssX2i5bgDLtxhcENFkf9YPzlVKo2Z3gPTD9  
+sk-WzZTnaIfs06qrNTu3AEINsat7rg5fwvUKyLwALZmymeDyjjJqvVQkB0hmQLVuuli  
+sk-mXZNZHf3YD2QAt73igvgJXnRzpKtvYp3yRxY1eF2WjECyZW4ZlrAMtfNiRLU1kxr

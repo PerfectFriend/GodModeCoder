@@ -6,11 +6,11 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-VAULT = Path(r"C:\Vault")
-SCRIPT = Path(r"C:\Users\tomas\the-grimoire\ru\scripts\export_graph_to_obsidian.py")
-CONFIG = Path(r"C:\Users\tomas\the-grimoire\ru\configs\graph.yaml")
-VERIFY_SCRIPT = Path(r"C:\Users\tomas\the-grimoire\ru\scripts\hermes-verify-all.py")
-PYTHON = Path(r"C:\Users\tomas\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe")
+VAULT = Path.home() / "ObsidianVault"
+SCRIPT = Path.home() / "GodModeCoder" / "scripts" / "export_graph_to_obsidian.py"
+CONFIG = Path.home() / "GodModeCoder" / "Graph.yaml"
+VERIFY_SCRIPT = Path.home() / "GodModeCoder" / "scripts" / "hermes-verify-all-linux.py"
+PYTHON = Path(sys.executable)
 
 def main():
     print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Starting graph pulse export...")

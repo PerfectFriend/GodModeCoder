@@ -1,0 +1,77 @@
+{
+  "prompt:-8569414148063751329": {
+    "task": "evolution",
+    "project": 1,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T10:04:24.560413+00:00"
+  },
+  "prompt:-1766105800467173762": {
+    "task": "evolution",
+    "project": 1,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T10:04:33.933344+00:00"
+  },
+  "prompt:6133929308748076916": {
+    "task": "evolution",
+    "project": 1,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T10:06:58.337201+00:00"
+  },
+  "prompt:-1285709189197483833": {
+    "task": "evolution",
+    "project": 1,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T10:07:30.573869+00:00"
+  },
+  "prompt:-2813824142097360665": {
+    "task": "evolution",
+    "project": 1,
+    "selected_node": "lenovo",
+    "selected_model": "nemotron-3-ultra",
+    "reason": "Role 'coder' -> Lenovo (Torquemada) (nemotron-3-ultra)",
+    "fallback_chain": [
+      "nemotron-3-ultra",
+      "qwen2.5-coder-32b",
+      "deepseek-coder-33b",
+      "unsloth-studio:nemotron-3-ultra-550b-A55b",
+      "ubuntu-server:nemotron-3-ultra-550b-A55b"
+    ],
+    "timestamp": "2026-08-16T10:07:39.829888+00:00"
+  }
+}

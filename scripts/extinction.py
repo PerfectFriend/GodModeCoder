@@ -1,161 +1,235 @@
 #!/usr/bin/env python3
-"""
-Dead Node Extinction — авто-архивация узлов мёртвых >7 дней подряд.
+# Living Code Ecosystem — Extinction Check (Daily 03:00)
+# Версия: 1.0
+# Узлы мёртвые >7 дней → экстинкция в archive/, запись в летопись
+# Использование: python extinction.py --min-days 7
 
-Запуск cron (daily):
-    python extinction.py
-
-Логика:
-  1. Читает pulse-history.csv — считает сколько дней подряд каждый узел мёртв
-  2. Если узел мёртв >7 дней подряд → экстинкция:
-     a. Перемещает Evolution/<node>.md → Evolution/archive/<node>.md
-     b. Записывает extinction record в chronicle.md
-     c. Удаляет узел из graph.yaml (опционально — требует подтверждения)
-  3. Формирует отчёт (stdout для cron delivery)
-
-Выход: stdout = отчёт, exit 0 = не было экстинкций, 1 = были экстинкции
-
-Crontab (Hermes):
-  job_id: (auto-create)
-  name: dead-node-extinction
-  schedule: every 24h
-  script: extinction.py
-  no_agent: true
-  deliver: origin
-"""
-
-import csv
+import argparse
+import json
+import subprocess
+import sys
 from pathlib import Path
-from datetime import datetime, timedelta
-import shutil
+from datetime import datetime, timezone, timedelta
+from typing import Dict, List
 
-VAULT_DIR = Path(r"C:\Vault")
-EVOLUTION_DIR = VAULT_DIR / "Evolution"
-ARCHIVE_DIR = EVOLUTION_DIR / "archive"
-CHRONICLE = EVOLUTION_DIR / "chronicle.md"
-HISTORY_CSV = EVOLUTION_DIR / "pulse-history.csv"
-GRAPH_YAML = Path(r"C:\Users\tomas\the-grimoire\ru\configs\graph.yaml")
+class ExtinctionCheck:
+    def __init__(self, min_days: int = 7):
+        self.min_days = min_days
+        self.root = Path("C:/Users/tomas/the-grimoire/ru")
+        self.vault_root = Path("C:/Vault")
+        self.pulse_history = self.vault_root / "Evolution" / "pulse-history.csv"
+        self.evolution_dir = self.vault_root / "Evolution"
+        self.archive_dir = self.evolution_dir / "archive"
+        self.chronicle_path = self.vault_root / "Evolution" / "chronicle.md"
+    
+    def run_cmd(self, cmd: str, cwd: Path = None, timeout: int = 60) -> tuple:
+        try:
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True,
+                timeout=timeout, cwd=str(cwd or self.vault_root)
+            )
+            return result.returncode == 0, result.stdout, result.stderr
+        except Exception as e:
+            return False, "", str(e)
+    
+    def parse_pulse_history(self) -> Dict[str, int]:
+        """Parse pulse-history.csv to get consecutive dead days per node"""
+        if not self.pulse_history.exists():
+            return {}
+        
+        content = self.pulse_history.read_text(encoding='utf-8')
+        lines = content.strip().split('\n')
+        
+        if len(lines) < 2:
+            return {}
+        
+        # Skip header
+        dead_streaks = {}
+        current_streaks = {}
+        
+        for line in lines[1:]:
+            parts = line.split(',')
+            if len(parts) >= 6:
+                dead_nodes_str = parts[5].strip('"')
+                dead_today = [n.strip() for n in dead_nodes_str.split(';') if n.strip()]
+                
+                # Update streaks
+                all_nodes = set(current_streaks.keys()) | set(dead_today)
+                
+                for node in all_nodes:
+                    if node in dead_today:
+                        current_streaks[node] = current_streaks.get(node, 0) + 1
+                    else:
+                        # Node recovered, reset streak
+                        if node in current_streaks:
+                            dead_streaks[node] = max(dead_streaks.get(node, 0), current_streaks[node])
+                        current_streaks[node] = 0
+        
+        # Final streaks
+        for node, streak in current_streaks.items():
+            dead_streaks[node] = max(dead_streaks.get(node, 0), streak)
+        
+        return dead_streaks
+    
+    def find_orphan_nodes(self) -> List[str]:
+        """Find Evolution/*.md files without graph.yaml entry"""
+        orphans = []
+        
+        # Load graph.yaml nodes
+        graph_file = self.root / "configs" / "graph.yaml"
+        graph_nodes = set()
+        if graph_file.exists():
+            import yaml
+            with open(graph_file) as f:
+                graph = yaml.safe_load(f)
+            for node in graph.get("nodes", []):
+                graph_nodes.add(node.get("id", ""))
+        
+        # Check Evolution folder
+        for md_file in self.evolution_dir.glob("*.md"):
+            if md_file.name in ["INDEX.md", "chronicle.md", "pulse-history.csv"]:
+                continue
+            node_id = md_file.stem
+            if node_id not in graph_nodes and node_id not in ["Graph Dashboard", "Pulse History Dashboard", "Dead Nodes Dashboard"]:
+                orphans.append(node_id)
+        
+        return orphans
+    
+    def extinct_node(self, node_id: str, reason: str) -> bool:
+        """Move node to archive and record in chronicle"""
+        source = self.evolution_dir / f"{node_id}.md"
+        
+        if not source.exists():
+            print(f"  ⚠️  Node file not found: {source}")
+            return False
+        
+        # Move to archive
+        self.archive_dir.mkdir(parents=True, exist_ok=True)
+        dest = self.archive_dir / f"{node_id}.md"
+        
+        # Read content for archive
+        content = source.read_text(encoding='utf-8')
+        
+        # Add extinction header
+        archive_content = f"""---
+extinct: true
+extinction_date: {datetime.now(timezone.utc).isoformat()}
+extinction_reason: {reason}
+original_node: {node_id}
+---
 
-DEAD_THRESHOLD_DAYS = 7
-
-
-def load_pulse_history():
-    """Load pulse-history.csv, return list of dicts sorted by date+time."""
-    if not HISTORY_CSV.exists():
-        return []
-    with open(HISTORY_CSV, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
-    return sorted(rows, key=lambda r: (r.get("date", ""), r.get("time", "")))
-
-
-def find_long_dead_nodes(history, threshold_days=DEAD_THRESHOLD_DAYS):
-    """Find nodes that have been dead for >= threshold_days consecutive entries.
+{content}
+"""
+        dest.write_text(archive_content, encoding='utf-8')
+        
+        # Remove original
+        source.unlink()
+        
+        print(f"  🗂️  Archived: {node_id} -> {dest}")
+        return True
     
-    Checks the last `threshold_days` days of entries.
-    A node is 'long dead' if it appears in dead_names for ALL entries in the last N days.
-    """
-    if not history:
-        return []
+    def update_chronicle(self, extinctions: List[Dict], orphans: List[str]):
+        """Record extinctions in chronicle"""
+        self.chronicle_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        entry = f"\n## {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} — AUTO-EXTINCTION CHECK\n\n"
+        entry += f"**Min days dead:** {self.min_days}\n\n"
+        
+        if extinctions:
+            entry += "### Extinct Nodes (dead >7 days):\n"
+            for ext in extinctions:
+                entry += f"- **{ext['node']}**: {ext['reason']} (dead {ext['days']} days)\n"
+        else:
+            entry += "### Extinct Nodes: None\n"
+        
+        if orphans:
+            entry += "\n### Orphan Nodes (not in graph.yaml):\n"
+            for orphan in orphans:
+                entry += f"- **{orphan}**: moved to archive\n"
+        else:
+            entry += "\n### Orphan Nodes: None\n"
+        
+        entry += "\n---\n"
+        
+        if self.chronicle_path.exists():
+            content = self.chronicle_path.read_text(encoding='utf-8')
+        else:
+            content = "# Летопись Живого Кода\n\n"
+        
+        self.chronicle_path.write_text(content + entry, encoding='utf-8')
     
-    # Get unique dates sorted (most recent first)
-    dates = sorted(set(r["date"] for r in history), reverse=True)
-    
-    if len(dates) < threshold_days:
-        # Not enough history yet — can't confirm long-dead
-        return []
-    
-    # Take last N unique dates
-    recent_dates = dates[:threshold_days]
-    
-    # For each recent date, check if node was dead
-    # A node is long-dead if it's dead in ALL recent dates
-    from collections import defaultdict
-    dead_counts = defaultdict(int)
-    for date in recent_dates:
-        day_entries = [r for r in history if r["date"] == date]
-        if day_entries:
-            # Take the last entry of that day
-            last_entry = day_entries[-1]
-            dead_names = last_entry.get("dead_names", "")
-            if dead_names:
-                for name in dead_names.split(","):
-                    name = name.strip()
-                    if name:
-                        dead_counts[name] += 1
-    
-    # Node must be dead in ALL recent dates
-    long_dead = [name for name, count in dead_counts.items() if count >= threshold_days]
-    return long_dead
-
-
-def extinguish_node(node_id, reason="Dead >7 days"):
-    """Archive a dead node: move .md to archive/, record in chronicle."""
-    node_file = EVOLUTION_DIR / f"{node_id}.md"
-    
-    if not node_file.exists():
-        return False, f"File not found: {node_file}"
-    
-    # Create archive dir if needed
-    ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
-    
-    # Move to archive
-    dst = ARCHIVE_DIR / f"{node_id}.md"
-    if dst.exists():
-        # Already archived — skip
-        return False, f"Already archived: {dst}"
-    
-    shutil.move(str(node_file), str(dst))
-    
-    # Record in chronicle
-    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-    entry = f"\n## {ts} — AUTO-EXTINCTION: {node_id}\n"
-    entry += f"**Reason:** {reason}\n"
-    entry += f"**Archived to:** archive/{node_id}.md\n"
-    entry += f"**Trigger:** extinction.py (dead >{DEAD_THRESHOLD_DAYS} days)\n---\n"
-    
-    with open(CHRONICLE, "a", encoding="utf-8") as f:
-        f.write(entry)
-    
-    return True, f"Archived {node_id} → archive/{node_id}.md"
+    def run(self) -> Dict:
+        """Run extinction check"""
+        print(f"\n{'='*60}")
+        print(f"💀 EXTINCTION CHECK — Min days: {self.min_days}")
+        print(f"{'='*60}")
+        
+        # Check pulse history
+        print("  📊 Parsing pulse-history.csv...")
+        dead_streaks = self.parse_pulse_history()
+        
+        if not dead_streaks:
+            print("  ⚠️  Insufficient pulse history (need 7+ days)")
+            return {"status": "insufficient_data", "extinctions": [], "orphans": []}
+        
+        print(f"  📈 Dead streaks: {dead_streaks}")
+        
+        # Find nodes to extinct
+        extinctions = []
+        for node, days in dead_streaks.items():
+            if days >= self.min_days:
+                extinctions.append({"node": node, "days": days, "reason": f"Dead for {days} consecutive days"})
+        
+        # Find orphans
+        print("  🔍 Checking for orphan nodes...")
+        orphans = self.find_orphan_nodes()
+        
+        # Process extinctions
+        for ext in extinctions:
+            print(f"\n  💀 Extincting: {ext['node']} (dead {ext['days']} days)")
+            self.extinct_node(ext['node'], ext['reason'])
+        
+        # Process orphans
+        for orphan in orphans:
+            print(f"\n  🗂️  Archiving orphan: {orphan}")
+            self.extinct_node(orphan, "Orphan node (not in graph.yaml)")
+            extinctions.append({"node": orphan, "days": 0, "reason": "Orphan node"})
+        
+        # Update chronicle
+        if extinctions or orphans:
+            self.update_chronicle(extinctions, orphans)
+            
+            # Git commit
+            self.run_cmd("git add Evolution/ Evolution/archive/ Evolution/chronicle.md", cwd=self.vault_root)
+            self.run_cmd(f'git commit -m "extinction: {len(extinctions)} nodes archived"', cwd=self.vault_root)
+        
+        print(f"\n{'='*60}")
+        if extinctions:
+            print(f"✅ EXTINCTION COMPLETE: {len(extinctions)} nodes archived")
+        else:
+            print(f"✅ NO EXTINCTIONS NEEDED")
+        print(f"{'='*60}")
+        
+        return {
+            "status": "complete",
+            "extinctions": extinctions,
+            "orphans": orphans,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
 
 
 def main():
-    history = load_pulse_history()
-    if not history:
-        print("No pulse history found — nothing to check.")
-        return 0
+    parser = argparse.ArgumentParser(description="Extinction Check — Living Code")
+    parser.add_argument("--min-days", type=int, default=7, help="Minimum consecutive dead days for extinction")
+    args = parser.parse_args()
     
-    long_dead = find_long_dead_nodes(history)
+    extinction = ExtinctionCheck(args.min_days)
+    result = extinction.run()
     
-    if not long_dead:
-        print(f"✅ No nodes dead >{DEAD_THRESHOLD_DAYS} days. System healthy.")
-        return 0
-    
-    print(f"🔍 Found {len(long_dead)} nodes dead >{DEAD_THRESHOLD_DAYS} days: {', '.join(long_dead)}")
-    print()
-    
-    extinguished = []
-    failed = []
-    for node_id in long_dead:
-        success, msg = extinguish_node(node_id, f"Dead >{DEAD_THRESHOLD_DAYS} consecutive days")
-        if success:
-            extinguished.append(node_id)
-            print(f"  🔴 EXTINCT: {msg}")
-        else:
-            failed.append((node_id, msg))
-            print(f"  ⚠️  SKIP: {msg}")
-    
-    print()
-    if extinguished:
-        print(f"💀 Extinction complete: {len(extinguished)} node(s) archived.")
-        print(f"   Archived: {', '.join(extinguished)}")
-        print(f"   These nodes should be removed from graph.yaml manually.")
-        return 1
-    else:
-        print(f"No new extinctions (all already archived or missing).")
-        return 0
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    sys.exit(0)
 
 
 if __name__ == "__main__":
-    exit(main())
+    import json
+    main()

@@ -1,0 +1,399 @@
+nodes:
+  - id: chainzap-core
+    type: project
+    label: "ChainZap.io"
+    description: "Universal Reputation Layer для Web3 — от чекера кошельков к инфраструктурному слою доверия"
+    status: active
+    phase: "Phase 1: Data Moat (Bootstrapped)"
+    priority: critical
+    tags: [web3, reputation, risk-scoring, ml, graph-db, api-platform, bootstrapped]
+    metrics:
+      mau: 5000
+      daily_checks: 200
+      pro_subscribers: 50
+      mrr: 300
+      chains: [ethereum, bsc, polygon, arbitrum, optimism]
+      target_mrr_q4: 10000
+    created: "2026-08-03"
+    updated: "2026-08-09"
+
+  - id: phase1-data-moat
+    type: phase
+    label: "Фаза 1: Глубинные корни — Data Moat (Bootstrapped, Local-First)"
+    description: "Построить проприетарный Knowledge Graph и 15+ уникальных эвристик. Перестать зависеть от чужих API. Бюджет $0 — делаем сами (Master Inquisitor + Hermes). Инфраструктура: локально на нетбуке (40GB SSD, Tor hidden service), никакого хостинга до revenue."
+    parent: chainzap-core
+    status: active
+    timeline: "Месяцы 1-4 (ускорено за счёт AI)"
+    budget: 0
+    kpis:
+      - "Graph coverage > 80% Top-1000 протоколов"
+      - "15+ уникальных сигналов, precision > 95%"
+      - "Latency < 12 сек от mempool до сигнала"
+      - "Cross-chain resolution 95%+ recall"
+      - "Reputation Score AUC > 0.9"
+      - "Cost < $0.001/check (на своей инфраструктуре)"
+      - "Infra cost: $0 (local netbook, Tor hidden service)"
+    dependencies: []
+
+  - id: phase2-api-platform
+    type: phase
+    label: "Фаза 2: Платформа для билдеров — API-First"
+    description: "Стать невидимым, но незаменимым слоем в стеке любого крипто-продукта через Shield API, SDK, Webhooks, Oracle"
+    parent: chainzap-core
+    status: pending
+    timeline: "Месяцы 5-10"
+    budget: 0
+    kpis:
+      - "100M+ API calls/мес к М10"
+      - "50+ интеграций"
+      - "$100k MRR от API"
+      - "3+ Enterprise лого"
+    dependencies: [phase1-data-moat]
+
+  - id: phase3-ecosystem
+    type: phase
+    label: "Фаза 3: Экосистема и сетевые эффекты — Стандарт индустрии"
+    description: "Trust Registry, Community Intelligence, Oracle, Browser Extension, Токеномика $ZAP"
+    parent: chainzap-core
+    status: pending
+    timeline: "Месяцы 11-20"
+    budget: 0
+    kpis:
+      - "Trust Registry на mainnet"
+      - "Oracle в 5+ протоколах"
+      - "K-factor > 1.2"
+      - "$500k MRR"
+    dependencies: [phase2-api-platform]
+
+  - id: phase4-maximonster
+    type: phase
+    label: "Фаза 4: Максимонстр — Инфраструктура нового интернета стоимости"
+    description: "Universal Reputation Layer, AI-Native Risk Engine, Programmable Trust, ChainZap Network"
+    parent: chainzap-core
+    status: future
+    timeline: "20+ мес"
+    budget: 0
+    kpis:
+      - "$10M+ ARR"
+      - "Оценка $500M-2B+"
+      - "Exit: стратегическая продажа или IPO"
+    dependencies: [phase3-ecosystem]
+
+  # === TEAM: Master Inquisitor + Hermes (AI) ===
+  - id: master-inquisitor
+    type: contributor
+    label: "Мастер Инквизитор (Human)"
+    role: "Chief Strategy Officer / Founding Engineer / Data Lead / GTM"
+    description: "Стратегия, архитектура данных/ML, GTM, найм, партнёрства, код-ревью, евангелизм, hands-on data engineering"
+    equity: "Founder equity (твоя доля)"
+    cash: "$0 (bootstrapped, revenue-first)"
+    commitment: "Full-time"
+    areas:
+      - "Data/ML Architecture"
+      - "Technical Hiring (позже)"
+      - "GTM Strategy"
+      - "Key Partnerships (Rabby, 1inch, Safe, MetaMask, Chainlink)"
+      - "Code Review (critical paths)"
+      - "Telegram/Voice Infrastructure"
+      - "Hands-on: ClickHouse, Flink, Graph DB, ETL, Indexer"
+    deliverables_value: 0
+
+  - id: hermes-agent
+    type: contributor
+    label: "Hermes Agent (AI)"
+    role: "Senior Data Engineer / ML Engineer / Backend Engineer / DevOps / Tech Writer"
+    description: "Полный цикл data engineering: ClickHouse schemas, Flink jobs, Graph DB, indexer, ML pipelines, API, infra, docs. Работает 24/7 параллельно."
+    equity: "0% (инструмент)"
+    cash: "$0 (локальный Ollama, бесплатно)"
+    commitment: "24/7 параллельно"
+    areas:
+      - "ClickHouse cluster design & operations"
+      - "Flink streaming pipelines (mempool → heuristics)"
+      - "Graph DB (Kuzu/FalkorDB/Neo4j) modeling & queries"
+      - "Indexer development (Rust/Go) — mempool, logs, traces"
+      - "ML: Feature engineering, Reputation Score, GNN"
+      - "API: OpenAPI, SDK, rate limiting, sandbox"
+      - "DevOps: K8s, observability, CI/CD, cost optimization"
+      - "Docs: API docs, tutorials, whitepapers"
+      - "Code generation & review (TurboCoder mode)"
+    deliverables_value: 0
+
+  # === MILESTONES (адаптированы под $0 budget) ===
+  - id: milestone-m1
+    type: milestone
+    label: "M1: Data Foundation Ready (Bootstrapped)"
+    description: "ClickHouse работает на单机/cheap VPS, Graph DB с 100k+ узлов, 5 эвристик в проде, логирование 100%, сами написали"
+    parent: phase1-data-moat
+    deadline: "Месяц 3"
+    owner: "Master Inquisitor + Hermes"
+    criteria:
+      - "ClickHouse single-node operational (VPS $20/мес или локально)"
+      - "Graph DB > 100k nodes (start small, scale later)"
+      - "5 heuristics in production (written by us)"
+      - "100% check logging implemented"
+      - "CI/CD pipeline for data jobs"
+
+  - id: milestone-m2
+    type: milestone
+    label: "M2: Public API Beta"
+    description: "OpenAPI spec published, SDK (TS/Py/Go) в GitHub, Sandbox доступен, 3 beta users"
+    parent: phase2-api-platform
+    deadline: "Месяц 6"
+    owner: "Master Inquisitor + Hermes"
+    criteria:
+      - "OpenAPI 3.1 spec published"
+      - "SDKs in GitHub (TS, Python, Go) — generated by Hermes"
+      - "Sandbox environment live (free tier)"
+      - "3 beta users onboarded (from community)"
+
+  - id: milestone-m3
+    type: milestone
+    label: "M3: First Enterprise Deal"
+    description: "Подписанный Enterprise контракт ≥$2k/мес, интеграция в проде"
+    parent: phase2-api-platform
+    deadline: "Месяц 9"
+    owner: "Master Inquisitor"
+    criteria:
+      - "Signed contract ≥$2k/mo"
+      - "Production integration"
+      - "Referenceable logo"
+
+  - id: milestone-m4
+    type: milestone
+    label: "M4: 10 Integrations"
+    description: "10 живых интеграций (Wallet/DEX/Protocol), документация, мониторинг"
+    parent: phase2-api-platform
+    deadline: "Месяц 10"
+    owner: "Master Inquisitor + Hermes"
+    criteria:
+      - "10 live integrations"
+      - "Documentation complete"
+      - "Monitoring/alerting"
+
+  - id: milestone-m5
+    type: milestone
+    label: "M5: Trust Registry Mainnet"
+    description: "ERC-721 badges минтятся на mainnet, ENS интеграция, 3 протокола используют"
+    parent: phase3-ecosystem
+    deadline: "Месяц 14"
+    owner: "Master Inquisitor + Hermes"
+    criteria:
+      - "Badges minting on mainnet"
+      - "ENS integration working"
+      - "3 protocols using"
+
+  - id: milestone-m6
+    type: milestone
+    label: "M6: $1M ARR / Series A Ready"
+    description: "$1M ARR достигнуто ИЛИ готовность к Series A, команда 5-10+ (первые наймы)"
+    parent: phase3-ecosystem
+    deadline: "Месяц 18"
+    owner: "Master Inquisitor"
+    criteria:
+      - "$1M ARR OR Series A term sheet"
+      - "Team 5-10+ people (first hires from revenue)"
+      - "500M API calls/month"
+
+  - id: milestone-m7
+    type: milestone
+    label: "M7: Network Effects Visible"
+    description: "K-factor > 1.2, 50+ интеграций, Oracle в 5+ протоколах"
+    parent: phase3-ecosystem
+    deadline: "Месяц 22"
+    owner: "Master Inquisitor + Hermes"
+    criteria:
+      - "Viral K-factor > 1.2"
+      - "50+ integrations"
+      - "Oracle in 5+ protocols"
+
+  - id: milestone-m8
+    type: milestone
+    label: "M8: $10M ARR"
+    description: "$10M ARR, Net Revenue Retention > 120%"
+    parent: phase4-maximonster
+    deadline: "Месяц 30"
+    owner: "Master Inquisitor + Team"
+    criteria:
+      - "$10M ARR"
+      - "NRR > 120%"
+
+  # === RISKS (обновлены под $0) ===
+  - id: risk-team-strategy
+    type: risk
+    label: "Стратегия не работает / пивот не удался"
+    probability: medium
+    impact: critical
+    mitigation: "Чёткие Milestones с критериями приёмки. Если M1 не пройден за 3 месяца — пивотим или закрываем. Без sunk cost fallacy."
+    owner: "Master Inquisitor"
+
+  - id: risk-hiring
+    type: risk
+    label: "Не хватает рук для всего объёма (мы двое)"
+    probability: high
+    impact: high
+    mitigation: "Hermes = force multiplier 10x. Автоматизируем всё: кодген, тесты, доки, CI/CD. Первые наймы только после M3 (revenue)."
+
+  - id: risk-competitors
+    type: risk
+    label: "Конкуренты опередят (Chainalysis бесплатный API)"
+    probability: low
+    impact: medium
+    mitigation: "Moat = проприетарные эвристики + скорость инноваций (AI) + developer love + community. Enterprise не уйдёт к бесплатному API без SLA/SOC2."
+
+  - id: risk-regulation
+    type: risk
+    label: "Регулятор запретит репутационные скоры"
+    probability: low
+    impact: high
+    mitigation: "Фокус на risk scoring (не бан), прозрачность, апелляция, off-chain данные не под OFAC. Юридическая консультация с M3."
+
+  - id: risk-false-positives
+    type: risk
+    label: "Ложные срабатывания → репутационный скандал"
+    probability: medium
+    impact: critical
+    mitigation: "Conservative defaults, human-in-the-loop для HIGH RISK, programmatic appeals, bug bounty, insurance fund (позже)."
+
+  - id: risk-funding
+    type: risk
+    label: "Деньги заканчиваются до revenue"
+    probability: medium
+    impact: critical
+    mitigation: "Lean budget: VPS $50-100/мес, локальные GPU, бесплатные инструменты. Revenue от Pro + API usage-based с M2. Личные расходы — отдельно."
+
+  - id: risk-burnout
+    type: risk
+    label: "Выгорание (Master Inquisitor = single human)"
+    probability: high
+    impact: high
+    mitigation: "Hermes берёт 80% рутины (код, тесты, доки, инфраструктура). Ты фокусируешься на стратегии, партнёрствах, продажах. Hard limits: 6 дней в неделю, 1 день отдыха."
+
+  - id: risk-technical-debt
+    type: risk
+    label: "Техдолг от скорости (AI-generated код)"
+    probability: high
+    impact: medium
+    mitigation: "Hermes делает code review сам себе (TurboCoder mode). Обязательные тесты для критических путей. Рефакторинг каждый M-gate."
+
+edges:
+  - from: chainzap-core
+    to: phase1-data-moat
+    type: contains
+  - from: chainzap-core
+    to: phase2-api-platform
+    type: contains
+  - from: chainzap-core
+    to: phase3-ecosystem
+    type: contains
+  - from: chainzap-core
+    to: phase4-maximonster
+    type: contains
+  - from: phase1-data-moat
+    to: master-inquisitor
+    type: executed_by
+  - from: phase1-data-moat
+    to: hermes-agent
+    type: executed_by
+  - from: phase2-api-platform
+    to: master-inquisitor
+    type: executed_by
+  - from: phase2-api-platform
+    to: hermes-agent
+    type: executed_by
+  - from: phase3-ecosystem
+    to: master-inquisitor
+    type: executed_by
+  - from: phase3-ecosystem
+    to: hermes-agent
+    type: executed_by
+  - from: phase4-maximonster
+    to: master-inquisitor
+    type: executed_by
+  - from: phase4-maximonster
+    to: hermes-agent
+    type: executed_by
+  - from: phase1-data-moat
+    to: milestone-m1
+    type: has_milestone
+  - from: phase2-api-platform
+    to: milestone-m2
+    type: has_milestone
+  - from: phase2-api-platform
+    to: milestone-m3
+    type: has_milestone
+  - from: phase2-api-platform
+    to: milestone-m4
+    type: has_milestone
+  - from: phase3-ecosystem
+    to: milestone-m5
+    type: has_milestone
+  - from: phase3-ecosystem
+    to: milestone-m6
+    type: has_milestone
+  - from: phase3-ecosystem
+    to: milestone-m7
+    type: has_milestone
+  - from: phase4-maximonster
+    to: milestone-m8
+    type: has_milestone
+  - from: chainzap-core
+    to: master-inquisitor
+    type: founded_by
+  - from: chainzap-core
+    to: hermes-agent
+    type: powered_by
+  - from: chainzap-core
+    to: risk-team-strategy
+    type: has_risk
+  - from: chainzap-core
+    to: risk-hiring
+    type: has_risk
+  - from: chainzap-core
+    to: risk-competitors
+    type: has_risk
+  - from: chainzap-core
+    to: risk-regulation
+    type: has_risk
+  - from: chainzap-core
+    to: risk-false-positives
+    type: has_risk
+  - from: chainzap-core
+    to: risk-funding
+    type: has_risk
+  - from: chainzap-core
+    to: risk-burnout
+    type: has_risk
+  - from: chainzap-core
+    to: risk-technical-debt
+    type: has_risk
+  - from: phase1-data-moat
+    to: phase2-api-platform
+    type: precedes
+  - from: phase2-api-platform
+    to: phase3-ecosystem
+    type: precedes
+  - from: phase3-ecosystem
+    to: phase4-maximonster
+    type: precedes
+
+pulse:
+  cadence: weekly
+  review_day: Monday
+  metrics_tracked:
+    - "MAU / DAU"
+    - "Daily Checks"
+    - "Pro Subscribers / MRR"
+    - "API Calls/day"
+    - "Integrations count"
+    - "Milestone progress"
+    - "Code velocity (Hermes)"
+    - "Infrastructure cost"
+  gate_reviews:
+    - "M1: Month 3"
+    - "M2: Month 6"
+    - "M3: Month 9"
+    - "M4: Month 10"
+    - "M5: Month 14"
+    - "M6: Month 18"
+    - "M7: Month 22"
+    - "M8: Month 30"

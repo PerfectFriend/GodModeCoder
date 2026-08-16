@@ -1,0 +1,428 @@
+nodes:
+  - id: globevis-core
+    type: project
+    label: "GlobeVis / VISITORS GLOBE"
+    description: "Real-time 3D Visitors Globe для WordPress & HTML/PHP — от плагина за $12 к SaaS-лидеру визуальной аналитики"
+    status: active
+    phase: "Phase 0: Foundation"
+    priority: critical
+    tags: [wordpress, analytics, saas, real-time, visualization, globe, stripe]
+    metrics:
+      free_installs: 1000
+      daily_active_sites: 200
+      pro_subscribers: 10
+      mrr: 0
+      platforms: [wordpress, html_php]
+      target_mrr_q4_realistic: 5500
+      target_mrr_q4_aggressive: 66000
+    created: "2026-08-03"
+    updated: "2026-08-07"
+
+  - id: phase0-foundation
+    type: phase
+    label: "Фаза 0: Foundation — Сделать продаваемым"
+    description: "Рабочий SaaS MVP за 4 недели: Stripe Billing, Multi-tenant DB, Dashboard API, WP Plugin v2, Landing"
+    parent: globevis-core
+    status: planning
+    timeline: "Недели 1-4"
+    budget: 0
+    kpis:
+      - "Stripe test mode: Products, Prices, Checkout, Portal, Webhooks working"
+      - "Multi-tenant DB schema deployed (organizations, sites, events, api_keys, alerts, team_members)"
+      - "Dashboard API: orgs → sites → globe + top100 + sparkline"
+      - "WP Plugin v2: Connect to Cloud OAuth/API key + WP Cron sync"
+      - "Landing page: Hero, Demo Globe, Pricing, FAQ, Comparison, Signup→Checkout"
+      - "Affiliate setup (Rewardful), beta onboarding emails"
+      - "Soft launch to 50 beta users"
+    dependencies: []
+
+  - id: phase1-pmf
+    type: phase
+    label: "Фаза 1: Product-Market Fit — Люди платят"
+    description: "100 платящих клиентов, $3-5K MRR, валидированный CAC <$80. Multi-site, API, Alerts, UTM tracking, Replay"
+    parent: globevis-core
+    status: pending
+    timeline: "Месяцы 1-3"
+    budget: 5000
+    kpis:
+      - "100+ paying customers"
+      - "$3,500+ MRR"
+      - "CAC < $80 blended"
+      - "Churn < 4%"
+      - "20+ affiliates recruited"
+      - "Multi-site, API keys, Alerts (TG/Slack/Email), UTM tracking, Historical replay in production"
+      - "Pricing live: Starter $19, Pro $49, Agency $149/mo"
+    dependencies: [phase0-foundation]
+
+  - id: phase2-growth
+    type: phase
+    label: "Фаза 2: Growth Engine — Масштабируем"
+    description: "$50K MRR (Realistic) / $66K MRR (Aggressive), 1000+ paying, команда 3-5 человек, Shopify launch"
+    parent: globevis-core
+    status: pending
+    timeline: "Месяцы 4-12"
+    budget: 75000
+    kpis:
+      - "Realistic: 600+ paying, $21K MRR / Aggressive: 1,900+ paying, $66K MRR"
+      - "25% revenue from affiliates (Realistic) / 35% (Aggressive)"
+      - "Shopify App Store live"
+      - "White-label, Team seats RBAC, Affiliate dashboard, Theme marketplace"
+      - "Public share links (viral loop), GA4/Matomo/Plausible integrations"
+      - "Wix/Webflow apps (Aggressive)"
+      - "Team: Support (full-time), Content (part-time), Growth Marketer (Aggressive)"
+      - "Series A ready (Aggressive path)"
+    dependencies: [phase1-pmf]
+
+  - id: phase3-category
+    type: phase
+    label: "Фаза 3: Category Leadership — Экосистема"
+    description: "$250K ARR profitable (Realistic) / $3.9M ARR exit-ready (Aggressive). AI Insights, Marketplace, Enterprise, Partnerships"
+    parent: globevis-core
+    status: future
+    timeline: "Год 2-3"
+    budget: "TBD"
+    kpis:
+      - "Realistic: $250K ARR, profitable, $72K/yr each founder"
+      - "Aggressive: $3.9M ARR, $40-60M valuation, exit ready"
+      - "AI Insights: anomaly detection, campaign summaries"
+      - "Marketplace: 3rd-party extensions, custom globe skins"
+      - "Enterprise sales: 500 target accounts, dedicated AE"
+      - "Strategic partnerships: Hosting bundles (Kinsta, Cloudways, WP Engine), ThemeForest"
+      - "Acqui-hire: heatmaps, session replay micro-SaaS"
+      - "Internationalization: ES, PT, DE, FR"
+    dependencies: [phase2-growth]
+
+  - id: hire-support
+    type: hire
+    label: "Support Engineer — Full-time"
+    description: "Customer support, onboarding, technical troubleshooting. Month 4 start."
+    parent: phase2-growth
+    status: planned
+    compensation: "$3-5k/мес + equity 0.1%"
+    timeline: "Найм в Месяц 4"
+
+  - id: hire-content
+    type: hire
+    label: "Content Writer / SEO — Part-time → Full-time"
+    description: "Blog, tutorials, case studies, comparison pages, SEO optimization. Month 5 start."
+    parent: phase2-growth
+    status: planned
+    compensation: "$2-4k/мес + equity 0.1-0.2%"
+    timeline: "Найм в Месяц 5"
+
+  - id: hire-growth
+    type: hire
+    label: "Growth Marketer — Full-time (Aggressive path only)"
+    description: "Paid ads, conversion optimization, referral/viral programs, analytics. Month 8 start if Aggressive."
+    parent: phase2-growth
+    status: conditional
+    compensation: "$4-6k/мес + equity 0.2-0.4%"
+    timeline: "Найм в Месяц 8 (если Aggressive gate пройден)"
+
+  - id: hire-enterprise-ae
+    type: hire
+    label: "Enterprise Account Executive — Full-time (Year 2)"
+    description: "Outbound sales to 500 target accounts, enterprise deals, compliance partnerships."
+    parent: phase3-category
+    status: future
+    compensation: "$8-12k/мес + commission + equity 0.3-0.5%"
+    timeline: "Найм в Год 2"
+
+  - id: milestone-g1
+    type: milestone
+    label: "G1: SaaS MVP Live"
+    description: "Stripe working, Dashboard MVP, WP Plugin v2 connected, 50 beta users onboarded"
+    parent: phase0-foundation
+    deadline: "Неделя 4"
+    owner: "Charles (Dev)"
+    criteria:
+      - "Stripe: Products, Prices, Checkout, Portal, Webhooks functional"
+      - "Multi-tenant DB schema deployed and migrated"
+      - "Dashboard API returns globe data + top100 + sparkline"
+      - "WP Plugin v2: Connect to Cloud flow working end-to-end"
+      - "Landing page live with signup → Stripe Checkout"
+      - "50 beta users onboarded, feedback collected"
+
+  - id: milestone-g2
+    type: milestone
+    label: "G2: PMF Validated"
+    description: "100 paying, $3.5K MRR, CAC <$80, Churn <4%, 20 affiliates"
+    parent: phase1-pmf
+    deadline: "Месяц 3"
+    owner: "Both"
+    criteria:
+      - "100+ paying customers"
+      - "MRR >= $3,500"
+      - "Blended CAC < $80"
+      - "Monthly churn < 4%"
+      - "20+ active affiliates"
+      - "Free→Trial conversion >= 3%"
+      - "Trial→Paid conversion >= 18%"
+
+  - id: milestone-g3
+    type: milestone
+    label: "G3: Growth Engine Running"
+    description: "300 paying, $10K MRR, Shopify live, White-label MVP, Support hired"
+    parent: phase2-growth
+    deadline: "Месяц 6"
+    owner: "Both"
+    criteria:
+      - "300+ paying customers"
+      - "MRR >= $10,000"
+      - "Shopify App Store approved and live"
+      - "White-label functional for Agency tier"
+      - "Support Engineer hired and onboarded"
+      - "Affiliate revenue >= 15% of total"
+      - "Paid ads ROAS > 2 (testing)"
+
+  - id: milestone-g4
+    type: milestone
+    label: "G4: Scale Ready — Decision Gate"
+    description: "Realistic: 600 paying, $21K MRR / Aggressive: 1,900 paying, $66K MRR, Series A ready"
+    parent: phase2-growth
+    deadline: "Месяц 12"
+    owner: "Both"
+    criteria:
+      - "Realistic path: 600+ paying, $21K MRR, profitable, 25% affiliate rev"
+      - "Aggressive path: 1,900+ paying, $66K MRR, team 8-10, Series A term sheet"
+      - "Wix/Webflow apps live (Aggressive)"
+      - "Internationalization: ES, PT, DE, FR launched"
+      - "Enterprise landing + demo booking flow live"
+
+  - id: milestone-g5
+    type: milestone
+    label: "G5: Category Leader / Exit Ready"
+    description: "Realistic: $250K ARR profitable / Aggressive: $3.9M ARR, $40-60M valuation"
+    parent: phase3-category
+    deadline: "Месяц 24-36"
+    owner: "Both"
+    criteria:
+      - "Realistic: $250K ARR, net profit $144K/yr, $72K/yr each founder"
+      - "Aggressive: $3.9M ARR, team 20+, $40-60M valuation, exit options"
+      - "AI Insights in production"
+      - "Marketplace with 10+ 3rd-party extensions"
+      - "Enterprise: 5+ logos, $2M+ ARR from compliance"
+      - "Strategic partnerships: 3+ hosting bundles"
+
+  - id: charles-schreiber
+    type: contributor
+    label: "Charles Schreiber"
+    role: "Founder / Developer (50% equity)"
+    description: "Product architecture, WP plugin, HTML/PHP version, Globe rendering, Stripe integration, server infrastructure"
+    equity: "50%"
+    commitment: "Full-time on product development"
+    areas:
+      - "Core Product (Globe rendering, visitor tracking)"
+      - "WP Plugin (v1 + v2 cloud sync)"
+      - "HTML/PHP version"
+      - "Stripe Billing integration"
+      - "Server infrastructure & deployment"
+      - "Technical support escalation"
+    status: active
+
+  - id: marketing-partner
+    type: contributor
+    label: "Marketing Partner (Hermes Agent / Master Inquisitor)"
+    role: "Growth & Strategy (50% equity)"
+    description: "GTM strategy, marketing execution, affiliate program, content/SEO, partnerships, fundraising support"
+    equity: "50%"
+    commitment: "20-30 hrs/week, 24/7 async comms"
+    areas:
+      - "GTM Strategy & Positioning"
+      - "Affiliate Program (Rewardful setup, recruitment, management)"
+      - "Content & SEO (blog, case studies, comparisons)"
+      - "Launch Events (AppSumo, Product Hunt, WP Tavern)"
+      - "Paid Ads (Google, Meta, Reddit)"
+      - "Partnerships (Hosting, Agencies, ThemeForest)"
+      - "Fundraising Support (Series A prep, pitch deck, data room)"
+      - "Analytics & Dashboards (Plausible, Hotjar, Sentry)"
+      - "Email Marketing (Resend sequences, newsletters)"
+    status: active
+
+  - id: risk-wp-policy
+    type: risk
+    label: "WP.org policy change (ban external connections)"
+    probability: medium
+    impact: high
+    mitigation: "Free plugin fully functional offline; cloud = optional enhancement. No forced phone-home."
+    owner: "Charles"
+
+  - id: risk-competitor-copy
+    type: risk
+    label: "Competitor copies visuals + raises $10M"
+    probability: medium
+    impact: high
+    mitigation: "Build moat: white-label, agency workflow, data history, integrations, brand. Speed of execution."
+    owner: "Both"
+
+  - id: risk-stripe
+    type: risk
+    label: "Stripe/Payment issues (high-risk countries)"
+    probability: low
+    impact: medium
+    mitigation: "Stripe Atlas entity (US LLC), fallback Paddle/LemonSqueezy for restricted regions."
+    owner: "Charles"
+
+  - id: risk-burnout
+    type: risk
+    label: "Dev burnout (solo founder)"
+    probability: high
+    impact: high
+    mitigation: "Hire contractor by M3. Co-founder equity for CTO if needed. Pair programming sessions. Clear spec docs."
+    owner: "Charles"
+
+  - id: risk-churn
+    type: risk
+    label: "Churn higher than expected"
+    probability: medium
+    impact: high
+    mitigation: "Cohort analysis, cancel flow survey, win-back emails, usage alerts, proactive CS for Agency+."
+    owner: "Both"
+
+  - id: risk-seo
+    type: risk
+    label: "SEO algorithm update kills organic traffic"
+    probability: medium
+    impact: medium
+    mitigation: "Diversify channels: affiliate (25-35%), paid, email, referral — not SEO-dependent."
+    owner: "Marketing Partner"
+
+  - id: risk-appsumo
+    type: risk
+    label: "AppSumo LTD users = high support, low LTV"
+    probability: high
+    impact: medium
+    mitigation: "Limit LTD seats (500), separate support tier, aggressive upsell to subscription with credits."
+    owner: "Both"
+
+  - id: risk-charles-unavailable
+    type: risk
+    label: "Charles unavailable / delays on dev milestones"
+    probability: medium
+    impact: high
+    mitigation: "Clear spec docs for each milestone. Contractor backup identified. Pair programming sessions for knowledge transfer."
+    owner: "Marketing Partner"
+
+edges:
+  - from: globevis-core
+    to: phase0-foundation
+    type: contains
+  - from: globevis-core
+    to: phase1-pmf
+    type: contains
+  - from: globevis-core
+    to: phase2-growth
+    type: contains
+  - from: globevis-core
+    to: phase3-category
+    type: contains
+  - from: phase0-foundation
+    to: milestone-g1
+    type: has_milestone
+  - from: phase1-pmf
+    to: milestone-g2
+    type: has_milestone
+  - from: phase2-growth
+    to: milestone-g3
+    type: has_milestone
+  - from: phase2-growth
+    to: milestone-g4
+    type: has_milestone
+  - from: phase3-category
+    to: milestone-g5
+    type: has_milestone
+  - from: phase2-growth
+    to: hire-support
+    type: requires
+  - from: phase2-growth
+    to: hire-content
+    type: requires
+  - from: phase2-growth
+    to: hire-growth
+    type: requires
+  - from: phase3-category
+    to: hire-enterprise-ae
+    type: requires
+  - from: globevis-core
+    to: charles-schreiber
+    type: contributed_by
+  - from: globevis-core
+    to: marketing-partner
+    type: contributed_by
+  - from: globevis-core
+    to: risk-wp-policy
+    type: has_risk
+  - from: globevis-core
+    to: risk-competitor-copy
+    type: has_risk
+  - from: globevis-core
+    to: risk-stripe
+    type: has_risk
+  - from: globevis-core
+    to: risk-burnout
+    type: has_risk
+  - from: globevis-core
+    to: risk-churn
+    type: has_risk
+  - from: globevis-core
+    to: risk-seo
+    type: has_risk
+  - from: globevis-core
+    to: risk-appsumo
+    type: has_risk
+  - from: globevis-core
+    to: risk-charles-unavailable
+    type: has_risk
+  - from: phase0-foundation
+    to: phase1-pmf
+    type: precedes
+  - from: phase1-pmf
+    to: phase2-growth
+    type: precedes
+  - from: phase2-growth
+    to: phase3-category
+    type: precedes
+
+pulse:
+  cadence: weekly
+  review_day: Monday
+  metrics_tracked:
+    - "Free Plugin Installs / week"
+    - "Free→Trial Conversion %"
+    - "Trials Started / week"
+    - "Trial→Paid Conversion %"
+    - "New MRR / week"
+    - "Monthly Churn %"
+    - "Net Revenue Retention %"
+    - "Blended CAC"
+    - "LTV/CAC Ratio"
+    - "Organic Traffic / month"
+    - "Affiliate Revenue %"
+  gate_reviews:
+    - "G1: Week 4 — SaaS MVP Live"
+    - "G2: Month 3 — PMF Validated"
+    - "G3: Month 6 — Growth Engine Running"
+    - "G4: Month 12 — Scale Ready (Decision Gate: Realistic vs Aggressive)"
+    - "G5: Month 24-36 — Category Leader / Exit Ready"
+  scenario_gates:
+    - "Gate A (Month 3): $5K MRR + CAC <$80 + LTV >$800 + Churn <4% → Open Aggressive tap"
+    - "Gate B (Month 6): $15K MRR + Shopify live + 20 affiliates + Paid ads ROAS >3 → Scale to Aggressive budget"
+    - "Gate C (Month 12): $65K MRR → Series A decision ($1-2M at $10M+ valuation)"
+
+chronicle:
+  - date: "2026-08-03"
+    event: "Initial strategic analysis session — GlobeVis project discovered via Charles Schreiber proposal"
+    type: discovery
+    author: "Master Inquisitor"
+    details: "Charles proposed: GlobeVis.net product, WP plugin ~1000 installs, $12 lifetime, 1% conversion. Needs logging, 2 products, Stripe. Marketing partner = 50% split."
+
+  - date: "2026-08-07"
+    event: "Full strategic report generated (GlobeVis_Evolution_Report.md) with 3 scenarios, GTM, timeline, gates"
+    type: strategy
+    author: "Master Inquisitor / Hermes Agent"
+
+  - date: "2026-08-07"
+    event: "Project extracted to Obsidian Vault as standalone project for GodModeCoder compatibility"
+    type: setup
+    author: "Hermes Agent"
+    details: "Created GlobeVis_Evolution_Report.md, graph.yaml, chronicle.md in C:/Vault/Projects/GlobeVis/"

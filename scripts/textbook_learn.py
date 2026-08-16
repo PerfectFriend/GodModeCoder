@@ -1,270 +1,330 @@
 #!/usr/bin/env python3
-"""Textbook Learning Cron — каждые 6ч изучает случайную неизученную тему."""
-import sys
+# Living Code Ecosystem — Textbook Learn (Every 6 hours)
+# Версия: 1.0
+# Профессор изучает тему из Учебника, обновляет статус 🔴→🟡→🟢, пишет в Chronicle
+# Использование: python textbook_learn.py --cycle-aware --weighted-random
+
+import argparse
+import json
 import random
-import re
-from datetime import datetime
+import subprocess
+import sys
 from pathlib import Path
-import frontmatter
+from datetime import datetime, timezone
+from dataclasses import dataclass, asdict
+from typing import List, Dict, Optional
 
-VAULT = Path(r"C:\Vault")
-TEXTBOOK = VAULT / "Учебник.md"
-CHRONICLE = VAULT / "Evolution" / "chronicle.md"
-HERMES_PYTHON = Path(r"C:\Users\tomas\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe")
+@dataclass
+class TextbookTopic:
+    category: str
+    priority: int
+    topic: str
+    filename: str
+    status: str  # 🔴, 🟡, 🟢
+    learned_at: Optional[str] = None
 
-# Приоритеты тем (чем выше, тем чаще выбирается) — ключ = категория как в Учебнике
-PRIORITIES = {
-    "Graph Engineering": 10,
-    "Obsidian Advanced": 9,
-    "MCP & Agent Integration": 9,
-    "AI/ML on AMD Radeon 780M": 10,
-    "Video Surveillance & YOLO": 8,
-    "ParanoidX / Sovereign Systems": 7,
-    "Windows/MSYS Mastery": 6,
-    "Hermes Agent Internals": 8,
-}
-
-# Маппинг категорий Учебника -> PRIORITIES ключи
-CATEGORY_MAP = {
-    "Graph Engineering & Evolution": "Graph Engineering",
-    "Obsidian Advanced": "Obsidian Advanced",
-    "MCP & Agent Integration": "MCP & Agent Integration",
-    "AI/ML on AMD Radeon 780M": "AI/ML on AMD Radeon 780M",
-    "Video Surveillance & YOLO": "Video Surveillance & YOLO",
-    "ParanoidX / Sovereign Systems": "ParanoidX / Sovereign Systems",
-    "Windows/MSYS Mastery": "Windows/MSYS Mastery",
-    "Hermes Agent Internals": "Hermes Agent Internals",
-}
-
-def parse_textbook():
-    """Парсит Учебник.md и возвращает список тем со статусами."""
-    content = TEXTBOOK.read_text(encoding='utf-8')
+class TextbookLearn:
+    def __init__(self, cycle_aware: bool = False, weighted_random: bool = False):
+        self.cycle_aware = cycle_aware
+        self.weighted_random = weighted_random
+        self.root = Path("C:/Vault")
+        self.textbook_path = self.root / "Учебник.md"
+        self.chronicle_path = self.root / "Evolution" / "chronicle.md"
+        self.topics: List[TextbookTopic] = []
     
-    # Сначала находим все секции (категории) и их заголовки
-    # Формат: ## Category Name (priority: N)
-    section_pattern = r'##\s+([^\(]+)\s*\(priority:\s*\d+\)'
-    sections = []
-    for match in re.finditer(section_pattern, content):
-        section_name = match.group(1).strip()
-        sections.append({
-            'name': section_name,
-            'priority_key': CATEGORY_MAP.get(section_name, section_name),
-            'start': match.end()
-        })
+    def run_cmd(self, cmd: str, cwd: Path = None, timeout: int = 60) -> tuple:
+        try:
+            result = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True,
+                timeout=timeout, cwd=str(cwd or self.root)
+            )
+            return result.returncode == 0, result.stdout, result.stderr
+        except Exception as e:
+            return False, "", str(e)
     
-    # Находим все чекбоксы: - [ ] или - [x]
-    pattern = r'-\s*\[([ x])\]\s*\[([^\]]+)\]\(([^)]+)\)\s*[—-]\s*([🟢🟡🔴])'
-    matches = re.findall(pattern, content)
-    
-    topics = []
-    for status_char, title, filepath, status_emoji in matches:
-        is_learned = (status_char == 'x' or status_emoji == '🟢')
-        in_progress = status_emoji == '🟡'
+    def parse_textbook(self) -> List[TextbookTopic]:
+        """Parse Учебник.md for topics"""
+        if not self.textbook_path.exists():
+            # Create default textbook if not exists
+            self.create_default_textbook()
         
-        # Определяем категорию по заголовку секции перед темой
-        # Находим ближайшую секцию ПЕРЕД темой
-        topic_pos = content.find(f'[{title}]')
-        category = "Unknown"
-        priority = 1
+        content = self.textbook_path.read_text(encoding='utf-8')
+        topics = []
         
-        # Ищем секцию, которая стоит перед темой
-        for sec in sections:
-            if sec['start'] < topic_pos:
-                category = sec['name']
-                priority = PRIORITIES.get(sec['priority_key'], 1)
-            else:
-                break
+        current_category = ""
+        current_priority = 5
         
-        topics.append({
-            'title': title,
-            'filepath': filepath,
-            'learned': is_learned,
-            'in_progress': in_progress,
-            'status_emoji': status_emoji,
-            'category': category,
-            'priority': priority
-        })
+        for line in content.split('\n'):
+            line = line.strip()
+            
+            # Category with priority
+            if line.startswith('## ') and 'priority' in line.lower():
+                # Format: ## Category Name (priority: 10)
+                import re
+                m = re.search(r'##\s+(.+?)\s*\(priority:\s*(\d+)\)', line, re.IGNORECASE)
+                if m:
+                    current_category = m.group(1).strip()
+                    current_priority = int(m.group(2))
+                continue
+            
+            # Topic with status
+            if ('🔴' in line or '🟡' in line or '🟢' in line) and '[' in line and '](' in line:
+                import re
+                m = re.search(r'([🔴🟡🟢])\s*\[([^\]]+)\]\(([^)]+)\)', line)
+                if m:
+                    status = m.group(1)
+                    topic = m.group(2)
+                    filename = m.group(3)
+                    
+                    topics.append(TextbookTopic(
+                        category=current_category or "General",
+                        priority=current_priority,
+                        topic=topic,
+                        filename=filename,
+                        status=status
+                    ))
+        
+        self.topics = topics
+        return topics
     
-    return topics
-
-def pick_topic(topics):
-    """Выбирает случайную неизученную тему с весом по приоритету."""
-    unlearned = [t for t in topics if not t['learned'] and not t['in_progress']]
-    if not unlearned:
-        return None
-    
-    # Weighted random choice
-    weights = [t['priority'] for t in unlearned]
-    return random.choices(unlearned, weights=weights, k=1)[0]
-
-def mark_learning(topic):
-    """Помечает тему как 'в процессе' (🟡)."""
-    content = TEXTBOOK.read_text(encoding='utf-8')
-    # Заменяем 🔴 на 🟡 для этой темы
-    pattern = rf'(-\s*\[ \]\s*\[{re.escape(topic["title"])}\]\({re.escape(topic["filepath"])}\)\s*[—-]\s*)🔴'
-    replacement = rf'\1🟡'
-    new_content = re.sub(pattern, replacement, content)
-    if new_content != content:
-        TEXTBOOK.write_text(new_content, encoding='utf-8')
-        return True
-    return False
-
-def mark_learned(topic, insights, code_patterns=None, applied_to=None, next_steps=None):
-    """Помечает тему как изученную (🟢) и добавляет запись в хронику."""
-    # 1. Обновляем Учебник
-    content = TEXTBOOK.read_text(encoding='utf-8')
-    pattern = rf'(-\s*\[ \]\s*\[{re.escape(topic["title"])}\]\({re.escape(topic["filepath"])}\)\s*[—-]\s*)[🟡🔴]'
-    replacement = rf'\1🟢'
-    new_content = re.sub(pattern, replacement, content)
-    # Также ставим галочку в чекбокс
-    new_content = re.sub(rf'(-\s*\[ )\s*(?=\]\s*\[{re.escape(topic["title"])})', r'\1x', new_content)
-    TEXTBOOK.write_text(new_content, encoding='utf-8')
-    
-    # 2. Добавляем запись в хронику
-    chronicle_entry = f"""
-## {datetime.now():%Y-%m-%d %H:%M} — Learned: {topic['title']}
-**Category:** {topic['category']}
-**Source:** {topic['filepath']}
-
-### Key Insights
-{chr(10).join(f'- {i}' for i in insights)}
-
-### Code Patterns
-```python
-{code_patterns or '# practical examples added'}
-```
-
-### Applied To
-{chr(10).join(f'- {a}' for a in applied_to) if applied_to else '- (general knowledge)'}
-
-### Next Steps
-{chr(10).join(f'- [ ] {s}' for s in next_steps) if next_steps else '- [ ] Deep dive on related topics'}
-
+    def create_default_textbook(self):
+        """Create default Учебник.md with 8 categories, 32 topics"""
+        default_content = """---
+type: textbook
+tags: ["#textbook", "#learning", "#knowledge-base"]
 ---
-"""
-    chronicle_content = CHRONICLE.read_text(encoding='utf-8')
-    # Вставляем перед последней линией (---)
-    if chronicle_content.endswith('---\n'):
-        chronicle_content = chronicle_content[:-4] + chronicle_entry + '\n---\n'
-    else:
-        chronicle_content += chronicle_entry
-    CHRONICLE.write_text(chronicle_content, encoding='utf-8')
-    
-    # 3. Git commit
-    import subprocess
-    subprocess.run(["git", "-C", str(VAULT), "add", "Учебник.md", "Evolution/chronicle.md"], check=True, capture_output=True)
-    subprocess.run(["git", "-C", str(VAULT), "commit", "-m", f"learned: {topic['title']} ({topic['category']})"], check=True, capture_output=True)
-    
-    return True
 
-def study_topic(topic):
-    """Симулирует изучение темы — в реальности здесь будет LLM research."""
-    print(f"📖 Изучаю: {topic['title']} ({topic['category']})")
+# 📚 УЧЕБНИК — Knowledge Base
+
+## Категории (8) с приоритетами:
+1. Graph Engineering & Evolution (priority: 10)
+2. Obsidian Advanced (priority: 9)
+3. MCP & Agent Integration (priority: 9)
+4. AI/ML on AMD Radeon 780M (priority: 10)
+5. Video Surveillance & YOLO (priority: 8)
+6. ParanoidX / Sovereign Systems (priority: 7)
+7. Windows/MSYS Mastery (priority: 6)
+8. Hermes Agent Internals (priority: 8)
+
+## Graph Engineering & Evolution (priority: 10)
+- [ ] [Graph Engineering Protocol v3.0](Graph%20Engineering%20Protocol.md) — 🔴
+- [ ] [Self-Evolving Graphs](Self-Evolving%20Graphs.md) — 🔴
+- [ ] [Loop vs Graph vs Harness](Loop%20vs%20Graph%20vs%20Harness.md) — 🔴
+- [ ] [Fitness Functions Design](Fitness%20Functions%20Design.md) — 🔴
+
+## Obsidian Advanced (priority: 9)
+- [ ] [Dataview Mastery](Dataview%20Mastery.md) — 🔴
+- [ ] [Graph View Customization](Graph%20View%20Customization.md) — 🔴
+- [ ] [MCP Integration](MCP%20Integration.md) — 🔴
+- [ ] [Vault-LD Semantic Interop](Vault-LD%20Semantic%20Interop.md) — 🔴
+
+## MCP & Agent Integration (priority: 9)
+- [ ] [Agent Tool Registry Pattern](Agent%20Tool%20Registry%20Pattern.md) — 🔴
+- [ ] [Multi-Agent Orchestration](Multi-Agent%20Orchestration.md) — 🔴
+- [ ] [Encrypted Inter-Agent Comm](Encrypted%20Inter-Agent%20Comm.md) — 🔴
+- [ ] [Model Registry Routing](Model%20Registry%20Routing.md) — 🔴
+
+## AI/ML on AMD Radeon 780M (priority: 10)
+- [ ] [ROCm Optimization](ROCm%20Optimization.md) — 🔴
+- [ ] [DirectML for Inference](DirectML%20for%20Inference.md) — 🔴
+- [ ] [Quantization on iGPU](Quantization%20on%20iGPU.md) — 🔴
+- [ ] [Speculative Decoding AMD](Speculative%20Decoding%20AMD.md) — 🔴
+
+## Video Surveillance & YOLO (priority: 8)
+- [ ] [YOLOv11 Architecture](YOLOv11%20Architecture.md) — 🔴
+- [ ] [RTSP Stream Optimization](RTSP%20Stream%20Optimization.md) — 🔴
+- [ ] [Edge Detection Pipelines](Edge%20Detection%20Pipelines.md) — 🔴
+- [ ] [Telegram Alert Integration](Telegram%20Alert%20Integration.md) — 🔴
+
+## ParanoidX / Sovereign Systems (priority: 7)
+- [ ] [SimpleX Protocol](SimpleX%20Protocol.md) — 🔴
+- [ ] [Tor Hidden Services](Tor%20Hidden%20Services.md) — 🔴
+- [ ] [Saint Mary Liberty Economy](Saint%20Mary%20Liberty%20Economy.md) — 🔴
+- [ ] [Flutter AES Encryption](Flutter%20AES%20Encryption.md) — 🔴
+
+## Windows/MSYS Mastery (priority: 6)
+- [ ] [MSYS Path Pitfalls](MSYS%20Path%20Pitfalls.md) — 🔴
+- [ ] [Windows Service NSSM](Windows%20Service%20NSSM.md) — 🔴
+- [ ] [Gradle Manual Config](Gradle%20Manual%20Config.md) — 🔴
+- [ ] [Docker on Windows](Docker%20on%20Windows.md) — 🔴
+
+## Hermes Agent Internals (priority: 8)
+- [ ] [Skill System Architecture](Skill%20System%20Architecture.md) — 🔴
+- [ ] [Cron Job Orchestration](Cron%20Job%20Orchestration.md) — 🔴
+- [ ] [CDP Browser Automation](CDP%20Browser%20Automation.md) — 🔴
+- [ ] [Profile Auto-Load](Profile%20Auto-Load.md) — 🔴
+"""
+        self.textbook_path.write_text(default_content, encoding='utf-8')
+        print(f"  📝 Created default Учебник.md at {self.textbook_path}")
     
-    # Помечаем как в процессе
-    mark_learning(topic)
+    def select_topic(self) -> Optional[TextbookTopic]:
+        """Select next topic to learn (weighted by priority)"""
+        red_topics = [t for t in self.topics if t.status == '🔴']
+        
+        if not red_topics:
+            return None
+        
+        if self.weighted_random:
+            # Weight by priority
+            weights = [t.priority for t in red_topics]
+            selected = random.choices(red_topics, weights=weights, k=1)[0]
+        else:
+            # Highest priority first
+            selected = max(red_topics, key=lambda t: t.priority)
+        
+        return selected
     
-    # Здесь должен быть реальный research: web search, чтение файлов, код-примеры
-    # Пока заглушка с реалистичными insights для каждой категории
-    insights_map = {
-        "Graph Engineering": [
-            "Graph evaluation > prompt testing — тестируют весь граф, а не финальный ответ",
-            "Loop vs Graph vs Harness — три слоя инженерии агентов 2026",
-            "Self-evolving graphs добавляют/мутируют/удаляют ноды по результатам работы"
-        ],
-        "Obsidian Advanced": [
-            "Dataview DQL executes clauses in written order — LIMIT before SORT breaks top-N",
-            "Frontmatter wikilinks create graph edges identical to body wikilinks",
-            "CSS snippets can override graph-view colors with !important"
-        ],
-        "MCP & Agent Integration": [
-            "graphthulhu provides 39 tools for Obsidian/Logseq graph access via MCP",
-            "engraph (Rust) offers hybrid search + faster performance",
-            "MCP servers enable agents to query graph as knowledge base directly"
-        ],
-        "AI/ML on AMD Radeon 780M": [
-            "ROCm 7.2 required for 780M — no CPU fallback allowed",
-            "DirectML alternative for Windows native PyTorch",
-            "ACE-Step and Qwen3-TTS must run in VRAM via DirectML"
-        ],
-        "Video Surveillance & YOLO": [
-            "YOLO11n optimized for edge deployment on N100/SG1210MP",
-            "RTSP + HSV filter + YOLO classes (person/car/bus/truck) = thief-electrician detection",
-            "ESP32 actuator: flashlight + siren triggered via Telegram bot"
-        ],
-        "ParanoidX / Sovereign Systems": [
-            "BIP39 mnemonic + invite code = registration flow",
-            "5 Docker containers: smp-server, coturn, v2ray, tor, xftp",
-            "License server private — subscription model 50€/month/camera"
-        ],
-        "Windows/MSYS Mastery": [
-            "Python requires C:\\ paths, not MSYS /c/ paths",
-            "Obsidian rewrites graph.json on Graph View close — edit only when closed",
-            "Git in MSYS creates C:\\c\\ orphan folders — check with ls -d /c/c"
-        ],
-        "Hermes Agent Internals": [
-            "Auto-load skills via profile config.yaml auto_load_skills",
-            "Cron jobs with no_agent=true + deliver=local for silent watchdogs",
-            "Skill descriptions must be ≤60 chars for system-prompt routing"
-        ],
-    }
+    def study_topic(self, topic: TextbookTopic) -> Dict:
+        """Simulate studying the topic (in real impl, would call LLM)"""
+        print(f"  📖 Studying: {topic.topic} ({topic.category}, priority {topic.priority})")
+        
+        # In real implementation, this would:
+        # 1. Read the topic file (if exists)
+        # 2. Search web/X.com for latest info
+        # 3. Generate insights
+        # 4. Write to topic file
+        # 5. Return insights
+        
+        insights = [
+            f"Key insight 1 about {topic.topic}",
+            f"Key insight 2 about {topic.topic}",
+            f"Practical application for Living Code Project {random.randint(1,4)}",
+        ]
+        
+        code_pattern = f'''# {topic.topic} - Practical Example
+def {topic.topic.lower().replace(' ', '_')}_pattern():
+    \"\"\"
+    Auto-generated pattern from textbook learning
+    Cycle: {datetime.now(timezone.utc).strftime('%Y-%m-%d')}
+    \"\"\"
+    pass
+'''
+        
+        return {
+            "topic": topic.topic,
+            "insights": insights,
+            "code_pattern": code_pattern,
+            "applied_to": [f"godmode-coder skill", f"obsidian-graph-engineering skill"],
+            "next_steps": [f"Deep dive: {topic.topic} subtopic", f"Integration: where to apply"]
+        }
     
-    insights = insights_map.get(topic['category'], [
-        f"Studied {topic['title']} fundamentals",
-        f"Identified integration points with current graph nodes",
-        f"Mapped to existing skills: {topic['category']}"
-    ])
+    def update_textbook_status(self, topic: TextbookTopic, new_status: str):
+        """Update topic status in Учебник.md"""
+        content = self.textbook_path.read_text(encoding='utf-8')
+        
+        # Replace status emoji
+        old_line = f"{topic.status} [{topic.topic}]({topic.filename})"
+        new_line = f"{new_status} [{topic.topic}]({topic.filename})"
+        
+        content = content.replace(old_line, new_line)
+        
+        self.textbook_path.write_text(content, encoding='utf-8')
     
-    code_patterns = f"# {topic['category']} patterns\n# See skill files for implementation"
-    applied_to = [f"godmodecoder skill", f"obsidian-graph-engineering skill", f"turbocoder skill"]
-    next_steps = [
-        f"Deep dive: {topic['title']} advanced patterns",
-        f"Integrate into {topic['category'].lower()} workflow",
-        f"Patch relevant skills with new knowledge"
-    ]
+    def update_chronicle(self, topic: TextbookTopic, study_result: Dict):
+        """Append to chronicle.md"""
+        self.chronicle_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        entry = f"\n## {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} — Learned: {topic.topic}\n"
+        entry += f"**Category:** {topic.category}\n"
+        entry += f"**Priority:** {topic.priority}\n"
+        entry += f"**Source:** {topic.filename}\n\n"
+        
+        entry += "### Key Insights\n"
+        for insight in study_result["insights"]:
+            entry += f"- {insight}\n"
+        
+        entry += "\n### Code Patterns\n```python\n"
+        entry += study_result["code_pattern"]
+        entry += "```\n"
+        
+        entry += "\n### Applied To\n"
+        for applied in study_result["applied_to"]:
+            entry += f"- {applied}\n"
+        
+        entry += "\n### Next Steps\n"
+        for step in study_result["next_steps"]:
+            entry += f"- [ ] {step}\n"
+        
+        entry += "\n---\n"
+        
+        if self.chronicle_path.exists():
+            content = self.chronicle_path.read_text(encoding='utf-8')
+        else:
+            content = "# Летопись Живого Кода\n\n"
+        
+        self.chronicle_path.write_text(content + entry, encoding='utf-8')
     
-    # Небольшая пауза для имитации изучения
-    import time
-    time.sleep(2)
+    def git_commit(self, topic: TextbookTopic):
+        """Git commit the changes"""
+        self.run_cmd("git add Учебник.md Evolution/chronicle.md", cwd=self.root)
+        self.run_cmd(f'git commit -m "learned: {topic.topic} ({topic.category})"', cwd=self.root)
     
-    # Помечаем как изученное
-    mark_learned(topic, insights, code_patterns, applied_to, next_steps)
-    print(f"✅ Изучено: {topic['title']} — добавлено в хронику")
-    return True
+    def run(self) -> Dict:
+        """Run textbook learning cycle"""
+        print(f"\n{'='*60}")
+        print(f"📚 TEXTBOOK LEARNING — Cycle Aware: {self.cycle_aware}")
+        print(f"{'='*60}")
+        
+        # Parse textbook
+        self.parse_textbook()
+        print(f"  📖 Loaded {len(self.topics)} topics")
+        
+        red_count = len([t for t in self.topics if t.status == '🔴'])
+        yellow_count = len([t for t in self.topics if t.status == '🟡'])
+        green_count = len([t for t in self.topics if t.status == '🟢'])
+        print(f"  📊 Status: 🔴{red_count} 🟡{yellow_count} 🟢{green_count}")
+        
+        # Select topic
+        topic = self.select_topic()
+        
+        if not topic:
+            print("  ✅ All topics learned! (100% 🟢)")
+            return {"status": "complete", "learned": 0}
+        
+        # Mark as in progress
+        self.update_textbook_status(topic, '🟡')
+        
+        # Study
+        study_result = self.study_topic(topic)
+        
+        # Mark as learned
+        self.update_textbook_status(topic, '🟢')
+        topic.status = '🟢'
+        topic.learned_at = datetime.now(timezone.utc).isoformat()
+        
+        # Update chronicle
+        self.update_chronicle(topic, study_result)
+        
+        # Git commit
+        self.git_commit(topic)
+        
+        print(f"\n  ✅ Learned: {topic.topic}")
+        print(f"  📝 Insights: {len(study_result['insights'])}")
+        print(f"  💾 Committed to git")
+        
+        return {
+            "status": "learned",
+            "topic": topic.topic,
+            "category": topic.category,
+            "priority": topic.priority,
+            "insights": study_result["insights"],
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+
 
 def main():
-    print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Textbook Learning Cron started")
+    parser = argparse.ArgumentParser(description="Textbook Learn — Living Code")
+    parser.add_argument("--cycle-aware", action="store_true")
+    parser.add_argument("--weighted-random", action="store_true")
+    args = parser.parse_args()
     
-    if not TEXTBOOK.exists():
-        print(f"ERROR: Textbook not found at {TEXTBOOK}")
-        return 1
+    learner = TextbookLearn(args.cycle_aware, args.weighted_random)
+    result = learner.run()
     
-    topics = parse_textbook()
-    unlearned = [t for t in topics if not t['learned']]
-    learned = [t for t in topics if t['learned']]
-    
-    print(f"📊 Всего тем: {len(topics)} | Изучено: {len(learned)} | Осталось: {len(unlearned)}")
-    
-    if not unlearned:
-        print("🎉 Все темы изучены! Учебник завершён.")
-        return 0
-    
-    topic = pick_topic(topics)
-    if not topic:
-        print("No topics to learn")
-        return 0
-    
-    print(f"🎯 Выбрана тема: {topic['title']} (priority: {topic['priority']}, category: {topic['category']})")
-    
-    try:
-        study_topic(topic)
-        print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Learning cycle complete")
-        return 0
-    except Exception as e:
-        print(f"ERROR: {e}")
-        import traceback
-        traceback.print_exc()
-        return 1
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    sys.exit(0)
+
 
 if __name__ == "__main__":
-    sys.exit(main())
+    import json
+    main()

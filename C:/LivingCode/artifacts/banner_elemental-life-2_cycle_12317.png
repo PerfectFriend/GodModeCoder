@@ -1,0 +1,2 @@
+# PNG placeholder - convert from SVG: banner_elemental-life-2_cycle_12317.svg
+# rsvg-convert -w 1200 -h 400 banner_elemental-life-2_cycle_12317.svg -o banner_elemental-life-2_cycle_12317.png
