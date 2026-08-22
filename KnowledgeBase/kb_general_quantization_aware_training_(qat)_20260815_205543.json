@@ -1,0 +1,36 @@
+{
+  "id": "kb_general_quantization_aware_training_(qat)_20260815_205543",
+  "topic": "Quantization-Aware Training (QAT)",
+  "category": "General",
+  "source": "Quantization-Aware%20Training%20QAT.md",
+  "source_type": "local-file",
+  "key_insights": [
+    "AutoRound's adaptive quantization preserves nonlinear knowledge better than static GPTQ/AWQ — essential for reasoning models",
+    "Weight-only INT4/INT8 works for inference; activation-aware quantization needed for training loops"
+  ],
+  "code_patterns": [
+    "# AutoRound Integration for AMD 780M\nfrom auto_round import AutoRound\nimport torch\n\nmodel = AutoModelForCausalLM.from_pretrained(\"model\", torch_dtype=torch.float16)\ntokenizer = AutoTokenizer.from_pretrained(\"model\")\n\n# Adaptive quantization - preserves reasoning\nautoround = AutoRound(\n    model, tokenizer,\n    bits=4, group_size=128,\n    dataset=\"c4\",  # calibration data\n    seqlen=2048\n)\nquantized_model = autoround.quantize()\nquantized_model.save_pretrained(\"./model-autoround-4bit\")"
+  ],
+  "related_topics": [
+    "kb_general_x_algorithm_300k+_lines:_viral_mechanics,_shadowban_prevention,_time_on_content_20260815_193631",
+    "kb_general_autoround:_intel_advanced_quantization_for_llms_20260815_193614",
+    "kb_general_autodesign:_meta_harness_optimization_for_agentic_design_20260815_204704",
+    "kb_general_explee_autogtm_application_to_globevis.net:_105m_companies_+_536m_people_database_20260815_193638"
+  ],
+  "tags": [
+    "quantization-aware-training-(qat)",
+    "quantization",
+    "local-file",
+    "general"
+  ],
+  "learned_at": "2026-08-15T20:55:43.786742+00:00",
+  "applied_to": [
+    "mlops: 1 keyword match — potential relevance"
+  ],
+  "next_steps": [
+    "Create knowledge base entry with tags: quantization-aware-training-(qat), quantization, local-file, general",
+    "Test AutoRound on nemotron-3-ultra for AMD 780M deployment",
+    "Add quantization pipeline to mlops/quantization-evaluation skill"
+  ],
+  "confidence": 0.75
+}
