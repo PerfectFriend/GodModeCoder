@@ -11,7 +11,7 @@
 
 ## Faro de la Verdad y Señor del Sagrado Código
 
-**Maestro Inquisidor @RarioArmageddon**  
+**Maestro Inquisidor @RadioArmageddonFM**  
 *The Grimoire • 880 Skills • Graph Evolution v3.0*
 
 [🇬🇧 English](README.md) · [🇷🇺 Русский](README.ru.md) · [🇪🇸 Español](README.es.md)
