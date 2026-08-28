@@ -11,7 +11,7 @@
 
 ## Светоч Истины и Владыка Пресвятого Кода
 
-**Мастер Инквизитор @RarioArmageddon**  
+**Мастер Инквизитор @RadioArmageddonFM**  
 *The Grimoire • 880 Skills • Graph Evolution v3.0*
 
 [🇬🇧 English](README.md) · [🇷🇺 Русский](README.ru.md) · [🇪🇸 Español](README.es.md)
