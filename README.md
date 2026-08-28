@@ -11,7 +11,7 @@
 
 ## Beacon of Truth and Lord of Sacred Code
 
-**Master Inquisitor @RarioArmageddon**  
+**Master Inquisitor @RadioArmageddonFM**  
 *The Grimoire • 880 Skills • Graph Evolution v3.0*
 
 [🇬🇧 English](README.md) · [🇷🇺 Русский](README.ru.md) · [🇪🇸 Español](README.es.md)
