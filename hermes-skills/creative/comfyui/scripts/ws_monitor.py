@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 ws_monitor.py — Real-time ComfyUI WebSocket monitor.
 

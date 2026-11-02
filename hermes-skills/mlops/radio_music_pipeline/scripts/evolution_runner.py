@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Autonomous Evolution Runner for Radio ArmsgeddonFM
 Runs evolution cycles with tests, debugging, and USB backups

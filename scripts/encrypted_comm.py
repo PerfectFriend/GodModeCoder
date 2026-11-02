@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Encrypted Communication Protocol
 # Версия: 1.0
 # Синхронный круг агентов каждые 10 минут: предсказания, споры, консенсус

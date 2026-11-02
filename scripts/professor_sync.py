@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Professor Sync
 # Версия: 1.0
 # Синхронизация памяти Профессора → 4 проекта (каждые 4 часа)

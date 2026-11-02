@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Polymarket CLI helper — query prediction market data.
 
 Usage:

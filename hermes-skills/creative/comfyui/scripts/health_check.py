@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 health_check.py — One-stop verification that the ComfyUI environment is ready.
 

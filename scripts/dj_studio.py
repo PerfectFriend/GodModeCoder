@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — DJ Sound Studio (DJ Студиёнок Витальевич)
 # Версия: 1.0
 # Саунд-дизайн игр: адаптивная музыка, DSP, пространственный звук, интеграция FMOD/Wwise

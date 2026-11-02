@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """SuperGuard PANIC MODE v7 FINAL - YOLO sees a YELLOW vehicle -> alarm.
 - msg A: trigger frame (what YOLO reacted to) - NEVER edited, NO BUTTON (clean
   photo), kept for audit; user removes it manually.

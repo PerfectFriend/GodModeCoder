@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Cycle Start (T+0min)
 # Версия: 1.0
 # Git pull, health checks, chronicle entry, encrypted_comm briefing

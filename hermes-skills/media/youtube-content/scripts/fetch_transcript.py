@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Fetch a YouTube video transcript and output it as structured JSON.
 

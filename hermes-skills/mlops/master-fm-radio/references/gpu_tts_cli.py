@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # -*- coding: utf-8 -*-
 """GPU-TTS CLI для Мастер-ФМ (совместим с voicebox_tts.py интерфейсом).
 

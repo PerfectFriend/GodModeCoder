@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 HERMES VERIFY ALL — Полный автотест системы TurboCoder / Monster Coder
 Запускается ПОСЛЕ КАЖДОЙ мутации. Fail = Rollback к чекпоинту.

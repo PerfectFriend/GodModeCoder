@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Evolution Engine
 # Версия: 1.0
 # Запускает 10 подциклов эволюции для проекта: код -> тесты -> дебаг -> коммит -> пуш

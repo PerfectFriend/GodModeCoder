@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Auto-detect GPU configuration for ACE-Step inference.
 Returns appropriate config dict for current hardware.

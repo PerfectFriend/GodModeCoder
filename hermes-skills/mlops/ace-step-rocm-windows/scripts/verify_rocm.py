@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 ACE-Step ROCm GPU Verification Script
 Verifies ROCm 7.2 installation and GPU detection for AMD iGPU (Radeon 780M).

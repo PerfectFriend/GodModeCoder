@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Procedural Music Generation for Radio ArmsgeddonFM
 Zero-dependency, instant CPU synthesis (FM, additive, noise-based).

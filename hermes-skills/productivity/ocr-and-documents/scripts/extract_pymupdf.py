@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Extract text from documents using pymupdf. Lightweight (~25MB), no models.
 
 Usage:

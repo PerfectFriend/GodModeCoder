@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Textbook Learn (Every 6 hours)
 # Версия: 1.0
 # Профессор изучает тему из Учебника, обновляет статус 🔴→🟡→🟢, пишет в Chronicle

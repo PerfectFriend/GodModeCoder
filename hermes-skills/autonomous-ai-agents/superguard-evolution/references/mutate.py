@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Mutation script — proposes and evaluates mutations for evolution nodes."""
 
 import os, sys, json, subprocess

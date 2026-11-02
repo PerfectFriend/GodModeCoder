@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # -*- coding: utf-8 -*-
 """AI Engineering News Cron — ежедневно в 8:00 ищет новости AI Engineering,
 отбирает полезное, классифицирует и добавляет в хронику/навыки."""

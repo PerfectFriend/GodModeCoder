@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Wrapper for professor_sync.py that calculates cycle number automatically
 # Cycle = minutes since epoch (2021-01-01) // 240 (4-hour cycles)
 

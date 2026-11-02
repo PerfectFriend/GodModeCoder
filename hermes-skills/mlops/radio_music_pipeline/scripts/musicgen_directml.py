@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 MusicGen DirectML/CPU Client for Radio ArmsgeddonFM
 Local music generation on AMD 780M via CPU (DirectML has operator gaps)

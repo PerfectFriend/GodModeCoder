@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Pulse History Logger — записывает историю пульса в CSV для Obsidian Heatmap.
 

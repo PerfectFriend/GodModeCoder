@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 fetch_logs.py — Retrieve workflow execution diagnostics from a ComfyUI server.
 

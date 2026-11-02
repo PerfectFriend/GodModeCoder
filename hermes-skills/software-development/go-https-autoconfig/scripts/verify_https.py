@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 HTTPS Verification Script for Go Services with Auto-TLS
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Pulse Watchdog (Hourly Health Check)
 # Версия: 1.0
 # Запускает pulse.py --quiet каждый час, алертит если есть мёртвые узлы

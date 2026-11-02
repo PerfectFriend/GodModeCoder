@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Wrapper for evolution_engine.py (godmode-coder) that calculates cycle number automatically
 # Cycle = minutes since epoch (2021-01-01) // 240 (4-hour cycles)
 

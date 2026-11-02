@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Voicebox voice-cloning CLI (proven 2026-08, Windows + git-bash).
 

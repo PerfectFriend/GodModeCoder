@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Крон-обёртка для авто-экспорта эволюционного графа в Obsidian Vault.
 Запускается Hermes cron каждые 6ч (no_agent=true, deliver=local)."""
 import sys

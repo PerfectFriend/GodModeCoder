@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Textbook Learning Cron — каждые 6ч изучает случайную неизученную тему."""
 import sys
 import random

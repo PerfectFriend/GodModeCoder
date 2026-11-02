@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 extract_schema.py — Analyze a ComfyUI API-format workflow and extract
 controllable parameters.

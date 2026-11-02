@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Pulse — homeostatic health check for all nodes in SuperGuard evolution graph."""
 
 import os, sys, json, subprocess, time, socket, requests

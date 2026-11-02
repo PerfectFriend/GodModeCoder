@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Probe: continuous background capture keeps the LATEST frame fresh.
 
 Validated 2026-08-06 — the fix for the "frozen feed" bug where a single persistent

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Model Registry (Библиотекарь Фёдорович)
 # Версия: 1.0
 # Маршрутизация задач к лучшей модели на нужном узле Tailscale

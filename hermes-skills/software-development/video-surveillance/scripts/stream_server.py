@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """SuperGuard LIVE STREAM SERVER (verified 2026-08-06).
 Reads a camera (HLS/RTSP/MJPEG via OpenCV) and serves:
   /            - HTML page with live <img> MJPEG viewer

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Wrapper for banner_deploy_poller.py that auto-detects the current cycle
 
 import subprocess

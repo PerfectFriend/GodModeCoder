@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 GodMode Watchdog — авто-мониторинг мёртвых узлов графа.
 

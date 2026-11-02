@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Model Registry Health (Every 30 min)
 # Версия: 1.0
 # Проверка доступности всех моделей на всех 6 узлах Tailscale

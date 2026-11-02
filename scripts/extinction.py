@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Extinction Check (Daily 03:00)
 # Версия: 1.0
 # Узлы мёртвые >7 дней → экстинкция в archive/, запись в летопись

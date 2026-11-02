@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 TrashClean — Auto-delete spam/flood messages in Telegram group via Bot API.
 Reads config from .env, polls getUpdates, deletes matching messages.

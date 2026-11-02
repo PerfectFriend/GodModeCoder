@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """i18n test — verifies all tr() keys present in RU/EN/ES + zone math."""
 import sys, re, os
 

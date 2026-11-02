@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 ACE-Step API Client for AI Radio
 Replaces subprocess CLI calls with HTTP API to WSL2 GPU server.

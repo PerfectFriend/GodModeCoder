@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+#!/home/thomas/build/bin/python3
 """
 export_graph_to_obsidian.py — визуализация Эволюционного Графа (Гримуар v3.0)
 в Obsidian: каждый узел = заметка с [[wiki-ссылками]] на соседей, фронтматтер
 для Dataview, статусы ЖИВ/БОЛЕН/МЁРТВ из pulse.py. Graph View Obsidian
 построит интерактивный граф автоматически из ссылок.
 
-Запуск:  python export_graph_to_obsidian.py [--vault C:\Vault] [--config ru/configs/graph.yaml]
+Запуск:  python export_graph_to_obsidian.py [--vault C:\\Vault] [--config ru/configs/graph.yaml]
 """
 
 import argparse

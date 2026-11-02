@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Master-FM: NIGHT BATCH (20:00-07:00).
 Full generation of all content: music, news, ads, jingles, audiobooks.

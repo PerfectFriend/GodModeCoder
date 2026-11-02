@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """hardware_check.py — Detect whether this machine can realistically run ComfyUI locally.
 
 Improvements over v1:

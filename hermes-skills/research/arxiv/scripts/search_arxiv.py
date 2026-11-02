@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Search arXiv and display results in a clean format.
 
 Usage:

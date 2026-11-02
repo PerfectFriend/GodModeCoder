@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 MusicGen CPU Generation Script for Radio ArmsgeddonFM
 Generates 30-second music segments and stitches them into hourly blocks.

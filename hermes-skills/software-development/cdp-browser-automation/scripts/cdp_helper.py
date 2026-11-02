@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 cdp_helper.py — переиспользуемый CDP-помощник для Chrome automation.
 

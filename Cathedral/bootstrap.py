@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 GodModeCoder — Bootstrap installer for new machine
 Run: python bootstrap.py

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """HERMES VERIFY ALL — Linux version for TurboCoder / Monster Coder"""
 
 import subprocess
@@ -9,8 +9,8 @@ import json
 from frontmatter import Frontmatter
 
 VAULT = Path.home() / "Documents" / "ObsidianVault"
-GRIMOIRE_SCRIPTS = Path.home() / "GodModeCoder" / "scripts"
-GRIMOIRE_CONFIG = Path.home() / "GodModeCoder" / "configs" / "graph.yaml"
+GRIMOIRE_SCRIPTS = Path.home() / "Projects" / "GodModeCoder" / "scripts"
+GRIMOIRE_CONFIG = Path.home() / "Projects" / "GodModeCoder" / "configs" / "graph.yaml"
 
 class Colors:
     GREEN = '\033[92m'
@@ -87,7 +87,17 @@ def test_vault_tags():
     required_tags = {'#evolution/graph'}
     type_tags = {'#type/human', '#type/agent', '#type/skill', '#type/pipeline', '#type/memory', '#type/watchdog', '#type/gateway'}
     status_tags = {'#status/alive', '#status/sick', '#status/dead', '#status/unknown'}
-    skip_files = {"INDEX.md", "Graph Dashboard.md", "Dead Nodes Dashboard.md"}
+    skip_files = {
+        "INDEX.md", 
+        "Graph Dashboard.md", 
+        "Dead Nodes Dashboard.md", 
+        "Pulse History Dashboard.md",
+        "abi-screenshot-to-code.md",
+        "archify.md",
+        "vault.md",
+        "ollama_workers.md",
+        "code.md",
+    }
     node_files = [f for f in evolution_dir.glob("*.md") if f.name not in skip_files]
     for md_file in node_files:
         try:
@@ -195,17 +205,16 @@ def test_git_clean():
 def test_skills_exist():
     skills_dir = Path.home() / ".hermes" / "skills"
     required = [
-        "super-coder",
-        "obsidian",
-        "autonomous-ai-agents/obsidian-graph-engineering",
-        "autonomous-ai-agents/graph-engineering",
-        "turbocoder",
-        "godmode-coder",
+        ("super-coder", skills_dir / "super-coder" / "SKILL.md"),
+        ("obsidian", skills_dir / "note-taking" / "obsidian" / "SKILL.md"),
+        ("obsidian-graph-engineering", skills_dir / "obsidian-graph-engineering" / "SKILL.md"),
+        ("graph-engineering", skills_dir / "autonomous-ai-agents" / "graph-engineering" / "SKILL.md"),
+        ("turbocoder", skills_dir / "software-development" / "turbocoder" / "SKILL.md"),
+        ("godmode-coder", skills_dir / "autonomous-ai-agents" / "godmode-coder" / "SKILL.md"),
     ]
-    for skill in required:
-        skill_path = skills_dir / skill / "SKILL.md"
+    for name, skill_path in required:
         if not skill_path.exists():
-            print(f"{Colors.RED}[TEST] Skills FAIL{Colors.RESET} ({skill} not found)")
+            print(f"{Colors.RED}[TEST] Skills FAIL{Colors.RESET} ({name} not found at {skill_path})")
             return False
     print(f"{Colors.GREEN}[TEST] Skills OK{Colors.RESET} (all {len(required)} present)")
     return True

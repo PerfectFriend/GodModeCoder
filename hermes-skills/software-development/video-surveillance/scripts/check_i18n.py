@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Static i18n key-parity check for the SuperGuard alarm bot (panic_mode.py).
 
 Slices the L = {...} dict literal OUT of the source and exec()s only that

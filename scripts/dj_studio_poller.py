@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — DJ Studio Poller
 # Версия: 1.1
 # Опрашивает артефакты filter_overlord для game компонентов, запускает dj_studio

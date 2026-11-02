@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Citation ledger for grounded answers and documents.
 
 Owns the ``url -> [n]`` mapping used by the ``grounded-citations`` skill.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Telegram reporter for evolution pulse — sends reports via CathedralMaster_bot (Hermes gateway)."""
 
 import os, sys, json, requests, time

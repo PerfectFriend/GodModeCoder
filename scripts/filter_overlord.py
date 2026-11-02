@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Filter Overlord (Владыка)
 # Версия: 1.0
 # Сканирует папки сессий, классифицирует код: FROZEN/READY/ARCHIVED по строгому протоколу

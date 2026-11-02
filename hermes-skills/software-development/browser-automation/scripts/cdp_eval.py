@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Evaluate JavaScript on a Chrome tab via CDP (port 9222).
 
 Usage:

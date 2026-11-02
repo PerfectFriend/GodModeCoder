@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/build/bin/python3
 """Крон-обёртка для авто-экспорта эволюционного графа в Obsidian Vault.
 Запускается Hermes cron каждые 6ч (no_agent=true, deliver=local)."""
 import sys
@@ -6,10 +6,10 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-VAULT = Path.home() / "ObsidianVault"
-SCRIPT = Path.home() / "GodModeCoder" / "scripts" / "export_graph_to_obsidian.py"
-CONFIG = Path.home() / "GodModeCoder" / "Graph.yaml"
-VERIFY_SCRIPT = Path.home() / "GodModeCoder" / "scripts" / "hermes-verify-all-linux.py"
+VAULT = Path.home() / "Документы" / "ObsidianVault"
+SCRIPT = Path.home() / "Projects" / "GodModeCoder" / "scripts" / "export_graph_to_obsidian.py"
+CONFIG = Path.home() / "Projects" / "GodModeCoder" / "configs" / "graph.yaml"
+VERIFY_SCRIPT = Path.home() / "Projects" / "GodModeCoder" / "scripts" / "hermes-verify-all.py"
 PYTHON = Path(sys.executable)
 
 def main():

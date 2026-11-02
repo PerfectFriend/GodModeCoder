@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Target parse test — 11 multilingual cases."""
 import sys
 sys.path.insert(0, ".")

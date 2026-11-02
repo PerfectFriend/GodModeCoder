@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Live detection on public cameras (MJPEG/HLS/RTSP) - capture -> YOLO -> per-class stats.
 SuperGuard pipeline proof without client hardware. Works with any URL OpenCV can open:
 rtsp://, http://...mjpg, https://.../playlist.m3u8 (HLS).

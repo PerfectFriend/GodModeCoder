@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 ParanoidX Autonomous Evolution Cycle
 Runs 20 cycles: test, debug, backup to D:\backups, increment version badge

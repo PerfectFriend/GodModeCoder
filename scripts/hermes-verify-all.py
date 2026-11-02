@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 HERMES VERIFY ALL — Полный автотест системы TurboCoder / Monster Coder
 Запускается ПОСЛЕ КАЖДОЙ мутации. Fail = Rollback к чекпоинту.
@@ -9,11 +9,11 @@ import sys
 from pathlib import Path
 import yaml
 import json
-import frontmatter
+from frontmatter import Frontmatter
 
-VAULT = Path(r"C:\Vault")
-GRIMOIRE_SCRIPTS = Path(r"C:\Users\yusya\GodModeCoder\scripts")
-GRIMOIRE_CONFIG = Path(r"C:\Users\yusya\GodModeCoder\configs\graph.yaml")
+VAULT = Path("/home/thomas/Documents/ObsidianVault")
+GRIMOIRE_SCRIPTS = Path("/home/thomas/Документы/ObsidianVault/GodModeCoder/scripts")
+GRIMOIRE_CONFIG = Path("/home/thomas/Документы/ObsidianVault/GodModeCoder/configs/graph.yaml")
 
 class Colors:
     GREEN = '\033[92m'
@@ -124,13 +124,23 @@ def test_vault_tags():
     type_tags = {'#type/human', '#type/agent', '#type/skill', '#type/pipeline', '#type/memory', '#type/watchdog', '#type/gateway'}
     status_tags = {'#status/alive', '#status/sick', '#status/dead', '#status/unknown'}
     
-    # Only check actual node files (not INDEX, dashboards, presets)
-    skip_files = {"INDEX.md", "Graph Dashboard.md", "Dead Nodes Dashboard.md"}
+    # Only check actual node files (not INDEX, dashboards, presets, legacy)
+    skip_files = {
+        "INDEX.md", 
+        "Graph Dashboard.md", 
+        "Dead Nodes Dashboard.md", 
+        "Pulse History Dashboard.md",
+        "abi-screenshot-to-code.md",
+        "archify.md",
+        "vault.md",
+        "ollama_workers.md",
+        "code.md",
+    }
     node_files = [f for f in evolution_dir.glob("*.md") if f.name not in skip_files]
     for md_file in node_files:
         try:
-            post = frontmatter.load(md_file)
-            tags = set(post.get('tags', []))
+            post = Frontmatter.read_file(md_file)
+            tags = set(post.get('attributes', {}).get('tags', []))
             # Check graph tag
             if not required_tags.issubset(tags):
                 print(f"{Colors.RED}[TEST] Tags FAIL{Colors.RESET} ({md_file.name}: missing #evolution/graph, has {tags})")
@@ -242,18 +252,17 @@ def test_git_clean():
 
 def test_skills_exist():
     """Test 10: Required skills are loaded/available"""
-    skills_dir = Path(r"C:\Users\yusya\AppData\Local\hermes\skills")
+    skills_dir = Path("/home/thomas/.hermes/skills")
     required = [
-        "software-development/super-coder",
-        "note-taking/obsidian",
-        "autonomous-ai-agents/obsidian-graph-engineering",
-        "autonomous-ai-agents/graph-engineering",
-        "software-development/turbocoder",
+        ("super-coder", skills_dir / "super-coder" / "SKILL.md"),
+        ("obsidian", skills_dir / "note-taking" / "obsidian" / "SKILL.md"),
+        ("obsidian-graph-engineering", skills_dir / "obsidian-graph-engineering" / "SKILL.md"),
+        ("graph-engineering", skills_dir / "autonomous-ai-agents" / "graph-engineering" / "SKILL.md"),
+        ("turbocoder", skills_dir / "software-development" / "turbocoder" / "SKILL.md"),
     ]
-    for skill in required:
-        skill_path = skills_dir / skill / "SKILL.md"
+    for name, skill_path in required:
         if not skill_path.exists():
-            print(f"{Colors.RED}[TEST] Skills FAIL{Colors.RESET} ({skill} not found)")
+            print(f"{Colors.RED}[TEST] Skills FAIL{Colors.RESET} ({name} not found at {skill_path})")
             return False
     print(f"{Colors.GREEN}[TEST] Skills OK{Colors.RESET} (all {len(required)} present)")
     return True

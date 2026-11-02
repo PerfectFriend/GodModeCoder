@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 export_graph_to_obsidian.py — визуализация Эволюционного Графа (Гримуар v3.0)
 в Obsidian: каждый узел = заметка с [[wiki-ссылками]] на соседей, фронтматтер

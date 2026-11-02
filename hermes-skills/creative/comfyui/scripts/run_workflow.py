@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 run_workflow.py — Inject parameters into a ComfyUI workflow, submit it, monitor
 execution, and download outputs.

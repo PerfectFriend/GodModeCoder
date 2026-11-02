@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 TrashClean - Auto-delete spam in Telegram groups via Bot API.
 """

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Voicebox TTS command provider for Hermes (proven 2026-08).
 
 Turns a text file into audio via the local Voicebox server

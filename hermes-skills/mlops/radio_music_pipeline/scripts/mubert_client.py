@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Mubert API Client for Radio ArmsgeddonFM
 Generates royalty-free background music for 24/7 radio stream.

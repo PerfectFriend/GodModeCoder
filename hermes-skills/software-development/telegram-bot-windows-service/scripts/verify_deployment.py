@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Ad-hoc verification for SuperGuard Alarm deployment."""
 import sys, subprocess, re, os
 

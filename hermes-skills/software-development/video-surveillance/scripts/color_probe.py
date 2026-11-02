@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Color calibration probe for vehicle-triggered alarms (panic mode).
 Runs YOLO + HSV color analysis on a live camera for N seconds, printing per-vehicle
 color fractions so you can set YELLOW_MIN_FRACTION / BLACK_V_MAX thresholds between

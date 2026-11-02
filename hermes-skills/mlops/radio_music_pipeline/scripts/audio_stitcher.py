@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Audio Stitcher for Radio ArmsgeddonFM
 Combines multiple music segments into continuous tracks with crossfade

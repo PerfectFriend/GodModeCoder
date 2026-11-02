@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # -*- coding: utf-8 -*-
 """pulse.py — GodModeCoder homeostasis check.
 

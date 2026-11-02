@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # -*- coding: utf-8 -*-
 """
 Мастер-ФМ: ДНЕВНОЙ РЕЖИМ — генерация срочных новостей (breaking news).

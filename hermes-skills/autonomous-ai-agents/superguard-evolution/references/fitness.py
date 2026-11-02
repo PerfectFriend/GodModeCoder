@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Fitness evaluation suite for evolution nodes."""
 
 import os, sys, json, time, subprocess

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Key watchdog: probe all pooled API keys, reset stale statuses, report dead keys.
 
 Silent (no stdout) when everything is healthy and nothing changed -> cron stays quiet.

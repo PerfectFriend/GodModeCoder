@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 DJ Pipeline for Radio ArmsgeddonFM
 Integrates music generation, news/TTS, and audio mixing with ducking

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Verify all Hermes gateway processes are healthy.
 Run via: python verify_gateways.py

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """SuperGuard zone-dwell test: YOLO + ByteTrack + ROI zone + dwell timer.
 
 Detects person(s) staying in a defined zone longer than N seconds.

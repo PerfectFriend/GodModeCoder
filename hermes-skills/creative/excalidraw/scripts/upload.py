@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 Upload an .excalidraw file to excalidraw.com and print a shareable URL.
 

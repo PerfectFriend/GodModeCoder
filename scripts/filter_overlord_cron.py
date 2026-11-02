@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Wrapper for filter_overlord.py that calculates cycle number automatically
 # Cycle = minutes since epoch (2021-01-01) // 10 (10-minute cycles)
 

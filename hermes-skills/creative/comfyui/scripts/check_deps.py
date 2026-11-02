@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """
 check_deps.py — Verify a ComfyUI workflow's dependencies (custom nodes, models,
 embeddings) against a running server.

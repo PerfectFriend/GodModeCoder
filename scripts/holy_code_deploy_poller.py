@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Holy Code Deploy Poller
 # Версия: 1.1
 # Опрашивает завершённые banner_deploy + dj_studio, запускает holy_code_deploy

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 # Living Code Ecosystem — Banner Deploy Poller
 # Версия: 1.0
 # Опрашивает артефакты filter_overlord каждые 5 мин, запускает banner_deploy для READY компонентов

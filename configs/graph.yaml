@@ -81,6 +81,18 @@ nodes:
     genome: "video-surveillance + GitHub PerfectFriend/AISuperGuard (license server приватный)"
     state: "production (N100+SG1210MP, 8 камер)"
 
+  - id: abi-screenshot-to-code
+    type: SKILL
+    role: "AI skill for generating code from screenshots using LLMs"
+    genome: "skill:abi-screenshot-to-code"
+    state: "researching"
+  - id: archify
+    type: SKILL
+    role: "Agent skill for beautiful, verifiable architecture diagrams"
+    genome: "skill:archify"
+    state: "researching"
+
+edges:
 edges:
   - {from: oracle, to: paranoidx, type: VISION}
   - {from: oracle, to: superguard, type: VISION}

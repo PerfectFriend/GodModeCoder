@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/thomas/bin/python3
 """Static check for parse_target() in panic_mode.py WITHOUT importing the module
 (booting it would start YOLO/camera/Telegram).
 
